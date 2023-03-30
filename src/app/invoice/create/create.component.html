@@ -1,0 +1,20 @@
+<h1>{{TitlePage}}</h1>
+<form class="container" [formGroup]="invoiceForm"  (ngSubmit)="addInvoice()">
+ <div class="row">
+  <div class ="form-group">
+
+    <label>invoice code</label>
+    <span>*</span>
+    <input formControlName ="code" class="form-control"/>
+    <label>total</label>
+    <input formControlName ="total" class="form-control" />
+
+  
+   
+  </div>
+
+ 
+ </div>
+ <button type="submit"> create</button>
+
+</form>
