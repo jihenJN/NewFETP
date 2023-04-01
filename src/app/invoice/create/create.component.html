@@ -1,20 +1,58 @@
-<h1>{{TitlePage}}</h1>
+<div class="container" style="padding:3%;">
+ 
+  <h1>{{TitlePage}}</h1>
 <form class="container" [formGroup]="invoiceForm"  (ngSubmit)="addInvoice()">
  <div class="row">
   <div class ="form-group">
-
     <label>invoice code</label>
     <span>*</span>
     <input formControlName ="code" class="form-control"/>
     <label>total</label>
-    <input formControlName ="total" class="form-control" />
-
-  
-   
+    <input formControlName ="total" class="form-control" /> 
   </div>
-
- 
  </div>
- <button type="submit"> create</button>
+
+ <div class="row">
+  <table  class="table table-bordered" formArrayName="sales"  >
+    <thead thead class="table-dark text-white">
+      <tr>
+        <td>Sale N</td>
+        <td>Product</td>
+        <td>Price </td>
+        <td>Qty </td>
+        <td>Action </td>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of invsales.controls;let i=index" [formGroupName]="i">
+      <td> {{i+1}}</td>
+      <td>
+        <select class="form-control" formControlName="Product"></select>
+      </td>
+      <td>
+        <input class="form-control" formControlName="Price"/>
+      </td>
+      <td>
+        <input class="form-control" formControlName=" Qty"/>
+      </td>
+
+      <td>
+        <button type="button" class="btn btn-dark" style="background-color: #212529;"> delete </button>
+      </td>
+
+    </tbody>
+    <tfoot>
+       <td colspan="8">
+        <button (click)="addSale()" type="button"  class="btn btn-dark" style="background-color: #212529;" > [+] </button>
+     
+       </td>
+        
+    </tfoot>
+  </table>
+
+ </div>
+ <button type="submit" class="btn btn-dark" style="background-color: #761b86;" > create</button>
 
 </form>
+
+
+</div>
