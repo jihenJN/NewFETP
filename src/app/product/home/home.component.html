@@ -1,0 +1,69 @@
+<div class="container">
+    <h2>Products</h2>
+    <hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Product No</th>
+          <th scope="col">Name</th>
+          <th scope="col">PRICE</th>
+          <th scope="col">PHOTO</th>
+          <th scope="col">DESCRIPTION</th>
+          <th scope="col">TAX</th>
+          <th scope="col">IN STOCK</th>
+          <th> <a class="btn btn-primary mx-1" title="Add New Product" routerLink="/product/create"><i
+                class="bi bi-plus"></i></a></th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let product of productsDto ;let i=index">
+          <td scope="row"> {{i+1}} </td>
+          <td>{{product.name}}</td>
+          <td>{{product.price}} DT</td>
+          <td>
+            <img class="image-upload-container" [src]="product.photo" style="max-height: 30px" alt="product image" />
+          </td>
+  
+          <td>{{product.description}}</td>
+  
+          <td>{{product.tax}}</td>
+          <td>{{product.inStock}}</td>
+  
+          <td>
+            <div>
+              <button class="btn btn-primary mx-1" title="Edit Product" [routerLink]="['/product/edit',product.id]"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-danger mx-1" type="button" title="Delete Product"
+                (click)="openDeleteModal(product.id)"><i class="bi bi-trash"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+     
+    </table>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Warning!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure to delete the item?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)="delete()">Confirm Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
