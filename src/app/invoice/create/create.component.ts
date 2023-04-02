@@ -8,7 +8,7 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
 })
 export class CreateComponent  {
 
-  TitlePage="create new invoice";
+  TitlePage="Add New Invoice";
   invSales!:FormArray<any>;
 
   constructor(private builder:FormBuilder){}

@@ -11,6 +11,7 @@ import { ProductModule } from './product/product.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { ClientModule } from './client/client.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     HttpClientModule,
     InvoiceModule,
     AdminModule,
-    AuthModule
+    AuthModule,
+    ClientModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
