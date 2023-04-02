@@ -12,6 +12,11 @@ export class ClientService {
   get() {
     return this.http.get<Client[]>('http://localhost:8080/api/clients');
   }
+   
+  getClients() {
+    return this.http.get<Client[]>('http://localhost:8080/api/clients');
+  }
+
 
   create(payload: Client) {
     return this.http.post<Client>('http://localhost:8080/api/clients', payload);
