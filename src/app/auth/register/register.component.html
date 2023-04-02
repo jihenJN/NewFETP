@@ -1,74 +1,65 @@
-<!----design start -->
-
-<section class="vh-100" style="background-color: #1d9d7f;">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col col-xl-10">
-          <div class="card" style="border-radius: 1rem;">
-            <div class="row g-0">
-              <div class="col-md-6 col-lg-5 d-none d-md-block">
-                <img src="/assets/img/registration.jpg"
-                  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
-              </div>
-              <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                <div class="card-body p-4 p-lg-5 text-black">
-  
-
-                  <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmitRegister()"
-                    #f="ngForm" novalidate>
-  
-                    <div class="d-flex align-items-center mb-3 pb-1">
-                      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                      <span class="h1 fw-bold mb-0">Invoice App</span>
-                    </div>
-  
-                  
-                    <div class="form-outline mb-4">
-                       <label for="username">Username or email address <span>*</span></label>
-                        <input type="text" class="form-control" name="username" [(ngModel)]="formRegister.username"
-                        required minlength="3" maxlength="20" #username="ngModel">
-                      </div>
-
-                    <div class="form-outline mb-4">
-                      <label for="email-id">Email Address <span>*</span></label>
-                      <input type="email" class="form-control" name="email" [(ngModel)]="formRegister.email"
-                          required email #email="ngModel">
-                    </div>
-                     <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
-                        <div *ngIf="email.errors['required']">Email is required</div>
-                        <div *ngIf="email.errors['email']">
-                            Email must be a valid email address
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="row w-100 mx-0">
+      <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+        <div class="row no-gutter">
+          <div class="col-md-6 d-none d-md-flex bg-image"></div>
+          <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-7">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-10 col-xl-7 mx-auto">
+                    <h3 class="display-4">Register</h3>
+                    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmitRegister()" #f="ngForm"
+                      novalidate>
+                      <div class="form-group mb-4">
+                        <label for="username">Username<span style="color:red">*</span></label>
+                        <input id="inputUsername" type="text" class="form-control rounded-pill border-0 shadow-sm"
+                          name="username" [(ngModel)]="formRegister.username" required #username="ngModel"
+                          placeholder="Username" required autofocus="" minlength="3" maxlength="20">
+                        <div role="alert" *ngIf="username.errors && f.submitted" style="color:red">
+                          <div *ngIf="username.errors['required']">Username is required</div>
+                          <div *ngIf="username.errors['minlength']">
+                            Username must be at least 3 characters
+                          </div>
                         </div>
-                    </div>
-  
-                    <div class="form-outline mb-4">
-                      <label for="userpass">Password <span>*</span></label>
-                      <input id="userpass" type="password" placeholder="Enter password..." type="password"
-                          class="form-control" name="password" [(ngModel)]="formRegister.password" required
-                          minlength="3" #password="ngModel">
-                    </div>
-                    <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
-                      <div *ngIf="password.errors['required']">Password is required</div>
-                      <div *ngIf="password.errors['minlength']">
-                        Password must be at least 3 characters
                       </div>
-                    </div>
-  
+                      <div class="form-group mb-4">
+                        <label for="email">Email<span style="color:red">*</span></label>
+                        <input type="email" class="form-control rounded-pill border-0 shadow-sm" name="email"
+                          [(ngModel)]="formRegister.email" required #email="ngModel" placeholder="exe@gmail.com">
+                        <div role="alert" *ngIf="email.errors && f.submitted" style="color:red">
+                          <div *ngIf="email.errors['required']">Email is required</div>
+                          <div *ngIf="email.errors['email']">
+                            Email must be a valid email address
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group mb-4">
+                        <label for="userpass">Password<span style="color:red">*</span></label>
+                        <input id="userpass" type="password" placeholder="Enter password..." type="password"
+                          class="form-control rounded-pill border-0 shadow-sm" name="password"
+                          [(ngModel)]="formRegister.password" required minlength="3" #password="ngModel">
+                        <div role="alert" style="color:red" *ngIf="password.errors && f.submitted">
+                          <div *ngIf="password.errors['required']">Password is required</div>
+                          <div *ngIf="password.errors['minlength']">
+                            Password must be at least 3 characters
+                          </div>
+                        </div>
+                      </div>
 
-                     <div class="form-group pt-1 mb-4">
-                       <button class="btn btn-dark btn-lg btn-block">Sign Up</button>
-                     </div>
+                      <button type="submit"
+                        class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign Up
+                      </button>
 
-                    <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-                        Signup failed!<br />{{ errorMessage }}
-                    </div>
-                                    
-                    <p class="mb-5 pb-lg-2" style="color: #1d9d7f;" >already have account <a routerLink="/login"
-                        style="color: #1d9d7f;">login here</a></p>
-                  
-                  </form>
-  
-
+                      <div class="mt-5">
+                        <p class="text-center">
+                          Already have an account?
+                          <a routerLink="/login">Log in</a>
+                        </p>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -76,9 +67,5 @@
         </div>
       </div>
     </div>
-  </section>
-<!----design ends-->
-
-
-
-
+  </div>
+</div>

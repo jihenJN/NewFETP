@@ -1,0 +1,13 @@
+.login,
+.image {
+  min-height: 100vh;
+}
+.bg-image {
+  background-image: url('https://img.freepik.com/vecteurs-libre/illustration-concept-mot-passe-oublie_114360-1123.jpg?w=2000');
+  background-size: cover;
+  background-position: center center;
+}
+.invalid-feedback
+{
+  margin-left: 25px;
+}

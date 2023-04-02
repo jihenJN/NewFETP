@@ -1,0 +1,13 @@
+.login,
+.image {
+  min-height: 100vh;
+}
+.bg-image {
+  background-image: url('https://st4.depositphotos.com/1907633/20977/i/450/depositphotos_209770480-stock-photo-web-page-browser-of-social.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+.invalid-feedback
+{
+  margin-left: 25px;
+}
