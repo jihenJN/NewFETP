@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateComponent } from './invoice/create/create.component';
+import { DashboardAdminComponent } from './admin/dashboard-admin/dashboard-admin.component';
 
 
 const routes: Routes = [
-  {path:'',component:CreateComponent},
+  {path:'',component:DashboardAdminComponent},
 ];
 
 @NgModule({

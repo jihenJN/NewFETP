@@ -8,6 +8,7 @@ import { InvoiceModule } from './invoice/invoice.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductModule } from './product/product.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { ProductModule } from './product/product.module';
     SharedModule,
     ProductModule,
     HttpClientModule,
+    InvoiceModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

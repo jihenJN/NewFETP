@@ -5,9 +5,9 @@
       <thead>
         <tr>
           <th scope="col">Product No</th>
+          <th scope="col">PHOTO</th>
           <th scope="col">Name</th>
           <th scope="col">PRICE</th>
-          <th scope="col">PHOTO</th>
           <th scope="col">DESCRIPTION</th>
           <th scope="col">TAX</th>
           <th scope="col">IN STOCK</th>
@@ -19,12 +19,13 @@
       <tbody>
         <tr *ngFor="let product of productsDto ;let i=index">
           <td scope="row"> {{i+1}} </td>
-          <td>{{product.name}}</td>
-          <td>{{product.price}} DT</td>
           <td>
             <img class="image-upload-container" [src]="product.photo" style="max-height: 30px" alt="product image" />
           </td>
   
+          <td>{{product.name}}</td>
+          <td>{{product.price}} DT</td>
+
           <td>{{product.description}}</td>
   
           <td>{{product.tax}}</td>
