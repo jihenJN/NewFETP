@@ -6,9 +6,9 @@ import { EditComponent } from './edit/edit.component';
 
 
 const routes: Routes = [
-  {path:'product/home',component:HomeComponent},
-  {path:'product/create',component:CreateComponent},
-  {path:'product/edit/:id',component:EditComponent},
+  {path:'productList',component:HomeComponent},
+  {path:'productCreate',component:CreateComponent},
+  {path:'productEdit/:id',component:EditComponent},
 
 ];
 

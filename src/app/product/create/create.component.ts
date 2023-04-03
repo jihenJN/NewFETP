@@ -41,7 +41,7 @@ export class CreateComponent implements OnInit {
     this.productService.create(this.productForm.value)
       .subscribe({
         next: (data) => {
-          this.router.navigate(["/product/home"])
+          this.router.navigate(["/productList"])
           console.log("success .....");
         },
         error: (err) => {

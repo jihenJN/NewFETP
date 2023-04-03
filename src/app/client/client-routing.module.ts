@@ -5,9 +5,9 @@ import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
-  {path:'client/list',component:ListComponent},
-  {path:'client/create',component:CreateComponent},
-  {path:'client/edit/:id',component:EditComponent},
+  {path:'listClient',component:ListComponent},
+  {path:'createClient',component:CreateComponent},
+  {path:'editClient/:id',component:EditComponent},
 ];
 
 @NgModule({

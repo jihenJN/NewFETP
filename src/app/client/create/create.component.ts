@@ -35,7 +35,7 @@ export class CreateComponent implements OnInit {
     this.clientService.create(this.clientForm.value)
       .subscribe({
         next: (data) => {
-          this.router.navigate(["/client/home"])
+          this.router.navigate(["/listClient"])
           console.log("success .....");
         },
         error: (err) => {

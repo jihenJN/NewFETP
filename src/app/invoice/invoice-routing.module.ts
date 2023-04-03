@@ -4,8 +4,8 @@ import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
-  {path:"invoice/create", component:CreateComponent},
-  {path:"invoice/list", component:ListComponent},
+  {path:"invoiceCreate", component:CreateComponent},
+  {path:"invoiceList", component:ListComponent},
 ];
 
 @NgModule({

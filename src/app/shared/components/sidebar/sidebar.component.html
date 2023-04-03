@@ -4,12 +4,14 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false" aria-controls="product">
                 <i class="typcn typcn-document-text menu-icon"></i>
-                <span class="menu-title" routerLink="/product/home">Product</span>
+                <span class="menu-title" >Products</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="product">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" routerLink="/product/home">List</a>
+                    <li class="nav-item"> <a class="nav-link" routerLink="/productList">All Products</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" routerLink="/productCreate">Add Product</a>
                     </li>
                 </ul>
             </div>
@@ -18,14 +20,14 @@
         <li class="nav-item">
            <a class="nav-link" data-toggle="collapse" href="#client" aria-expanded="false" aria-controls="client">
                 <i class="typcn typcn-document-text menu-icon"></i>
-                <span class="menu-title" routerLink="/client/list">Client</span>
+                <span class="menu-title">Clients</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="client">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" routerLink="/client/list">List</a>
+                    <li class="nav-item"> <a class="nav-link" routerLink="/listClient">All Clients</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" routerLink="/client/create">create</a>
+                    <li class="nav-item"> <a class="nav-link" routerLink="/createClient">Add Client</a>
                     </li>
                 </ul>
             </div>
@@ -34,26 +36,30 @@
         <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#invoice" aria-expanded="false" aria-controls="invoice" aria-controls="invoice">
                 <i class="typcn typcn-document-text menu-icon"></i>
-                <span class="menu-title" routerLink="/invoice/list">Invoice</span>
+                <span class="menu-title" routerLink="/invoice/list">Invoices</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="invoice">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" routerLink="/invoice/create">List</a>
+                    <li class="nav-item"> <a class="nav-link" routerLink="/invoiceList">All Invoices</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" routerLink="/invoiceCreate">Add Invoice</a>
                     </li>
                 </ul>
             </div>
         </li>
 
         <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#sale" aria-expanded="false" aria-controls="sale" aria-controls="sale">
+            <a class="nav-link" data-toggle="collapse" href="#sale" aria-expanded="false" aria-controls="sale" aria-controls="sale">
                 <i class="typcn typcn-document-text menu-icon"></i>
-                <span class="menu-title" routerLink="/sale/home">Sale</span>
+                <span class="menu-title" routerLink="/sale/home">Sales</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="sale">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" routerLink="/sale/list">List</a>
+                    <li class="nav-item"> <a class="nav-link" routerLink="/sale/list">All Sales</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" routerLink="/sale/create">Add Sale</a>
                     </li>
                 </ul>
             </div>

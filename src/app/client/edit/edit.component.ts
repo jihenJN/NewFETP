@@ -39,7 +39,7 @@ export class EditComponent implements OnInit{
     this.clientService.update(this.clientForm)
       .subscribe({
         next: (data) => {
-          this.router.navigate(["/client/home"]);
+          this.router.navigate(["/listClient"]);
         },
         error: (err) => {
           console.log(err);

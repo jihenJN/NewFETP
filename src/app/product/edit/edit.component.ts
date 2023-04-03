@@ -89,7 +89,7 @@ export class EditComponent implements OnInit {
     this.productService.update(this.formGroup.value)
       .subscribe({
         next: (data) => {
-          this.router.navigate(["/product/home"]);
+          this.router.navigate(["/productList"]);
         },
         error: (err) => {
           console.log(err);
