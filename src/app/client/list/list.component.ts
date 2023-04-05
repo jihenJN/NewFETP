@@ -11,6 +11,9 @@ declare var window: any;
 })
 export class ListComponent  implements OnInit{
  
+
+ 
+
   clients: Client[] = [];
   clientsDto: ClientDto[] = [];
 
