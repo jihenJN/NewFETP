@@ -11,7 +11,7 @@ declare var window: any;
 })
 export class ListComponent  implements OnInit{
  
-
+loading:boolean =false
  
 
   clients: Client[] = [];
@@ -46,8 +46,11 @@ export class ListComponent  implements OnInit{
 
 
   get() {
+    this.loading=true;
+
     this.clientService.get().subscribe((data) => {
       this.clients = data;
+      this.loading=false;
 
     });
   }

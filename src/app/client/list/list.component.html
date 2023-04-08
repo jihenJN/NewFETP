@@ -1,8 +1,11 @@
 <!----------NEW TABLE DESIGN BEGINS-------------->
-<body>
-    <div class="container-xl">
-        <div class="table-responsive">
-            <div class="table-wrapper">
+
+
+
+<body >
+    <div class="container-xl" *ngIf="!loading"  >
+        <div class="table-responsive" >
+            <div class="table-wrapper" >
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
@@ -58,8 +61,23 @@
                     </ul>
                 </div>
             </div>
+
+            
+
         </div>
+
+     
+
+
     </div>
+
+
+    <div class =" container-xl text-center w-200"  *ngIf="loading" >
+        <app-spinner></app-spinner>
+    </div>
+
+   
+    
 
 </body>
 
