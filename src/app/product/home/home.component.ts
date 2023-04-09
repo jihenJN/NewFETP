@@ -11,6 +11,8 @@ declare var window: any;
 })
 export class HomeComponent implements OnInit {
 
+  loading:boolean =false
+
   products: Product[] = [];
   productsDto: ProductDto[] = [];
 
@@ -43,8 +45,10 @@ export class HomeComponent implements OnInit {
 
 
   get() {
+    this.loading=true;
     this.productService.get().subscribe((data) => {
       this.products = data;
+      this.loading=false;
 
     });
   }
@@ -83,7 +87,6 @@ export class HomeComponent implements OnInit {
   }
 
 
-/************JN:FIXING DELETE PROBLEM*********************/
   delete() {
     this.productService.delete(this.idTodelete).subscribe({
       next: (data: any) => {
