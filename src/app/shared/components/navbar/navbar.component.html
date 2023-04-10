@@ -94,7 +94,7 @@
 
                 <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center"
                     id="signinDropdown" routerLink="#" data-toggle="dropdown">
-                    <i class="typcn typcn-home-outline"></i>
+                    <i class="typcn typcn-user"></i>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
@@ -106,31 +106,28 @@
                             <h6 class="preview-subject font-weight-normal">Profile</h6>
                         </div>
                     </a>
-
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject font-weight-normal" routerLink="/login">Sign in</h6>
-                        </div>
-                    </a>
-
-                    <a class="dropdown-item preview-item">
-                        <div class="preview-item-content">
-                            <h6 class="preview-subject font-weight-normal">Sign out</h6>
-                        </div>
-                    </a>
                     
                     <a class="dropdown-item preview-item">
 
                         <div class="preview-item-content">
                             <h6 class="preview-subject font-weight-normal">Settings</h6>
-                            <!-- <p class="font-weight-light small-text mb-0 text-muted">
-                                Private message
-                            </p> -->
+                           
                         </div>
                     </a>
+                  
+
+                    <a class="dropdown-item preview-item" (click)="logout()">
+                        <div class="preview-item-content">
+                            <h6 class="preview-subject font-weight-normal" >Sign out</h6>
+                        </div>
+                    </a>
+                    
+                  
 
                 </div>
             </li>
+            
+
         </ul>
 
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
