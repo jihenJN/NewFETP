@@ -1,0 +1,68 @@
+<div class="container">
+    <legend>Edit Product</legend>
+    <form [formGroup]="formGroup">
+      <div class="mb-3">
+        <label for="txtName" class="form-label">Name</label>
+         <input class="form-control" formControlName="name" type="text" placeholder="Enter the new product name..."  />
+     </div>
+      <div class="mb-3">
+        <label for="txtPrice" class="form-label">Price</label>
+        <input class="input form-control" formControlName="price" type="number" placeholder="Enter the new product price...">
+      </div>
+  
+      
+     
+      <!-------------JN Adding main image start----------->
+  
+      <div class="row mb-3">
+        <label class="form-label" for="field_photo"> Photo</label> <br>
+  
+        <div>
+          <img [src]="'data:' +formGroup.get('photoContentType')!.value + ';base64,' + formGroup.get('photo')!.value"
+            style="max-height: 100px" *ngIf="formGroup.get('photo')!.value" alt="product image" />
+  
+          <div *ngIf="formGroup.get('photo')!.value" class="form-text text-danger clearfix">
+            <span class="pull-start">{{formGroup.get('photoContentType')!.value }}, {{
+              byteSize(formGroup.get('photo')!.value!) }}</span>
+  
+            <button class="btn btn-sq-xs btn-danger" type="button" (click)="clearInputImage('photo', 'photoContentType', 'file_photo')" >
+              <i class="gg-close" ></i>
+            </button>
+           
+          </div>
+  
+          <input type="file" id="file_photo" data-cy="photo" (change)="setFileData($event, 'photo', true)"
+            accept="image/*" />
+  
+        </div>
+        <input type="hidden" class="form-control" name="photo" id="field_photo" data-cy="photo" formControlName="photo" />
+        <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+          formControlName="photoContentType" />
+      </div>
+  
+      <!-------------JN Adding main image start----------->
+  
+      <div class="mb-3">
+        <label for="txtDescription" class="form-label">Description</label>
+        <input class="form-control" formControlName="description" type="text"
+          placeholder="Enter product description..." />
+      </div>
+  
+  
+      <div class="mb-3">
+        <label for="txtTax" class="form-label">TAX</label>
+        <input class="form-control" formControlName="tax" type="text" />
+      </div>
+  
+      <div class="mb-3">
+        <label for="txtInStock" class="form-label">In stock</label>
+        <input class="input form-control" formControlName="inStock" type="number" placeholder="Enter the new product stock...">
+      </div>
+      
+      <div>
+        <button class="button" type="button" (click)="update()" class="btn btn-primary mx-1">Update</button>
+        <button class="button" type="button" routerLink="/productList" class="btn btn-danger mx-1">Back</button>
+      </div>
+  
+    </form>
+  </div>

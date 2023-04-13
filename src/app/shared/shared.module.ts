@@ -7,7 +7,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 
-
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -17,7 +16,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
   ],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    
   ],
   exports: [
     NavbarComponent,

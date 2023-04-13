@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateComponent } from './create/create.component';
-import { HomeComponent } from './home/home.component';
-import { EditComponent } from './edit/edit.component';
+import { ListProductComponent } from './list-product/list-product.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 const routes: Routes = [
-  {path:'productList',component:HomeComponent},
-  {path:'createProduct',component:CreateComponent},
-  {path:'editProduct/:id',component:EditComponent},
+  { path: 'productList', component:ListProductComponent },
+  { path: 'createProduct', component: AddProductComponent },
+  { path: 'editProduct/:id', component: EditProductComponent },
 
 ];
 

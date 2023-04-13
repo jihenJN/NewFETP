@@ -2,19 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProductRoutingModule } from './product-routing.module';
-import { CreateComponent } from './create/create.component';
-import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { EditComponent } from './edit/edit.component';
+
 import { SharedModule } from '../shared/shared.module';
+import { AddProductComponent } from './add-product/add-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { ListProductComponent } from './list-product/list-product.component';
 
 
 @NgModule({
   declarations: [
-    CreateComponent,
-    HomeComponent,
-    EditComponent
+   
+    AddProductComponent,
+    EditProductComponent,
+    ListProductComponent
   ],
   imports: [
     CommonModule,
@@ -25,9 +27,10 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   exports: [
-    CreateComponent,
-    HomeComponent,
-    EditComponent
+   
+    AddProductComponent,
+    EditProductComponent,
+    ListProductComponent
   ]
 })
 export class ProductModule { }

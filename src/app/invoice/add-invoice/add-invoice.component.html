@@ -1,0 +1,112 @@
+<div class="container">
+
+  <h1>{{TitlePage}}</h1>
+  <form class="container" [formGroup]="invoiceForm" (ngSubmit)="addInvoice()">
+    <div class="row">
+      <div class="form-group">
+
+        <label>invoice code</label>
+        <span>*</span>
+        <input formControlName="code" class="form-control" /> <br>
+
+        <label>customer</label>
+        <span>*</span>
+        <select formControlName="client" class="form-control">
+          <option *ngFor="let item of invClient" [value]="item.id">{{item.name}} </option>
+        </select> <br>
+
+
+        <label>Date</label>
+        <span>*</span>
+        <input type="date" formControlName="date" class="form-control" /> <br>
+
+        <label>Remarks</label>
+        <textarea type="text" formControlName="remarks" class="form-control"></textarea> <br>
+
+        <label>Discount</label>
+        <input type="number" formControlName="discount" class="form-control" /> <br>
+
+        <label>Tax</label>
+        <input type="number" formControlName="tax" class="form-control" /> <br>
+
+
+        <label>Status</label>
+        <select formControlName="status" class="form-control">
+          <option *ngFor="let item of invStatus" [value]="item">{{item}} </option>
+        </select> <br>
+
+
+
+
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <table class="table table-bordered" formArrayName="sales">
+        <thead thead class="table-dark text-white">
+          <tr>
+            <td>Sale N</td>
+            <td>Product</td>
+            <td>Price </td>
+            <td>Qty </td>
+            <td>Action </td>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of invsales.controls;let i=index" [formGroupName]="i">
+          <td> {{i+1}}</td>
+          <td>
+            <select class="form-control" formControlName="Product">
+              <option *ngFor="let item of invProducts" [value]="item.id">{{item.name}} </option>
+            </select>
+          </td>
+          <td>
+            <input class="form-control" formControlName="Price" />
+          </td>
+          <td>
+            <input class="form-control" formControlName=" Qty" />
+          </td>
+
+          <td>
+            <button type="button" class="btn btn-dark" style="background-color: #212529;"> delete </button>
+          </td>
+
+        </tbody>
+        <tfoot>
+          <td colspan="8">
+            <button (click)="addSale()" type="button" class="btn btn-dark" style="background-color: #212529;"> [+]
+            </button>
+
+          </td>
+
+        </tfoot>
+      </table>
+
+    </div>
+    <div class="flex row">
+
+
+      <div class= " flex-start col-sm-6">
+        <button type="submit" class="btn btn-dark" style="background-color: #761b86;"> create</button> 
+      </div>
+     
+     
+     <div  class= " flex-end col-sm-6" >
+     
+      <label>Total</label>
+      <input formControlName="total" class="form-control" />
+
+     </div>
+     
+    </div>
+
+
+
+
+
+
+  </form>
+
+
+</div>

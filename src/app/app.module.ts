@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Renderer2 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import{BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InvoiceModule } from './invoice/invoice.module';
@@ -12,6 +12,8 @@ import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ClientModule } from './client/client.module';
+import { AdminRoutingModule } from './admin/admin-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { ClientModule } from './client/client.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
@@ -28,7 +32,9 @@ import { ClientModule } from './client/client.module';
     InvoiceModule,
     AdminModule,
     AuthModule,
-    ClientModule
+    ClientModule,
+    
+
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
