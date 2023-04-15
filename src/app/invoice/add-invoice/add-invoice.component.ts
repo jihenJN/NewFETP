@@ -43,6 +43,7 @@ export class AddInvoiceComponent implements OnInit  {
     
         code: this.builder.control('', Validators.required),
         client: this.builder.control(''),
+        deliveryAddress: this.builder.control(''),
         date:this.builder.control(Date, Validators.required),
         remarks:this.builder.control(''),
         discount:this.builder.control(0),
@@ -99,6 +100,23 @@ export class AddInvoiceComponent implements OnInit  {
       this.invClient = res;
       console.log(this.invClient);
     })
+  }
+
+
+  clientChange(){
+    let idclient = this.invoiceForm.get('client')?.value
+
+    this.clientService.getById(idclient).subscribe(res=>{
+      let data:any;
+      data =res;
+      if (data!=null)
+       { this.invoiceForm.get('deliveryAddress')?.setValue(
+        'address:'+data.address+'   phone:'+data.phone+'   email:'+data.email
+
+       )}
+    })
+
+
   }
 
   getProducts() {
