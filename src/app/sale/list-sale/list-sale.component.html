@@ -38,8 +38,8 @@
                             <td>{{sale.available}}</td>
                             <td>{{sale.price}}</td>
                             
-                            <td>
-                                <a [routerLink]="['/editInvoice', sale.id]" class="edit" data-toggle="modal"><i
+                            <td>   
+                                <a [routerLink]="['/editSale', sale.id]" class="edit" data-toggle="modal"><i
                                         class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a  href="#" class="delete" data-toggle="modal" (click)="openDeleteModal(sale.id)"><i
                                         class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

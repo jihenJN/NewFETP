@@ -1,1 +1,55 @@
 <p>edit-sale works!</p>
+<div class="container">
+    <legend>Edit Item</legend>
+    <form>
+      <div class="mb-3">
+        <label for="txtID" class="form-label">ID</label>
+        <input type="text" name="id" [(ngModel)] = "saleForm.id" class="form-control" id="txtName" disabled="true"/>
+      </div>
+      <div class="mb-3">
+        <label for="txtquantity" class="form-label">quantity</label>
+        <input type="number" name="quantity" [(ngModel)] = "saleForm.quantity" class="form-control" id="txtquantity" />
+      </div>
+      <div class="mb-3">
+        <label for="txtprice" class="form-label">price</label>
+        <input type="number" name="price" [(ngModel)] = "saleForm.price" class="form-control" id="txtprice" />
+      </div>
+
+      <div class="mb-3">
+        <label for="txttax" class="form-label">tax</label>
+        <input type="number" name="tax" [(ngModel)] = "saleForm.tax" class="form-control" id="txttax" />
+      </div>
+
+      <div class="mb-3">
+        <label for="txtdiscount" class="form-label">discount</label>
+        <input type="number" name="discount" [(ngModel)] = "saleForm.discount" class="form-control" id="txtdiscount" />
+      </div>
+
+
+      <div class="mb-3">
+        <label for="txtavailable" class="form-label">available</label>
+        <input type="text" name="available" [(ngModel)] = "saleForm.available" class="form-control" id="txtavailable" />
+      </div>
+     
+
+      <div class="mb-3">
+        <label for="txtavailable" class="form-label">invoice</label>
+        <input type="invoice" name="invoice" [(ngModel)] = "saleForm.invoice" class="form-control" id="txtinvoice" />
+      </div>
+
+
+      <div class="mb-3">
+        <label for="txtproduct" class="form-label">product</label>
+        <select >
+            <option type="product" name="product" [(ngModel)] = "saleForm.product" class="form-control" id="txtproduct"></option>
+        </select>
+       
+       
+      </div>
+
+
+
+
+      <button type="button" (click)="update()" class="btn btn-primary">Update</button>
+    </form>
+</div>
