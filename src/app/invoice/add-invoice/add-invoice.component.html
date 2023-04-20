@@ -8,12 +8,16 @@
         <label>invoice code</label>
         <span>*</span>
         <input formControlName="code" class="form-control" /> <br>
-
-        <label>customer</label>
-        <span>*</span>
-        <select formControlName="client" (change)="clientChange()" class="form-control">
-          <option *ngFor="let item of invClient" [value]="item.id">{{item.name}} </option>
-        </select> <br>
+    
+    
+        <div  formGroupName="client">
+          <label>customer</label>
+          <span>*</span>
+          <select  [(ngModel)]="selectedClientId" formControlName="id" (change)="clientChange()" class="form-control">
+            <option *ngFor="let item of invClient" [ngValue]="item.id">{{item.name}} </option>
+          </select> <br>
+        </div>
+      
        
         <label>Remarks</label>
         <textarea type="text" formControlName="remarks" class="form-control"></textarea> <br>

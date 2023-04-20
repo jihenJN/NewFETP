@@ -20,6 +20,8 @@ export class AddInvoiceComponent implements OnInit  {
   invSales!: FormArray<any>;
   invClient: any;
   invProducts: any;
+ 
+  selectedClientId: string  = '';
   
   invStatus:status[] = [
     status.DRAFT,
@@ -42,7 +44,11 @@ export class AddInvoiceComponent implements OnInit  {
       this.invoiceForm = this.builder.group({
     
         code: this.builder.control('', Validators.required),
-        client: this.builder.control(''),
+        client: this.builder.group({
+          id: this.builder.control('', Validators.required)
+        }),
+
+        //client: this.builder.control(''),
         remarks: this.builder.control(''),
         date:this.builder.control(Date, Validators.required),
         discount:this.builder.control(0),
@@ -97,18 +103,26 @@ export class AddInvoiceComponent implements OnInit  {
   getClients() {
     this.clientService.get().subscribe(res => {
       this.invClient = res;
+
       console.log(this.invClient);
     })
   }
 
 
   clientChange(){
-    let idclient = this.invoiceForm.get('client')?.value
 
+    //const selectedClientId = this.invoiceForm.get('client.id')?.value;
+    console.log( "selectedClientId",this.selectedClientId); // Check if the selected client ID is correct
+   // this.invoiceForm.get('client.id')?.setValue(selectedClientId);
 
+   
+    let id = this.invoiceForm.get('client.id')?.value
 
-    this.clientService.getById(idclient).subscribe(res=>{
-      console.log("idclient"+idclient);
+    console.log(this.invoiceForm.get('client'));
+    console.log("id"+id);
+
+    this.clientService.getById(id).subscribe(res=>{
+      console.log("id"+id);
 
       let data:any;
       data =res;
