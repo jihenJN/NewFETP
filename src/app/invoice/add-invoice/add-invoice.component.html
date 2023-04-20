@@ -15,17 +15,15 @@
           <option *ngFor="let item of invClient" [value]="item.id">{{item.name}} </option>
         </select> <br>
        
-        <label> delivery address  </label>
-      
-        <textarea formControlName="deliveryAddress" class="form-control"> </textarea><br>
+        <label>Remarks</label>
+        <textarea type="text" formControlName="remarks" class="form-control"></textarea> <br>
+
 
         <label>Date</label>
         <span>*</span>
         <input type="date" formControlName="date" class="form-control" /> <br>
 
-        <label>Remarks</label>
-        <textarea type="text" formControlName="remarks" class="form-control"></textarea> <br>
-
+      
         <label>Discount</label>
         <input type="number" formControlName="discount" class="form-control" /> <br>
 

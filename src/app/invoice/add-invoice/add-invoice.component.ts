@@ -43,9 +43,8 @@ export class AddInvoiceComponent implements OnInit  {
     
         code: this.builder.control('', Validators.required),
         client: this.builder.control(''),
-        deliveryAddress: this.builder.control(''),
+        remarks: this.builder.control(''),
         date:this.builder.control(Date, Validators.required),
-        remarks:this.builder.control(''),
         discount:this.builder.control(0),
         tax:this.builder.control(19),
         total: this.builder.control({ value: '0', disabled: true }),
@@ -106,12 +105,16 @@ export class AddInvoiceComponent implements OnInit  {
   clientChange(){
     let idclient = this.invoiceForm.get('client')?.value
 
+
+
     this.clientService.getById(idclient).subscribe(res=>{
+      console.log("idclient"+idclient);
+
       let data:any;
       data =res;
       if (data!=null)
-       { this.invoiceForm.get('deliveryAddress')?.setValue(
-        'address:'+data.address+'   phone:'+data.phone+'   email:'+data.email
+       { this.invoiceForm.get('remarks')?.setValue(
+        '-Customer details-\n  address: '+data.address+'\n  phone: '+data.phone+'\n  email: '+data.email
 
        )}
     })
