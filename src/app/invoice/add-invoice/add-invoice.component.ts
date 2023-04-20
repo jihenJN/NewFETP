@@ -48,7 +48,6 @@ export class AddInvoiceComponent implements OnInit  {
           id: this.builder.control('', Validators.required)
         }),
 
-        //client: this.builder.control(''),
         remarks: this.builder.control(''),
         date:this.builder.control(Date, Validators.required),
         discount:this.builder.control(0),
@@ -77,7 +76,7 @@ export class AddInvoiceComponent implements OnInit  {
     this.invoiceService.create(this.invoiceForm.value)
     .subscribe({
       next: (data) => {
-        this.router.navigate(["/invoiceList"])
+        this.router.navigate(["/listInvoice"])
         console.log("success .....");
       },
       error: (err) => {
@@ -111,10 +110,6 @@ export class AddInvoiceComponent implements OnInit  {
 
   clientChange(){
 
-    //const selectedClientId = this.invoiceForm.get('client.id')?.value;
-    console.log( "selectedClientId",this.selectedClientId); // Check if the selected client ID is correct
-   // this.invoiceForm.get('client.id')?.setValue(selectedClientId);
-
    
     let id = this.invoiceForm.get('client.id')?.value
 
@@ -128,9 +123,7 @@ export class AddInvoiceComponent implements OnInit  {
       data =res;
       if (data!=null)
        { this.invoiceForm.get('remarks')?.setValue(
-        '-Customer details-\n  address: '+data.address+'\n  phone: '+data.phone+'\n  email: '+data.email
-
-       )}
+        'delivery address: '+data.address)}
     })
 
 
