@@ -1,55 +1,55 @@
-<p>edit-sale works!</p>
+
 <div class="container">
-    <legend>Edit Item</legend>
-    <form>
-      <div class="mb-3">
-        <label for="txtID" class="form-label">ID</label>
-        <input type="text" name="id" [(ngModel)] = "saleForm.id" class="form-control" id="txtName" disabled="true"/>
-      </div>
-      <div class="mb-3">
-        <label for="txtquantity" class="form-label">quantity</label>
-        <input type="number" name="quantity" [(ngModel)] = "saleForm.quantity" class="form-control" id="txtquantity" />
-      </div>
-      <div class="mb-3">
-        <label for="txtprice" class="form-label">price</label>
-        <input type="number" name="price" [(ngModel)] = "saleForm.price" class="form-control" id="txtprice" />
-      </div>
-
-      <div class="mb-3">
-        <label for="txttax" class="form-label">tax</label>
-        <input type="number" name="tax" [(ngModel)] = "saleForm.tax" class="form-control" id="txttax" />
-      </div>
-
-      <div class="mb-3">
-        <label for="txtdiscount" class="form-label">discount</label>
-        <input type="number" name="discount" [(ngModel)] = "saleForm.discount" class="form-control" id="txtdiscount" />
-      </div>
+  <legend>Edit Product</legend>
+  <form [formGroup]="saleForm">
 
 
-      <div class="mb-3">
-        <label for="txtavailable" class="form-label">available</label>
-        <input type="text" name="available" [(ngModel)] = "saleForm.available" class="form-control" id="txtavailable" />
-      </div>
-     
+    <div  formGroupName="invoice" >
+      <label>invoice code</label>
+  
+      <select formControlName="id"  class="form-control">
+        <option  *ngFor="let item of sleInvoices" [ngValue]="item.id">{{item.code}} </option>
+      </select> <br>
+    </div>
+   
+    
+    <div  formGroupName="product">
+      <label>product</label>
+       <select  formControlName="id" class="form-control"  >
+         <option   *ngFor="let item of sleProducts" [ngValue]="item.id">{{item.name}} </option>
+      </select> <br>
+    </div>
 
-      <div class="mb-3">
-        <label for="txtavailable" class="form-label">invoice</label>
-        <input type="invoice" name="invoice" [(ngModel)] = "saleForm.invoice" class="form-control" id="txtinvoice" />
-      </div>
+   
+    <div class="mb-3">
+      <label for="txtquantity" class="form-label">quantity</label>
+      <input class="input form-control" formControlName="quantity" type="number">
+    </div>
 
+   
+    <div class="mb-3">
+      <label for="txtTax" class="form-label">TAX</label>
+      <input class="form-control" formControlName="tax" type="number" />
+    </div>
 
-      <div class="mb-3">
-        <label for="txtproduct" class="form-label">product</label>
-        <select >
-            <option type="product" name="product" [(ngModel)] = "saleForm.product" class="form-control" id="txtproduct"></option>
-        </select>
-       
-       
-      </div>
+    <div class="mb-3">
+      <label for="txtDiscount" class="form-label">Discount</label>
+      <input class="form-control" formControlName="discount" type="number" />
+    </div>
 
 
 
+    <div class="mb-3">
+      <label for="txtPrice" class="form-label">Total Price</label>
+      <input class="form-control" formControlName="price" type="number" />
+    </div>
 
-      <button type="button" (click)="update()" class="btn btn-primary">Update</button>
-    </form>
+   
+    
+    <div>
+      <button class="button" type="button" (click)="update()" class="btn btn-primary mx-1">Update</button>
+      <button class="button" type="button" routerLink="/listSale" class="btn btn-danger mx-1">Back</button>
+    </div>
+
+  </form>
 </div>

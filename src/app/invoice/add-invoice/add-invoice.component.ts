@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClientService } from 'src/app/services/client.service';
 import { ProductService } from 'src/app/services/product.service';
-import {status} from 'src/app/models/Status'
+import { status } from 'src/app/models/Status'
 import { InvoiceService } from 'src/app/services/invoice.service';
 
 @Component({
@@ -11,19 +11,19 @@ import { InvoiceService } from 'src/app/services/invoice.service';
   templateUrl: './add-invoice.component.html',
   styleUrls: ['./add-invoice.component.css']
 })
-export class AddInvoiceComponent implements OnInit  {
-  
+export class AddInvoiceComponent implements OnInit {
+
   invoiceForm!: FormGroup;
-  clientForm!:  FormGroup;
+  clientForm!: FormGroup;
 
   TitlePage = "Add New Invoice";
   invSales!: FormArray<any>;
   invClient: any;
   invProducts: any;
- 
-  selectedClientId: string  = '';
-  
-  invStatus:status[] = [
+
+  selectedClientId: string = '';
+
+  invStatus: status[] = [
     status.DRAFT,
     status.SENT,
     status.RECEIVED,
@@ -41,24 +41,24 @@ export class AddInvoiceComponent implements OnInit  {
     private invoiceService: InvoiceService,
     private router: Router) {
 
-      this.invoiceForm = this.builder.group({
-    
-        code: this.builder.control('', Validators.required),
-        client: this.builder.group({
-          id: this.builder.control('', Validators.required)
-        }),
+    this.invoiceForm = this.builder.group({
 
-        remarks: this.builder.control(''),
-        date:this.builder.control(Date, Validators.required),
-        discount:this.builder.control(0),
-        tax:this.builder.control(19),
-        total: this.builder.control({ value: '0', disabled: true }),
-        status:this.builder.control('DRAFT'),
-        sales: this.builder.array([])
-    
-      })
-    
-     }
+      code: this.builder.control('', Validators.required),
+      client: this.builder.group({
+        id: this.builder.control('', Validators.required)
+      }),
+
+      remarks: this.builder.control(''),
+      date: this.builder.control(Date, Validators.required),
+      discount: this.builder.control(0),
+      tax: this.builder.control(19),
+      total: this.builder.control({ value: '0', disabled: true }),
+      status: this.builder.control('DRAFT'),
+      sales: this.builder.array([])
+
+    })
+
+  }
 
 
   ngOnInit(): void {
@@ -66,24 +66,24 @@ export class AddInvoiceComponent implements OnInit  {
     this.getProducts();
   }
 
- 
 
-  
+
+
 
   addInvoice() {
     console.log(this.invoiceForm.value);
-    
+
     this.invoiceService.create(this.invoiceForm.value)
-    .subscribe({
-      next: (data) => {
-        this.router.navigate(["/listInvoice"])
-        console.log("success .....");
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
-    
+      .subscribe({
+        next: (data) => {
+          this.router.navigate(["/listInvoice"])
+          console.log("success .....");
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+
 
   }
 
@@ -108,22 +108,23 @@ export class AddInvoiceComponent implements OnInit  {
   }
 
 
-  clientChange(){
+  clientChange() {
 
-   
+
     let id = this.invoiceForm.get('client.id')?.value
 
     console.log(this.invoiceForm.get('client'));
-    console.log("id"+id);
+    console.log("id" + id);
 
-    this.clientService.getById(id).subscribe(res=>{
-      console.log("id"+id);
+    this.clientService.getById(id).subscribe(res => {
+      console.log("id" + id);
 
-      let data:any;
-      data =res;
-      if (data!=null)
-       { this.invoiceForm.get('remarks')?.setValue(
-        'delivery address: '+data.address)}
+      let data: any;
+      data = res;
+      if (data != null) {
+        this.invoiceForm.get('remarks')?.setValue(
+          'delivery address: ' + data.address)
+      }
     })
 
 
@@ -148,5 +149,5 @@ export class AddInvoiceComponent implements OnInit  {
 
 
 
-  
+
 }
