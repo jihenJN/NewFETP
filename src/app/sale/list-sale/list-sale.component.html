@@ -35,7 +35,10 @@
                             <td>{{sale.quantity}}</td>
                             <td>{{sale.tax}}</td>
                             <td>{{sale.discount}}</td>
-                            <td>{{sale.available}}</td>
+                            <td>
+                              <input *ngIf="sale.available"  type="checkbox"  checked disabled/>
+                              <input *ngIf="sale.available==false"  type="checkbox"  value="false" disabled/>
+                            </td>
                             <td>{{sale.price}}</td>
                             
                             <td>   
