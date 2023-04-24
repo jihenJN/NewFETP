@@ -55,23 +55,39 @@
             <td>Sale N</td>
             <td>Product</td>
             <td>Price </td>
-            <td>Qty </td>
+            <td>Quantity</td>
+            <td>Available</td>
+            <td>Tax</td> 
+            <td>Discount</td>
             <td>Action </td>
           </tr>
         </thead>
         <tbody *ngFor="let item of invsales.controls;let i=index" [formGroupName]="i">
           <td> {{i+1}}</td>
-          <td>
-            <select class="form-control" formControlName="Product">
+          <td formGroupName="product">
+            <select class="form-control" formControlName="name">
               <option *ngFor="let item of invProducts" [value]="item.id">{{item.name}} </option>
             </select>
           </td>
           <td>
-            <input class="form-control" formControlName="Price" />
+            <input class="form-control" formControlName="price" />
           </td>
           <td>
-            <input class="form-control" formControlName=" Qty" />
+            <input class="form-control" formControlName="quantity" />
           </td>
+          <td>
+            <input class="form-control" formControlName="available" />
+          </td>
+
+          <td>
+            <input class="form-control" formControlName="tax" />
+          </td>
+     
+          <td>
+            <input class="form-control" formControlName="discount" />
+          </td>
+
+
 
           <td>
             <button type="button" class="btn btn-dark" style="background-color: #212529;"> delete </button>

@@ -140,11 +140,20 @@ export class AddInvoiceComponent implements OnInit {
 
   generateRow() {
     return this.builder.group({
-      Product: this.builder.control(''),
-      Price: this.builder.control(0),
-      Qty: this.builder.control(1),
-
-    })
+      
+      quantity: this.builder.control(1),
+      price: this.builder.control(0),
+      tax: this.builder.control(19),
+      discount: this.builder.control(0),
+      available: this.builder.control(true),
+      product: this.builder.group({
+        id: this.builder.control('', Validators.required)
+      }),
+      invoice: this.builder.group({
+        id: this.builder.control('', Validators.required)
+      }),
+      
+     })
   }
 
 
