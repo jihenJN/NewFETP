@@ -7,16 +7,16 @@
     <div  formGroupName="invoice" >
       <label>invoice code</label>
   
-      <select formControlName="id"  class="form-control">
-        <option  *ngFor="let item of sleInvoices" [ngValue]="item.id">{{item.code}} </option>
+      <select  formControlName="id" class="form-control">
+        <option   *ngFor="let item of sleInvoices" [ngValue]="item.id">{{item.code}} </option>
       </select> <br>
     </div>
    
     
     <div  formGroupName="product">
       <label>product</label>
-       <select  formControlName="id" class="form-control"  >
-         <option   *ngFor="let item of sleProducts" [ngValue]="item.id">{{item.name}} </option>
+       <select   formControlName="id" class="form-control"  >
+         <option    *ngFor="let item of sleProducts" [ngValue]="item.id">{{item.name}} </option>
       </select> <br>
     </div>
 
