@@ -1,26 +1,26 @@
-
 <div class="container">
   <legend>Edit Product</legend>
   <form [formGroup]="saleForm">
 
 
-    <div  formGroupName="invoice" >
-      <label>invoice code</label>
-  
-      <select  formControlName="id" class="form-control">
-        <option   *ngFor="let item of sleInvoices" [ngValue]="item.id">{{item.code}} </option>
-      </select> <br>
-    </div>
-   
-    
-    <div  formGroupName="product">
-      <label>product</label>
-       <select   formControlName="id" class="form-control"  >
-         <option    *ngFor="let item of sleProducts" [ngValue]="item.id">{{item.name}} </option>
+    <div formGroupName="invoice">
+      <label>invoice code: {{sale.invoice?.code}} </label>
+      <select formControlName="id" class="form-control">
+        <option *ngFor="let item of sleInvoices" [ngValue]="item.id">{{item.code}} </option>
       </select> <br>
     </div>
 
-   
+
+    <div formGroupName="product">
+      <label>product: {{sale.product?.name}}</label>
+      <select formControlName="id" class="form-control">
+        <option [selected]="sale.product?.name">{{sale.product?.name}}</option>
+        <option *ngFor="let item of sleProducts" [ngValue]="item.id">{{item.name}}
+        </option>
+      </select> <br>
+    </div>
+
+
     <div class="mb-3">
       <label for="txtquantity" class="form-label">quantity</label>
       <input class="input form-control" formControlName="quantity" type="number">
@@ -28,10 +28,11 @@
 
     <div class="mb-3">
       <label for="txtavailable" class="form-label">available</label>
-      <input type="checkbox" formControlName="available"  name="available" value="true" style="margin:1rem;margin-bottom:0rem;">
+      <input type="checkbox" formControlName="available" name="available" value="true"
+        style="margin:1rem;margin-bottom:0rem;">
     </div>
 
-   
+
     <div class="mb-3">
       <label for="txtTax" class="form-label">TAX</label>
       <input class="form-control" formControlName="tax" type="number" />
@@ -49,8 +50,8 @@
       <input class="form-control" formControlName="price" type="number" />
     </div>
 
-   
-    
+
+
     <div>
       <button class="button" type="button" (click)="update()" class="btn btn-primary mx-1">Update</button>
       <button class="button" type="button" routerLink="/listSale" class="btn btn-danger mx-1">Back</button>

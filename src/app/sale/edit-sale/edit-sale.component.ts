@@ -53,7 +53,7 @@ export class EditSaleComponent  implements OnInit{
         available: this.builder.control(true),
 
         product: this.builder.group({
-          id: this.builder.control( '',Validators.required),
+          id: this.builder.control('',Validators.required),
           name: this.builder.control('')
         }),
 
