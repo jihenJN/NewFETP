@@ -36,14 +36,22 @@ export class ListUserComponent implements OnInit {
     });
   }
 
-  setActive(user: User, isActivated: boolean): void {
+ /**setActive(user: User, isActivated: boolean): void {
     this.userService.update({ ...user, activated: isActivated }).subscribe((data) => {
      
      user = data;
      
      
     });
+  }**/
+
+  setActive(user: User, isActivated: boolean): void {
+    this.userService.update({ ...user, activated: isActivated }).subscribe((updatedUser) => {
+      const index = this.users.findIndex((u) => u.id === updatedUser.id);
+      this.users[index] = updatedUser;
+    });
   }
+
    
   }
 
