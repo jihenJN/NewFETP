@@ -1,1 +1,89 @@
-<p>list-user works!</p>
+<body>
+    <div class="container-xl" *ngIf="!loading">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>ALL <b>Users</b></h2>
+                        </div>
+                        <div class="col-sm-6">
+
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+
+                            <th>Login</th>
+                            <th>Email</th>
+                            <th>Profiles</th>
+                            <th>Status</th>
+                            <th>createdBy</th>
+                            <th>CreatedDate</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users ;let i=index">
+
+                            <td>{{user.login }}</td>
+                            <td>{{user.email}}</td>
+                            <td>
+                                <div *ngFor="let authority of user.authorities"  style="padding: 1%;">
+                                    <span class="badge bg-info">{{ authority }}</span>
+                                  </div>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" (click)="setActive(user, true)"
+                                    *ngIf="!user.activated">Deactivated</button>
+                                <button class="btn btn-success btn-sm" (click)="setActive(user, false)"
+                                    *ngIf="user.activated"> Activated </button>
+                            </td>
+                            <td>{{user.createdBy}}</td>
+                            <td>{{user.createdDate | date: 'dd/MM/yy HH:mm' }} </td>
+
+
+                            <td>
+                                <a class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
+                                        title="Edit">&#xE254;</i></a>
+                                <a href="#" class="delete" data-toggle="modal"><i class="material-icons"
+                                        data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a href="#">Previous</a></li>
+                        <li class="page-item"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link">4</a></li>
+                        <li class="page-item"><a href="#" class="page-link">5</a></li>
+                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+    <div class=" container-xl text-center w-200" *ngIf="loading">
+        <app-spinner></app-spinner>
+    </div>
+
+
+
+
+</body>
