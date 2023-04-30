@@ -12,7 +12,7 @@ declare var window: any;
 export class ListUserComponent implements OnInit {
   loading: boolean = false
   users: User[] = [];
-  
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -28,22 +28,14 @@ export class ListUserComponent implements OnInit {
     this.loading = true;
 
     this.userService.get().subscribe((data) => {
-     
+
       this.users = data;
-      console.log("--------users---------",this.users)
+      console.log("--------users---------", this.users)
       this.loading = false;
 
     });
   }
 
- /**setActive(user: User, isActivated: boolean): void {
-    this.userService.update({ ...user, activated: isActivated }).subscribe((data) => {
-     
-     user = data;
-     
-     
-    });
-  }**/
 
   setActive(user: User, isActivated: boolean): void {
     this.userService.update({ ...user, activated: isActivated }).subscribe((updatedUser) => {
@@ -52,17 +44,17 @@ export class ListUserComponent implements OnInit {
     });
   }
 
-   
-  }
 
- 
-  
+}
 
 
- 
 
 
- 
+
+
+
+
+
 
 
 

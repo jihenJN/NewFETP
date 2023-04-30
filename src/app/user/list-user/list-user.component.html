@@ -20,8 +20,8 @@
                             <th>Email</th>
                             <th>Profiles</th>
                             <th>Status</th>
-                            <th>createdBy</th>
-                            <th>CreatedDate</th>
+                            <th>Created By</th>
+                            <th>Created Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -31,25 +31,38 @@
                             <td>{{user.login }}</td>
                             <td>{{user.email}}</td>
                             <td>
-                                <div *ngFor="let authority of user.authorities"  style="padding: 1%;">
+                                <div *ngFor="let authority of user.authorities" style="padding: 1%;">
                                     <span class="badge bg-info">{{ authority }}</span>
-                                  </div>
+                                </div>
                             </td>
-                            <td>
+                            <td *ngIf="user.login!='admin'">
                                 <button class="btn btn-danger btn-sm" (click)="setActive(user, true)"
                                     *ngIf="!user.activated">Deactivated</button>
                                 <button class="btn btn-success btn-sm" (click)="setActive(user, false)"
                                     *ngIf="user.activated"> Activated </button>
                             </td>
+
+                            <td *ngIf="user.login==='admin'">
+
+                                <button class="btn btn-success btn-sm" (click)="setActive(user, false)"
+                                    *ngIf="user.activated" disabled> Activated </button>
+                            </td>
                             <td>{{user.createdBy}}</td>
                             <td>{{user.createdDate | date: 'dd/MM/yy HH:mm' }} </td>
 
 
-                            <td>
-                                <a class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
-                                        title="Edit">&#xE254;</i></a>
+                            <td *ngIf="user.login!='admin'">
+                                <a href="#" class="edit" data-toggle="modal"><i class="material-icons"
+                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#" class="delete" data-toggle="modal"><i class="material-icons"
                                         data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </td>
+
+                            <td *ngIf="user.login==='admin'">
+                                <a href="#" class="edit" data-toggle="modal"><i class="material-icons"
+                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#" class="delete" data-toggle="modal" [class.disabled]="true"><i
+                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                             </td>
                         </tr>
 
