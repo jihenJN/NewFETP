@@ -5,6 +5,9 @@ import { ClientService } from 'src/app/services/client.service';
 import { ProductService } from 'src/app/services/product.service';
 import { status } from 'src/app/models/Status'
 import { InvoiceService } from 'src/app/services/invoice.service';
+import { ZonedDateTime, ZoneId } from '@js-joda/core';
+import { ZonedDateTimeInterceptor } from 'src/app/_helpers/ZonedDateTime.interceptor';
+
 
 @Component({
   selector: 'app-add-invoice',
@@ -20,6 +23,8 @@ export class AddInvoiceComponent implements OnInit {
   invSales!: FormArray<any>;
   invClient: any;
   invProducts: any;
+
+ 
 
   selectedClientId: string = '';
 
@@ -41,6 +46,9 @@ export class AddInvoiceComponent implements OnInit {
     private invoiceService: InvoiceService,
     private router: Router) {
 
+      const zoneId = ZoneId.of(ZonedDateTimeInterceptor.UTC_ZONE_ID);
+      
+
     this.invoiceForm = this.builder.group({
 
       code: this.builder.control('', Validators.required),
@@ -49,7 +57,14 @@ export class AddInvoiceComponent implements OnInit {
       }),
 
       remarks: this.builder.control(''),
-      date: this.builder.control(Date, Validators.required),
+
+      date: [
+        ZonedDateTime.now(zoneId)
+          .format(ZonedDateTimeInterceptor.DATE_TIME_FORMAT),
+        Validators.required
+      ],
+
+      //date: this.builder.control(Date, Validators.required),
       discount: this.builder.control(0),
       tax: this.builder.control(19),
       total: this.builder.control({ value: '0', disabled: true }),
@@ -66,27 +81,29 @@ export class AddInvoiceComponent implements OnInit {
     this.getProducts();
   }
 
-
-
-
-
   addInvoice() {
-    console.log(this.invoiceForm.value);
 
-    this.invoiceService.create(this.invoiceForm.value)
-      .subscribe({
+  
+    const date = this.invoiceForm.get('date')?.value;
+    console.log(date);
+   
+      const formattedDate = ZonedDateTime.parse(date).format(ZonedDateTimeInterceptor.DATE_TIME_FORMAT);
+      const invoiceData = { ...this.invoiceForm.value, date: formattedDate };
+
+      this.invoiceService.create(invoiceData).subscribe({
         next: (data) => {
-          this.router.navigate(["/listInvoice"])
-          console.log("success .....");
+          this.router.navigate(['/listInvoice']);
+          console.log('success .....');
         },
         error: (err) => {
           console.log(err);
         }
-      })
+      });
+
+
 
 
   }
-
 
   addSale() {
     this.invSales = this.invoiceForm.get('sales') as FormArray;
@@ -140,7 +157,7 @@ export class AddInvoiceComponent implements OnInit {
 
   generateRow() {
     return this.builder.group({
-      
+
       quantity: this.builder.control(1),
       price: this.builder.control(0),
       tax: this.builder.control(19),
@@ -152,8 +169,8 @@ export class AddInvoiceComponent implements OnInit {
       invoice: this.builder.group({
         id: this.builder.control('', Validators.required)
       }),
-      
-     })
+
+    })
   }
 
 

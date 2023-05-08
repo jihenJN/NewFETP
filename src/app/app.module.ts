@@ -13,7 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ClientModule } from './client/client.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
-
+import { ZonedDateTimeInterceptorProviders } from './_helpers/ZonedDateTime.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { AdminRoutingModule } from './admin/admin-routing.module';
     
 
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,ZonedDateTimeInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
