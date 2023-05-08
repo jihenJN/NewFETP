@@ -9,15 +9,17 @@
               <div class="container">
                 <div class="row">
                   <div class="col-lg-10 col-xl-7 mx-auto">
-                    <h3 class="display-4">Register</h3>
+                    <div class="form-header">
+                      <h1>Register Account</h1>
+                    </div>
                     <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmitRegister()" #f="ngForm"
                       novalidate>
                       <div class="form-group mb-4">
-                        <label for="username">Username<span style="color:red">*</span></label>
-                        <input id="inputUsername" type="text" class="form-control rounded-pill border-0 shadow-sm"
+                        <label for="inputUsername">Username<span style="color:#dc3545">*</span></label>
+                        <input id="inputUsername" type="text" class="form-control   shadow-sm"
                           name="username" [(ngModel)]="formRegister.username" required #username="ngModel"
-                          placeholder="Username" required autofocus="" minlength="3" maxlength="20">
-                        <div role="alert" *ngIf="username.errors && f.submitted" style="color:red">
+                          required  minlength="3" maxlength="20">
+                        <div role="alert" *ngIf="username.errors && f.submitted" style="color:#dc3545">
                           <div *ngIf="username.errors['required']">Username is required</div>
                           <div *ngIf="username.errors['minlength']">
                             Username must be at least 3 characters
@@ -25,10 +27,10 @@
                         </div>
                       </div>
                       <div class="form-group mb-4">
-                        <label for="email">Email<span style="color:red">*</span></label>
-                        <input type="email" class="form-control rounded-pill border-0 shadow-sm" name="email"
-                          [(ngModel)]="formRegister.email" required #email="ngModel" placeholder="exe@gmail.com">
-                        <div role="alert" *ngIf="email.errors && f.submitted" style="color:red">
+                        <label for="email">Email<span style="color:#dc3545">*</span></label>
+                        <input type="email" class="form-control  shadow-sm" name="email"
+                          [(ngModel)]="formRegister.email" required #email="ngModel" >
+                        <div role="alert" *ngIf="email.errors && f.submitted" style="color:#dc3545">
                           <div *ngIf="email.errors['required']">Email is required</div>
                           <div *ngIf="email.errors['email']">
                             Email must be a valid email address
@@ -36,11 +38,11 @@
                         </div>
                       </div>
                       <div class="form-group mb-4">
-                        <label for="userpass">Password<span style="color:red">*</span></label>
-                        <input id="userpass" type="password" placeholder="Enter password..." type="password"
-                          class="form-control rounded-pill border-0 shadow-sm" name="password"
+                        <label for="userpass">Password<span style="color:#dc3545">*</span></label>
+                        <input id="userpass" type="password"  type="password"
+                          class="form-control  shadow-sm" name="password"
                           [(ngModel)]="formRegister.password" required minlength="3" #password="ngModel">
-                        <div role="alert" style="color:red" *ngIf="password.errors && f.submitted">
+                        <div role="alert" style="color:#dc3545" *ngIf="password.errors && f.submitted">
                           <div *ngIf="password.errors['required']">Password is required</div>
                           <div *ngIf="password.errors['minlength']">
                             Password must be at least 3 characters
@@ -48,12 +50,12 @@
                         </div>
                       </div>
 
-                      <button type="submit"
-                        class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign Up
-                      </button>
+                      <div class="form-group mb-3">
+                        <button type="submit">Sign up</button>
+                      </div>
 
-                      <div class="mt-5">
-                        <p class="text-center">
+                      <div class="text-center mt-2">
+                        <p class="form-remember">
                           Already have an account?
                           <a routerLink="/login">Log in</a>
                         </p>
