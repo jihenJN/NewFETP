@@ -38,6 +38,8 @@ const routes: Routes = [
 
       { path:'listInvoice',component:ListInvoiceComponent},
       { path:'createInvoice',component:AddInvoiceComponent},
+      { path:'editInvoice',component:EditInvoiceComponent},
+
 
        
       { path:'listSale',component:ListSaleComponent},

@@ -42,7 +42,7 @@
                             <td>{{invoice.total}}</td>
                             <td><label [ngClass]="getStatusClass(invoice.status)"> {{invoice.status}} </label></td>
                             <td>
-                                <a [routerLink]="['/editInvoice', invoice.id]" class="edit" data-toggle="modal"><i
+                                <a routerLink="/editInvoice" class="edit" data-toggle="modal"><i
                                         class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a  href="#" class="delete" data-toggle="modal" (click)="openDeleteModal(invoice.id)"><i
                                         class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

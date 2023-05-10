@@ -8,6 +8,7 @@ import { EditInvoiceComponent } from './edit-invoice/edit-invoice.component';
 const routes: Routes = [
   { path:'listInvoice',component:ListInvoiceComponent},
   { path:'createInvoice',component:AddInvoiceComponent},
+  { path:'editInvoice',component:EditInvoiceComponent},
   
 ];
 
