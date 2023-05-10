@@ -20,13 +20,16 @@ export class AddInvoiceComponent implements OnInit {
   clientForm!: FormGroup;
 
   TitlePage = "Add New Invoice";
+  
   invSales!: FormArray<any>;
+  invoiceProduct!: FormGroup<any>;
+
   invClient: any;
   invProducts: any;
 
  
 
-  selectedClientId: string = '';
+ 
 
   invStatus: status[] = [
     status.DRAFT,
@@ -119,7 +122,6 @@ export class AddInvoiceComponent implements OnInit {
   getClients() {
     this.clientService.get().subscribe(res => {
       this.invClient = res;
-
       console.log(this.invClient);
     })
   }
@@ -154,8 +156,38 @@ export class AddInvoiceComponent implements OnInit {
     })
   }
 
+  productChange(index:any){
+
+    this.invSales = this.invoiceForm.get('sales') as FormArray;
+    this.invoiceProduct= this.invSales.at(index) as FormGroup;
+    
+
+    const selectedProductId = this.invSales.controls[index].get('product.id')?.value;
+    console.log("selectedProductId-------"+selectedProductId);
+    // let id = this.invoiceForm.get('product.id')?.value
+
+    let id=selectedProductId;
+    console.log("-------------------",this.invoiceForm.get('product.id'));
+    console.log("id" + id);
+
+    this.productService.getById(id).subscribe(res => {
+      console.log("id" + id);
+
+      let data: any;
+      data = res;
+      if (data != null) {
+        this.invoiceProduct.get('price')?.setValue(
+           data.price);
+        this.invoiceProduct.get('tax')?.setValue(
+            data.tax);
+      }
+     
+    })
+  }
+
 
   generateRow() {
+
     return this.builder.group({
 
       quantity: this.builder.control(1),
@@ -163,9 +195,11 @@ export class AddInvoiceComponent implements OnInit {
       tax: this.builder.control(19),
       discount: this.builder.control(0),
       available: this.builder.control(true),
+
       product: this.builder.group({
         id: this.builder.control('', Validators.required)
       }),
+
       invoice: this.builder.group({
         id: this.builder.control('', Validators.required)
       }),

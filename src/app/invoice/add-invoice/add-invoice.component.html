@@ -14,6 +14,7 @@
           <label>customer</label>
           <span>*</span>
           <select  formControlName="id" (change)="clientChange()" class="form-control">
+            <option value="" disabled selected>Select a customer...</option>
             <option *ngFor="let item of invClient" [ngValue]="item.id">{{item.name}} </option>
           </select> <br>
         </div>
@@ -64,11 +65,14 @@
         </thead>
         <tbody *ngFor="let item of invsales.controls;let i=index" [formGroupName]="i">
           <td> {{i+1}}</td>
+
           <td formGroupName="product">
-            <select class="form-control" formControlName="id">
+            <select style ="width:10rem" formControlName="id" (change)="productChange(i)" class="form-control">
+              <option value="" disabled selected>Select a product...</option>
               <option *ngFor="let item of invProducts" [value]="item.id">{{item.name}} </option>
             </select>
           </td>
+
           <td>
             <input class="form-control" formControlName="price" />
           </td>
@@ -105,6 +109,8 @@
       </table>
 
     </div>
+
+    
     <div class="flex row">
 
 
