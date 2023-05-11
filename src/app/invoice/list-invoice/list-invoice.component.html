@@ -1,8 +1,7 @@
-
-<body >
-    <div class="container-xl" *ngIf="!loading"  >
-        <div class="table-responsive" >
-            <div class="table-wrapper" >
+<body>
+    <div class="container-xl" *ngIf="!loading">
+        <div class="table-responsive">
+            <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
@@ -11,7 +10,7 @@
                         <div class="col-sm-6">
                             <a routerLink="/createInvoice" class="btn btn-success" data-toggle="modal"><i
                                     class="material-icons">&#xE147;</i> <span>Add New Invoice</span></a>
-  
+
                         </div>
                     </div>
                 </div>
@@ -22,7 +21,7 @@
                             <th>Code</th>
                             <th>Date</th>
                             <th>Customer</th>
-                            <th>Remarks</th>
+                            <!--th>Remarks</th-->
                             <th>Discount</th>
                             <th>Tax</th>
                             <th>Total</th>
@@ -34,21 +33,24 @@
                         <tr *ngFor="let invoice of invoicesDto ;let i=index">
                             <td> {{i+1}} </td>
                             <td>{{invoice.code}}</td>
-                            <td >{{invoice.date | date:'d MMM yyyy' }}<br><br>{{invoice.date | date:'HH:mm:ss'}}</td>
+                            <td>{{invoice.date | date:'d MMM yyyy' }}<br><br>{{invoice.date | date:'HH:mm:ss'}}</td>
                             <td>{{invoice.client}}</td>
-                            <td>{{invoice.remarks}}</td>
+                            <!--td>{{invoice.remarks}}</td-->
                             <td>{{invoice.discount}}</td>
                             <td>{{invoice.tax}}</td>
                             <td>{{invoice.total}}</td>
                             <td><label [ngClass]="getStatusClass(invoice.status)"> {{invoice.status}} </label></td>
                             <td>
-                                <a routerLink="/editInvoice" class="edit" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a  type="button" class="delete" data-toggle="modal" (click)="openDeleteModal(invoice.id)"><i
-                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                <a routerLink="/editInvoice" class="edit" data-toggle="modal"><i class="material-icons"
+                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a type="button" class="delete" data-toggle="modal"
+                                    (click)="openDeleteModal(invoice.id)"><i class="material-icons"
+                                        data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                <a type="button" class="print" data-toggle="modal"><i class="material-icons"
+                                        data-toggle="tooltip" title="print">local_printshop</i></a>
                             </td>
                         </tr>
-  
+
                     </tbody>
                 </table>
                 <div class="clearfix">
@@ -64,29 +66,29 @@
                     </ul>
                 </div>
             </div>
-  
-            
-  
+
+
+
         </div>
-  
-     
-  
-  
+
+
+
+
     </div>
-  
-  
-    <div class =" container-xl text-center w-200"  *ngIf="loading" >
+
+
+    <div class=" container-xl text-center w-200" *ngIf="loading">
         <app-spinner></app-spinner>
     </div>
-  
-   
-    
-  
-  </body>
-  
-  
-  <!-- Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
+
+</body>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -102,10 +104,4 @@
             </div>
         </div>
     </div>
-  </div>
-    
-    
-    
-    
-    
-    
+</div>
