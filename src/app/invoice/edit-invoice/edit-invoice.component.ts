@@ -6,6 +6,10 @@ import { Invoice } from 'src/app/models/Invoice';
 import { ClientService } from 'src/app/services/client.service';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { ProductService } from 'src/app/services/product.service';
+import { status } from 'src/app/models/Status';
+import { ZonedDateTime, ZoneId } from '@js-joda/core';
+import { ZonedDateTimeInterceptor } from 'src/app/_helpers/ZonedDateTime.interceptor';
+
 
 @Component({
   selector: 'app-edit-invoice',
@@ -20,6 +24,18 @@ export class EditInvoiceComponent  implements OnInit{
   clientForm!: FormGroup;
 
   invClients: any;
+  
+  invStatus: status[] = [
+    status.DRAFT,
+    status.SENT,
+    status.RECEIVED,
+    status.APPROVED,
+    status.PARTIALLY_PAID,
+    status.PAID,
+    status.OVERDUE,
+    status.VOID
+  ];
+
 
 
  invoice: Invoice = {
@@ -28,7 +44,7 @@ export class EditInvoiceComponent  implements OnInit{
     remarks:'',
     tax:0,
     discount:0,
-    date:new Date,
+    date :new Date('2023-05-11T10:00:00.000Z'),
     total:0,
     status:'',
     client:new Client,
@@ -41,30 +57,42 @@ export class EditInvoiceComponent  implements OnInit{
     private router:Router,
     private builder: FormBuilder,
     private clientService: ClientService,
-    private productService: ProductService,
     private invoiceService: InvoiceService,) {
 
-      this.invoiceForm = this.builder.group({
-        id: this.builder.control( { disabled: true }),
-        code: this.builder.control(''),
-        remarks: this.builder.control(''),
-        tax: this.builder.control(0),
-        discount: this.builder.control(0),
-        date: this.builder.control(Date),
-        total: this.builder.control(0),
-        status: this.builder.control(''),
-        client: this.builder.group({
-          id: this.builder.control('',Validators.required),
-          name: this.builder.control('')
-        }),
+      const zoneId = ZoneId.of(ZonedDateTimeInterceptor.UTC_ZONE_ID);
 
-      
+   
+      this.invoiceForm = this.builder.group({
+
+        code: this.builder.control('', Validators.required),
+        client: this.builder.group({
+          id: this.builder.control('', Validators.required)
+        }),
+  
+        remarks: this.builder.control(''),
+  
+        date: [
+          ZonedDateTime.now(zoneId)
+            .format(ZonedDateTimeInterceptor.DATE_TIME_FORMAT),
+          Validators.required
+        ],
+  
+        //date: this.builder.control(Date, Validators.required),
+        discount: this.builder.control(0),
+        tax: this.builder.control(19),
+        total: this.builder.control(0),
+        status: this.builder.control('DRAFT'),
+        sales: this.builder.array([])
   
       })
-  
       
      }
 
+
+
+
+
+  
   
   ngOnInit(): void {
     
@@ -82,6 +110,12 @@ export class EditInvoiceComponent  implements OnInit{
 
 
   getById(id: string) {
+    const date = this.invoiceForm.get('date')?.value;
+    console.log(date);
+
+    const formattedDate = ZonedDateTime.parse(date).format(ZonedDateTimeInterceptor.DATE_TIME_FORMAT);
+    const invoiceData = { ...this.invoiceForm.value, date: formattedDate };
+
     this.invoiceService.getById(id).subscribe((data) => {
       this.invoice = data;
       console.log( "this.sale" , this.invoice);
@@ -115,11 +149,37 @@ export class EditInvoiceComponent  implements OnInit{
     })
   }
 
+
+
+  clientChange() {
+
+
+    let id = this.invoiceForm.get('client.id')?.value
+
+    console.log(this.invoiceForm.get('client'));
+    console.log("id" + id);
+
+    this.clientService.getById(id).subscribe(res => {
+      console.log("id" + id);
+
+      let data: any;
+      data = res;
+      if (data != null) {
+        this.invoiceForm.get('remarks')?.setValue(
+          'delivery address: ' + data.address)
+      }
+    })
+
+
+  }
+
   
 
 
 
   update() {
+
+    
     this.invoiceService.update(this.invoiceForm.value)
     .subscribe({
       next:(data) => {
