@@ -16,6 +16,7 @@ import { ListUserComponent } from '../user/list-user/list-user.component';
 import { AddUserComponent } from '../user/add-user/add-user.component';
 import { ListSaleComponent } from '../sale/list-sale/list-sale.component';
 import { EditSaleComponent } from '../sale/edit-sale/edit-sale.component';
+import { LayoutInvoiceComponent } from '../invoice/layout-invoice/layout-invoice.component';
 
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
 
       { path:'listInvoice',component:ListInvoiceComponent},
       { path:'createInvoice',component:AddInvoiceComponent},
-      { path:'editInvoice',component:EditInvoiceComponent},
+      { path:'editInvoice/:id',component:EditInvoiceComponent},
+      { path:'layoutInvoice',component:LayoutInvoiceComponent},
 
 
        

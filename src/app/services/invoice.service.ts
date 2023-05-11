@@ -17,6 +17,19 @@ export class InvoiceService {
     return this.http.post<Invoice>('http://localhost:8080/api/invoices', payload);
   }
 
+    
+  getById(id: string) {
+    return this.http.get<Invoice>(`http://localhost:8080/api/invoices/${id}`);
+  }
+
+
+ 
+  update(payload:Invoice){
+    return this.http.put(`http://localhost:8080/api/invoices/${payload.id}`,payload);
+   }
+
+
+
 
   delete(id: string) {
     return this.http.delete<Invoice>(`http://localhost:8080/api/invoices/${id}`);

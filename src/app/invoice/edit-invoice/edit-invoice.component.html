@@ -1,1 +1,66 @@
-<p>edit-invoice works!</p>
+<div class="container">
+    <legend>Edit INVOICE</legend>
+    <form [formGroup]="invoiceForm">
+  
+      
+      <div formGroupName="client">
+        <label>Client: {{invoice.client?.name}}</label>
+        <select formControlName="id" class="form-control">
+          <option [selected]="invoice.client?.name">{{invoice.client?.name}}</option>
+          <option *ngFor="let item of invClients" [ngValue]="item.id">{{item.name}}
+          </option>
+        </select> <br>
+      </div>
+  
+  
+      <div class="mb-3">
+        <label for="txtcode" class="form-label">code</label>
+        <input class="input form-control" formControlName="code" type="text">
+      </div>
+  
+      <div class="mb-3">
+        <label for="txtremarks" class="form-label">remarks</label>
+        <input class="input form-control" formControlName="remarks" type="text">
+      </div>
+  
+  
+      <div class="mb-3">
+        <label for="txtTax" class="form-label">TAX</label>
+        <input class="form-control" formControlName="tax" type="number" />
+      </div>
+  
+      <div class="mb-3">
+        <label for="txtDiscount" class="form-label">Discount</label>
+        <input class="form-control" formControlName="discount" type="number" />
+      </div>
+  
+
+
+      <div class="mb-3">
+        <label for="txtdate" class="form-label">date</label>
+        <input class="form-control" formControlName="date" type="date" />
+      </div>
+  
+  
+  
+      <div class="mb-3">
+        <label for="txttotal" class="form-label">Total </label>
+        <input class="form-control" formControlName="total" type="number" />
+      </div>
+  
+
+  
+      <div class="mb-3">
+        <label for="txtstatus" class="form-label">status </label>
+        <input class="form-control" formControlName="status" type="texts" />
+      </div>
+  
+  
+  
+      <div>
+        <button class="button" type="button" (click)="update()" class="btn btn-primary mx-1">Update</button>
+        <button class="button" type="button" routerLink="/listInvoice" class="btn btn-danger mx-1">Back</button>
+      </div>
+  
+    </form>
+  </div>

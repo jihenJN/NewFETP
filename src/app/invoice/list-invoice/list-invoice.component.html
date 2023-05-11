@@ -36,17 +36,17 @@
                             <td>{{invoice.date | date:'d MMM yyyy' }}<br><br>{{invoice.date | date:'HH:mm:ss'}}</td>
                             <td>{{invoice.client}}</td>
                             <!--td>{{invoice.remarks}}</td-->
-                            <td>{{invoice.discount}}</td>
+                            <td> - {{invoice.discount}} %</td>
                             <td>{{invoice.tax}}</td>
-                            <td>{{invoice.total}}</td>
+                            <td>{{invoice.total}} DT</td>
                             <td><label [ngClass]="getStatusClass(invoice.status)"> {{invoice.status}} </label></td>
                             <td>
-                                <a routerLink="/editInvoice" class="edit" data-toggle="modal"><i class="material-icons"
+                                <a  [routerLink]="['/editInvoice', invoice.id]"  class="edit" data-toggle="modal"><i class="material-icons"
                                         data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a type="button" class="delete" data-toggle="modal"
                                     (click)="openDeleteModal(invoice.id)"><i class="material-icons"
                                         data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                <a type="button" class="print" data-toggle="modal"><i class="material-icons"
+                                <a routerLink="/layoutInvoice" type="button" class="print" data-toggle="modal"><i class="material-icons"
                                         data-toggle="tooltip" title="print">local_printshop</i></a>
                             </td>
                         </tr>

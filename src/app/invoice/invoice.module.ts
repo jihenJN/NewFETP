@@ -7,6 +7,7 @@ import { AddInvoiceComponent } from './add-invoice/add-invoice.component';
 import { EditInvoiceComponent } from './edit-invoice/edit-invoice.component';
 import { ListInvoiceComponent } from './list-invoice/list-invoice.component';
 import { SharedModule } from '../shared/shared.module';
+import { LayoutInvoiceComponent } from './layout-invoice/layout-invoice.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SharedModule } from '../shared/shared.module';
     
     AddInvoiceComponent,
     EditInvoiceComponent,
-    ListInvoiceComponent
+    ListInvoiceComponent,
+    LayoutInvoiceComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
    
     AddInvoiceComponent,
     EditInvoiceComponent,
-    ListInvoiceComponent
+    ListInvoiceComponent,
+    LayoutInvoiceComponent
   ]
 })
 export class InvoiceModule { }
