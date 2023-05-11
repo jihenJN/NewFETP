@@ -34,7 +34,7 @@
                         <tr *ngFor="let invoice of invoicesDto ;let i=index">
                             <td> {{i+1}} </td>
                             <td>{{invoice.code}}</td>
-                            <td>{{invoice.date | date:'dd MMM yyyy' }}</td>
+                            <td >{{invoice.date | date:'d MMM yyyy' }}<br><br>{{invoice.date | date:'HH:mm:ss'}}</td>
                             <td>{{invoice.client}}</td>
                             <td>{{invoice.remarks}}</td>
                             <td>{{invoice.discount}}</td>
