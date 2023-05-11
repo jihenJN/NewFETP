@@ -170,7 +170,6 @@ export class AddInvoiceComponent implements OnInit {
 
     this.productService.getById(id).subscribe(res => {
       console.log("id" + id);
-
       let data: any;
       data = res;
       if (data != null) {
@@ -196,11 +195,9 @@ export class AddInvoiceComponent implements OnInit {
       tax: this.builder.control(19),
       discount: this.builder.control(0),
       available: this.builder.control(true),
-
       product: this.builder.group({
         id: this.builder.control('', Validators.required)
       }),
-
       invoice: this.builder.group({
         id: this.builder.control('', Validators.required)
       }),
@@ -211,11 +208,11 @@ export class AddInvoiceComponent implements OnInit {
 ItemCalculation(index:any){
   this.invSales = this.invoiceForm.get('sales') as FormArray;
   this.invoiceProduct= this.invSales.at(index) as FormGroup;
-  let quantity = this.invoiceProduct.get('quantity')?.value
-  let unitPrice = this.invoiceProduct.get('unitPrice')?.value
-  let price= quantity*unitPrice;
-  console.log("----quantity----"+quantity)
-
+  let quantity = this.invoiceProduct.get('quantity')?.value;
+  let unitPrice = this.invoiceProduct.get('unitPrice')?.value;
+  let discount = this.invoiceProduct.get('discount')?.value;
+  let discountRate = discount/100;
+  let price= (quantity*unitPrice)-((quantity*unitPrice)*discountRate);
   this.invoiceProduct.get('price')?.setValue(price);
   
 }
