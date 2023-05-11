@@ -214,7 +214,19 @@ ItemCalculation(index:any){
   let discountRate = discount/100;
   let price= (quantity*unitPrice)-((quantity*unitPrice)*discountRate);
   this.invoiceProduct.get('price')?.setValue(price);
+  this.summuryCalculation();
   
+}
+
+summuryCalculation(){
+  let array = this.invoiceForm.getRawValue().sales;
+  let sumTotal =0;
+  array.forEach((x:any) => {
+    sumTotal =  sumTotal + x.price;
+  });
+
+  this.invoiceForm.get('total')?.setValue(sumTotal);
+
 }
 
 
