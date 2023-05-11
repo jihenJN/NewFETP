@@ -20,14 +20,14 @@ export class AddInvoiceComponent implements OnInit {
   clientForm!: FormGroup;
 
   TitlePage = "Add New Invoice";
-  
+
   invSales!: FormArray<any>;
   invoiceProduct!: FormGroup<any>;
 
   invClient: any;
   invProducts: any;
 
- 
+
   invStatus: status[] = [
     status.DRAFT,
     status.SENT,
@@ -46,8 +46,8 @@ export class AddInvoiceComponent implements OnInit {
     private invoiceService: InvoiceService,
     private router: Router) {
 
-      const zoneId = ZoneId.of(ZonedDateTimeInterceptor.UTC_ZONE_ID);
-      
+    const zoneId = ZoneId.of(ZonedDateTimeInterceptor.UTC_ZONE_ID);
+
 
     this.invoiceForm = this.builder.group({
 
@@ -67,7 +67,7 @@ export class AddInvoiceComponent implements OnInit {
       //date: this.builder.control(Date, Validators.required),
       discount: this.builder.control(0),
       tax: this.builder.control(19),
-      total: this.builder.control({ value: '0', disabled: true }),
+      total: this.builder.control(0),
       status: this.builder.control('DRAFT'),
       sales: this.builder.array([])
 
@@ -83,22 +83,22 @@ export class AddInvoiceComponent implements OnInit {
 
   addInvoice() {
 
-  
+
     const date = this.invoiceForm.get('date')?.value;
     console.log(date);
-   
-      const formattedDate = ZonedDateTime.parse(date).format(ZonedDateTimeInterceptor.DATE_TIME_FORMAT);
-      const invoiceData = { ...this.invoiceForm.value, date: formattedDate };
 
-      this.invoiceService.create(invoiceData).subscribe({
-        next: (data) => {
-          this.router.navigate(['/listInvoice']);
-          console.log('success .....');
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
+    const formattedDate = ZonedDateTime.parse(date).format(ZonedDateTimeInterceptor.DATE_TIME_FORMAT);
+    const invoiceData = { ...this.invoiceForm.value, date: formattedDate };
+
+    this.invoiceService.create(invoiceData).subscribe({
+      next: (data) => {
+        this.router.navigate(['/listInvoice']);
+        console.log('success .....');
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
 
 
 
@@ -153,19 +153,19 @@ export class AddInvoiceComponent implements OnInit {
     })
   }
 
-  productChange(index:any){
+  productChange(index: any) {
 
     this.invSales = this.invoiceForm.get('sales') as FormArray;
-    this.invoiceProduct= this.invSales.at(index) as FormGroup;
-    
+    this.invoiceProduct = this.invSales.at(index) as FormGroup;
+
 
     const selectedProductId = this.invSales.controls[index].get('product.id')?.value;
-    console.log("selectedProductId-------"+selectedProductId);
+    console.log("selectedProductId-------" + selectedProductId);
     // let id = this.invoiceForm.get('product.id')?.value
 
-    let id=selectedProductId;
-   
-    console.log("-------------------",this.invoiceForm.get('product.id'));
+    let id = selectedProductId;
+
+    console.log("-------------------", this.invoiceForm.get('product.id'));
     console.log("id" + id);
 
     this.productService.getById(id).subscribe(res => {
@@ -174,13 +174,13 @@ export class AddInvoiceComponent implements OnInit {
       data = res;
       if (data != null) {
         this.invoiceProduct.get('unitPrice')?.setValue(
-           data.price);
+          data.price);
         this.invoiceProduct.get('tax')?.setValue(
-            data.tax);
+          data.tax);
 
         this.ItemCalculation(index);
       }
-     
+
     })
   }
 
@@ -205,29 +205,29 @@ export class AddInvoiceComponent implements OnInit {
     })
   }
 
-ItemCalculation(index:any){
-  this.invSales = this.invoiceForm.get('sales') as FormArray;
-  this.invoiceProduct= this.invSales.at(index) as FormGroup;
-  let quantity = this.invoiceProduct.get('quantity')?.value;
-  let unitPrice = this.invoiceProduct.get('unitPrice')?.value;
-  let discount = this.invoiceProduct.get('discount')?.value;
-  let discountRate = discount/100;
-  let price= (quantity*unitPrice)-((quantity*unitPrice)*discountRate);
-  this.invoiceProduct.get('price')?.setValue(price);
-  this.summuryCalculation();
-  
-}
+  ItemCalculation(index: any) {
+    this.invSales = this.invoiceForm.get('sales') as FormArray;
+    this.invoiceProduct = this.invSales.at(index) as FormGroup;
+    let quantity = this.invoiceProduct.get('quantity')?.value;
+    let unitPrice = this.invoiceProduct.get('unitPrice')?.value;
+    let discount = this.invoiceProduct.get('discount')?.value;
+    let discountRate = discount / 100;
+    let price = (quantity * unitPrice) - ((quantity * unitPrice) * discountRate);
+    this.invoiceProduct.get('price')?.setValue(price);
+    this.summuryCalculation();
 
-summuryCalculation(){
-  let array = this.invoiceForm.getRawValue().sales;
-  let sumTotal =0;
-  array.forEach((x:any) => {
-    sumTotal =  sumTotal + x.price;
-  });
+  }
 
-  this.invoiceForm.get('total')?.setValue(sumTotal);
+  summuryCalculation() {
+    let array = this.invoiceForm.getRawValue().sales;
+    let sumTotal = 0;
+    array.forEach((x: any) => {
+      sumTotal = sumTotal + x.price;
+    });
 
-}
+    this.invoiceForm.get('total')?.setValue(sumTotal);
+
+  }
 
 
 }

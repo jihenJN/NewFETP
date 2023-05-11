@@ -8,27 +8,27 @@
         <label>invoice code</label>
         <span>*</span>
         <input formControlName="code" class="form-control" /> <br>
-    
-    
-        <div  formGroupName="client">
+
+
+        <div formGroupName="client">
           <label>customer</label>
           <span>*</span>
-          <select  formControlName="id" (change)="clientChange()" class="form-control">
+          <select formControlName="id" (change)="clientChange()" class="form-control">
             <option value="" disabled selected>Select a customer...</option>
             <option *ngFor="let item of invClient" [ngValue]="item.id">{{item.name}} </option>
           </select> <br>
         </div>
-      
-       
+
+
         <label>Remarks</label>
         <textarea type="text" formControlName="remarks" class="form-control"></textarea> <br>
 
 
         <label>Date</label>
         <span>*</span>
-        <input type="datetime" formControlName="date" class="form-control" /> <br>
+        <input type="datetime" formControlName="date" class="form-control" readonly /> <br>
 
-      
+
         <label>Discount</label>
         <input type="number" formControlName="discount" class="form-control" /> <br>
 
@@ -58,7 +58,7 @@
             <td>Unit Price </td>
             <td>Quantity</td>
             <td>Available</td>
-            <td>Tax</td> 
+            <td>Tax</td>
             <td>Discount</td>
             <td>Sale Amount</td>
             <td>Action </td>
@@ -68,7 +68,7 @@
           <td> {{i+1}}</td>
 
           <td formGroupName="product">
-            <select style ="width:10rem" formControlName="id" (change)="productChange(i)" class="form-control">
+            <select style="width:10rem" formControlName="id" (change)="productChange(i)" class="form-control">
               <option value="" disabled selected>Select a product...</option>
               <option *ngFor="let item of invProducts" [value]="item.id">{{item.name}} </option>
             </select>
@@ -87,13 +87,13 @@
           <td>
             <input class="form-control" formControlName="tax" />
           </td>
-     
+
           <td>
             <input class="form-control" (change)="ItemCalculation(i)" formControlName="discount" />
           </td>
-         
+
           <td>
-            <input class="form-control" formControlName="price" />
+            <input class="form-control" formControlName="price" readonly />
           </td>
 
 
@@ -115,22 +115,22 @@
 
     </div>
 
-    
+
     <div class="flex row">
 
 
-      <div class= " flex-start col-sm-6">
-        <button type="submit" class="btn btn-dark" style="background-color: #761b86;"> create</button> 
+      <div class=" flex-start col-sm-6">
+        <button type="submit" class="btn btn-dark" style="background-color: #761b86;"> create</button>
       </div>
-     
-     
-     <div  class= " flex-end col-sm-6" >
-     
-      <label>Total</label>
-      <input formControlName="total" class="form-control" />
 
-     </div>
-     
+
+      <div class=" flex-end col-sm-6">
+
+        <label>Total</label>
+        <input formControlName="total" class="form-control" readonly />
+
+      </div>
+
     </div>
 
 
