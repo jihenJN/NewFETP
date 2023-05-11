@@ -55,11 +55,12 @@
           <tr>
             <td>Sale N</td>
             <td>Product</td>
-            <td>Price </td>
+            <td>Unit Price </td>
             <td>Quantity</td>
             <td>Available</td>
             <td>Tax</td> 
             <td>Discount</td>
+            <td>Sale Amount</td>
             <td>Action </td>
           </tr>
         </thead>
@@ -74,10 +75,10 @@
           </td>
 
           <td>
-            <input class="form-control" formControlName="price" />
+            <input class="form-control" (change)="ItemCalculation(i)" formControlName="unitPrice" />
           </td>
           <td>
-            <input class="form-control" formControlName="quantity" />
+            <input class="form-control" (change)="ItemCalculation(i)" formControlName="quantity" />
           </td>
           <td>
             <input class="form-control" formControlName="available" />
@@ -89,6 +90,10 @@
      
           <td>
             <input class="form-control" formControlName="discount" />
+          </td>
+         
+          <td>
+            <input class="form-control" formControlName="price" />
           </td>
 
 

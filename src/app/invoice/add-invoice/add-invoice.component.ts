@@ -28,9 +28,6 @@ export class AddInvoiceComponent implements OnInit {
   invProducts: any;
 
  
-
- 
-
   invStatus: status[] = [
     status.DRAFT,
     status.SENT,
@@ -167,6 +164,7 @@ export class AddInvoiceComponent implements OnInit {
     // let id = this.invoiceForm.get('product.id')?.value
 
     let id=selectedProductId;
+   
     console.log("-------------------",this.invoiceForm.get('product.id'));
     console.log("id" + id);
 
@@ -176,10 +174,12 @@ export class AddInvoiceComponent implements OnInit {
       let data: any;
       data = res;
       if (data != null) {
-        this.invoiceProduct.get('price')?.setValue(
+        this.invoiceProduct.get('unitPrice')?.setValue(
            data.price);
         this.invoiceProduct.get('tax')?.setValue(
             data.tax);
+
+        this.ItemCalculation(index);
       }
      
     })
@@ -191,6 +191,7 @@ export class AddInvoiceComponent implements OnInit {
     return this.builder.group({
 
       quantity: this.builder.control(1),
+      unitPrice: this.builder.control(0),
       price: this.builder.control(0),
       tax: this.builder.control(19),
       discount: this.builder.control(0),
@@ -207,7 +208,17 @@ export class AddInvoiceComponent implements OnInit {
     })
   }
 
+ItemCalculation(index:any){
+  this.invSales = this.invoiceForm.get('sales') as FormArray;
+  this.invoiceProduct= this.invSales.at(index) as FormGroup;
+  let quantity = this.invoiceProduct.get('quantity')?.value
+  let unitPrice = this.invoiceProduct.get('unitPrice')?.value
+  let price= quantity*unitPrice;
+  console.log("----quantity----"+quantity)
 
+  this.invoiceProduct.get('price')?.setValue(price);
+  
+}
 
 
 }
