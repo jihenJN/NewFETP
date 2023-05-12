@@ -119,6 +119,7 @@ export class EditInvoiceComponent  implements OnInit{
     this.invoiceService.getById(id).subscribe((data) => {
       this.invoice = data;
       console.log( "this.sale" , this.invoice);
+      
       //----JN It is very important to convert product(object) to form group --------//
             this.invoiceForm.patchValue({
             id: this.invoice.id,

@@ -1,9 +1,11 @@
 body{
     margin-top:20px;
     color: #484b51;
+    font-family: 'Varela Round', sans-serif;
+   
 }
 .text-secondary-d1 {
-    color: #728299!important;
+    color:  #435d7d!important;
 }
 .page-header {
     margin: 0 0 1rem;
@@ -60,7 +62,7 @@ hr {
     font-size: 110%!important;
 }
 .text-blue {
-    color: #478fcc!important;
+    color:  #dc3545!important;
 }
 .pb-25, .py-25 {
     padding-bottom: .75rem!important;
@@ -70,7 +72,7 @@ hr {
     padding-top: .75rem!important;
 }
 .bgc-default-tp1 {
-    background-color: rgba(121,169,197,.92)!important;
+    background-color: #435d7d!important;
 }
 .bgc-default-l4, .bgc-h-default-l4:hover {
     background-color: #f3f8fa!important;
@@ -93,14 +95,14 @@ hr {
     font-size: 120%!important;
 }
 .text-primary-m1 {
-    color: #4087d4!important;
+    color:  #435d7d!important;
 }
 
 .text-danger-m1 {
-    color: #dd4949!important;
+    color: #dc3545!important;
 }
 .text-blue-m2 {
-    color: #68a3d5!important;
+    color: #435d7d!important;
 }
 .text-150 {
     font-size: 150%!important;
@@ -114,4 +116,17 @@ hr {
 .align-bottom {
     vertical-align: bottom!important;
 }
+.icon{
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    
+    size: inherit; 
+}
 
+
+.btn-pay {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
