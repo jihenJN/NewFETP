@@ -8,7 +8,7 @@ import { EditInvoiceComponent } from './edit-invoice/edit-invoice.component';
 import { ListInvoiceComponent } from './list-invoice/list-invoice.component';
 import { SharedModule } from '../shared/shared.module';
 import { LayoutInvoiceComponent } from './layout-invoice/layout-invoice.component';
-
+import {NgxPrintModule} from 'ngx-print';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { LayoutInvoiceComponent } from './layout-invoice/layout-invoice.componen
     InvoiceRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    NgxPrintModule
   ],
   exports: [
    

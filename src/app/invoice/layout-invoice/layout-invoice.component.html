@@ -1,3 +1,4 @@
+
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <body style="margin: 2.5rem;">
@@ -18,10 +19,10 @@
 
                             <div class="page-tools">
                                 <div class="action-buttons" >
-                                    <a class="btn bg-white btn-light mx-1px text-95" style="margin-right:0.5rem;" href="#" data-title="Print">
+                                    <button   printSectionId="print-section" ngxPrint [useExistingCss]="true" class="btn bg-white btn-light mx-1px text-95" style="margin-right:0.5rem;" href="#" data-title="Print">
                                         <i class="mr-1 fa fa-print text-primary-m1 text-120 w-2"></i>
                                         Print
-                                    </a>
+                                    </button>
                                     <a class="btn bg-white btn-light mx-1px text-95" href="#" data-title="PDF">
                                         <i class="mr-1 fa fa-file-pdf-o text-danger-m1 text-120 w-2"></i>
                                         Export
@@ -30,7 +31,9 @@
                             </div>
                         </div>
 
-                        <div class="container px-0">
+ <!-----------------print layout content starts  ----------------->
+                        
+                        <div class="container px-0"  id="print-section" >
                             <div class="row mt-4">
                                 <div class="col-12 col-lg-12">
                                     <div class="row">
@@ -197,16 +200,25 @@
                                         </div>
 
                                         <hr />
-
-                                        <div>
-                                            <span class="text-secondary-d1 text-105">Thank you for your business</span>
-                                            <a href="#" class="btn btn-pay btn-bold px-4 float-right mt-3 mt-lg-0">Pay
-                                                Now</a>
-                                        </div>
+                                       <div>
+                                        <span class="text-secondary-d1 text-105">Thank you for your business</span>
+                                       </div>
+                                      
                                     </div>
                                 </div>
                             </div>
+                       
+                       
                         </div>
+                    
+ <!-----------------print layout content ends  ----------------->                   
+                    
+                        <div>
+                           
+                            <a href="#" class="btn btn-pay btn-bold px-4 float-right mt-3 mt-lg-0">Pay
+                                Now</a>
+                        </div>
+                    
                     </div>
 
 
@@ -218,3 +230,25 @@
         </div>
     </div>
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!------JN PRINT SECTION USING NGXPRINT START------------>
+<!--div id="print-section"> 
+   <h1> Your html stuff that you want to print</h1>
+  </div>
+  <button printSectionId="print-section" ngxPrint>print</button-->  
+<!------JN PRINT SECTION USING NGXPRINT ENDS------------> 

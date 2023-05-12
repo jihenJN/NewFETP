@@ -14,6 +14,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ClientModule } from './client/client.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { ZonedDateTimeInterceptorProviders } from './_helpers/ZonedDateTime.interceptor';
+import {NgxPrintModule} from 'ngx-print';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ZonedDateTimeInterceptorProviders } from './_helpers/ZonedDateTime.inte
     AdminModule,
     AuthModule,
     ClientModule,
+    NgxPrintModule
     
 
   ],
