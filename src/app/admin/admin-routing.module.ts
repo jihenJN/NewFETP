@@ -40,7 +40,7 @@ const routes: Routes = [
       { path:'listInvoice',component:ListInvoiceComponent},
       { path:'createInvoice',component:AddInvoiceComponent},
       { path:'editInvoice/:id',component:EditInvoiceComponent},
-      { path:'layoutInvoice',component:LayoutInvoiceComponent},
+      { path:'layoutInvoice/:id',component:LayoutInvoiceComponent},
 
 
        

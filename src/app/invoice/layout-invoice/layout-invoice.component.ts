@@ -98,7 +98,7 @@ export class LayoutInvoiceComponent   implements OnInit{
   ngOnInit(): void {
     
    
-    this.getClients();
+   
   
     this.route.paramMap.subscribe((param) => {
       var id = String(param.get('id'));
@@ -144,38 +144,9 @@ export class LayoutInvoiceComponent   implements OnInit{
   }
 
 
-  getClients() {
-    this.clientService.get().subscribe(res => {
-      this.invClients = res;
-      console.log(this.invClients);
-    })
-  }
+ 
 
 
-
-  clientChange() {
-
-
-    let id = this.invoiceForm.get('client.id')?.value
-
-    console.log(this.invoiceForm.get('client'));
-    console.log("id" + id);
-
-    this.clientService.getById(id).subscribe(res => {
-      console.log("id" + id);
-
-      let data: any;
-      data = res;
-      if (data != null) {
-        this.invoiceForm.get('remarks')?.setValue(
-          'delivery address: ' + data.address)
-      }
-    })
-
-
-  }
-
-  
 
 
 
