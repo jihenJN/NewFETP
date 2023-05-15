@@ -215,19 +215,35 @@ export class AddInvoiceComponent implements OnInit {
     let price = (quantity * unitPrice) - ((quantity * unitPrice) * discountRate);
     this.invoiceProduct.get('price')?.setValue(price);
     this.summuryCalculation();
+    
 
   }
 
   summuryCalculation() {
     let array = this.invoiceForm.getRawValue().sales;
     let sumTotal = 0;
+    let origineSumTotal = 0;
+    let globalDiscount = 0;
     array.forEach((x: any) => {
       sumTotal = sumTotal + x.price;
     });
+    
+    array.forEach((x: any) => {
+      origineSumTotal = origineSumTotal + (x.unitPrice*x.quantity);
+    });
+
+    globalDiscount = ((origineSumTotal - sumTotal) / origineSumTotal) * 100;
+   
+   
+    
+  
+
 
     this.invoiceForm.get('total')?.setValue(sumTotal);
+    this.invoiceForm.get('discount')?.setValue( Number(globalDiscount.toFixed(2)));
 
   }
+   
 
-
+   
 }
