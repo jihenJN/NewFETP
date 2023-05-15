@@ -17,6 +17,7 @@ import { AddUserComponent } from '../user/add-user/add-user.component';
 import { ListSaleComponent } from '../sale/list-sale/list-sale.component';
 import { EditSaleComponent } from '../sale/edit-sale/edit-sale.component';
 import { LayoutInvoiceComponent } from '../invoice/layout-invoice/layout-invoice.component';
+import { ChartComponent } from '../statistics/chart/chart.component';
 
 
 const routes: Routes = [
@@ -51,7 +52,7 @@ const routes: Routes = [
       { path:'listUser',component:ListUserComponent},
       { path:'createUser',component:AddUserComponent},
 
-      
+      { path:'chart',component:ChartComponent},
     ]
   }
 ];

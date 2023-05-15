@@ -16,9 +16,11 @@ import { AdminRoutingModule } from './admin/admin-routing.module';
 import { ZonedDateTimeInterceptorProviders } from './_helpers/ZonedDateTime.interceptor';
 import {NgxPrintModule} from 'ngx-print';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,9 @@ import {NgxPrintModule} from 'ngx-print';
 
   ],
   providers: [authInterceptorProviders,ZonedDateTimeInterceptorProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+  
+  ]
 })
 export class AppModule { }

@@ -10,6 +10,7 @@ import { AuthModule } from '../auth/auth.module';
 import { InvoiceModule } from '../invoice/invoice.module';
 import { UserModule } from '../user/user.module';
 import { SaleModule } from '../sale/sale.module';
+import { StatisticsModule } from '../statistics/statistics.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SaleModule } from '../sale/sale.module';
     InvoiceModule,
     UserModule,
     AuthModule,
-    SaleModule
+    SaleModule,
+    StatisticsModule
   ],
   exports: [
     DashboardAdminComponent

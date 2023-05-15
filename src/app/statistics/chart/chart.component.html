@@ -1,0 +1,155 @@
+<div class="row" id="proBanner">
+    <div class="col-12">
+        <span class="d-flex align-items-center ">
+           
+            <a href="https://bootstrapdash.com/demo/polluxui/template/index.html?utm_source=organic&utm_medium=banner&utm_campaign=free-preview"
+                ></a>
+            <i id="bannerClose"></i>
+        </span>
+    </div>
+</div>
+<div class="container-scroller">
+
+    <div class="container-fluid page-body-wrapper">
+
+
+        <div>
+            <div class="content-wrapper">
+
+                <div class="row">
+                    <div class="col-md-4 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex align-items-center justify-content-between justify-content-md-center justify-content-xl-between flex-wrap mb-4">
+                                    <div>
+                                        <p class="mb-2 text-md-center text-lg-left">Total Expenses</p>
+                                        <h1 class="mb-0">8742</h1>
+                                    </div>
+                                    <i class="typcn typcn-briefcase icon-xl text-secondary"></i>
+                                </div>
+                                <canvas id="expense-chart" height="80"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex align-items-center justify-content-between justify-content-md-center justify-content-xl-between flex-wrap mb-4">
+                                    <div>
+                                        <p class="mb-2 text-md-center text-lg-left">Total Budget</p>
+                                        <h1 class="mb-0">47,840</h1>
+                                    </div>
+                                    <i class="typcn typcn-chart-pie icon-xl text-secondary"></i>
+                                </div>
+                                <canvas id="budget-chart" height="80"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div
+                                    class="d-flex align-items-center justify-content-between justify-content-md-center justify-content-xl-between flex-wrap mb-4">
+                                    <div>
+                                        <p class="mb-2 text-md-center text-lg-left">Total Balance</p>
+                                        <h1 class="mb-0">$7,243</h1>
+                                    </div>
+                                    <i class="typcn typcn-clipboard icon-xl text-secondary"></i>
+                                </div>
+                                <canvas id="balance-chart" height="80"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                  
+                    <div class="col-xl-6 grid-margin stretch-card flex-column">
+                        <h5 class="mb-2 text-titlecase mb-4">Income statistics</h5>
+                        <div class="row h-100">
+                            <div class="col-md-12 stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start flex-wrap">
+                                            <div>
+                                                <p class="mb-3">Monthly Increase</p>
+                                                <h3>67842</h3>
+                                            </div>
+                                            <div id="income-chart-legend" class="d-flex flex-wrap mt-1 mt-md-0"></div>
+                                        </div>
+                                        <canvas id="income-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 grid-margin stretch-card flex-column">
+                        <h5 class="mb-2 text-titlecase mb-4">Sales Chart</h5>
+                        <div class="row h-100">
+                            <div class="col-md-12 stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <canvas id="sales-chart-c" class="mt-2"></canvas>
+                                        <div class="d-flex align-items-center justify-content-between border-bottom pb-3 mb-3 mt-4">
+                                          <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <p class="text-muted">Gross Sales</p>
+                                            <h5>492</h5>
+                                            <div class="d-flex align-items-baseline">
+                                              <p class="text-success mb-0">0.5%</p>
+                                              <i class="typcn typcn-arrow-up-thick text-success"></i>
+                                            </div>
+                                          </div>
+                                          <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <p class="text-muted">Purchases</p>
+                                            <h5>87k</h5>
+                                            <div class="d-flex align-items-baseline">
+                                              <p class="text-success mb-0">0.8%</p>
+                                              <i class="typcn typcn-arrow-up-thick text-success"></i>
+                                            </div>
+                                          </div>
+                                          <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <p class="text-muted">Tax Return</p>
+                                            <h5>882</h5>
+                                            <div class="d-flex align-items-baseline">
+                                              <p class="text-danger mb-0">-04%</p>
+                                              <i class="typcn typcn-arrow-down-thick text-danger"></i>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                          <div class="dropdown">
+                                            <button class="btn bg-white p-0 pb-1 pt-1 text-muted btn-sm dropdown-toggle" type="button" id="dropdownMenuSizeButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Last 7 days
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton3">
+                                              <h6 class="dropdown-header">Settings</h6>
+                                              <a class="dropdown-item" href="javascript:;">Action</a>
+                                              <a class="dropdown-item" href="javascript:;">Another action</a>
+                                              <a class="dropdown-item" href="javascript:;">Something else here</a>
+                                              <div class="dropdown-divider"></div>
+                                              <a class="dropdown-item" href="javascript:;">Separated link</a>
+                                            </div>
+                                          </div>
+                                          <p class="mb-0">overview</p>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

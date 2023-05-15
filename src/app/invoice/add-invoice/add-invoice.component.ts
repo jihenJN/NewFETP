@@ -235,10 +235,6 @@ export class AddInvoiceComponent implements OnInit {
     globalDiscount = ((origineSumTotal - sumTotal) / origineSumTotal) * 100;
    
    
-    
-  
-
-
     this.invoiceForm.get('total')?.setValue(sumTotal);
     this.invoiceForm.get('discount')?.setValue( Number(globalDiscount.toFixed(2)));
 
