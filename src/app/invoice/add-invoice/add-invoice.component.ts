@@ -138,8 +138,7 @@ export class AddInvoiceComponent implements OnInit {
       let data: any;
       data = res;
       if (data != null) {
-        this.invoiceForm.get('remarks')?.setValue(
-          'delivery address: ' + data.address)
+        this.invoiceForm.get('remarks')?.setValue(data.address)
       }
     })
 
