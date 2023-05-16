@@ -110,7 +110,7 @@ export class AddInvoiceComponent implements OnInit {
     this.invSales.push(this.generateRow());
   }
 
-
+ 
 
   get invsales() {
     return this.invoiceForm.get('sales') as FormArray;
@@ -214,9 +214,23 @@ export class AddInvoiceComponent implements OnInit {
     let price = (quantity * unitPrice) - ((quantity * unitPrice) * discountRate);
     this.invoiceProduct.get('price')?.setValue(price);
     this.summuryCalculation();
+
+   
     
 
   }
+
+ 
+
+
+  RemoveSale(index: any){
+    
+      this.invSales.removeAt(index);
+      this.summuryCalculation();
+      
+
+    }
+
 
   summuryCalculation() {
     let array = this.invoiceForm.getRawValue().sales;
