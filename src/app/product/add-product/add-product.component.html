@@ -1,67 +1,100 @@
-<div class="container">
-    <legend>Create Product</legend>
-    <form [formGroup]="productForm">
-  
-  
-      <div class="mb-3">
-        <label for="txtName" class="form-label">Name</label>
-        <input class="form-control" formControlName="name" type="text" placeholder="Enter product name..." />
-      </div>
-  
-      <div class="mb-3">
-        <label for="txtPrice" class="form-label">Price</label>
-        <input class="input form-control" formControlName="price" type="number" placeholder="Enter product price...">
-      </div>
-  
-  
-  
-  
-      <!-------------JN Adding main image start----------->
-  
-      <div class="row mb-3">
-        <label class="form-label" for="field_photo"> Photo</label>
-        <div>
-          <img [src]="'data:' +productForm.get('photoContentType')!.value + ';base64,' + productForm.get('photo')!.value"
-            style="max-height: 100px" *ngIf="productForm.get('photo')!.value" alt="product image" />
-          <div *ngIf="productForm.get('photo')!.value" class="form-text text-danger clearfix">
-            <span class="pull-start">{{productForm.get('photoContentType')!.value }}, {{
-              byteSize(productForm.get('photo')!.value!) }}</span>
-  
+
+<div>
+  <h4 class="bandtit"> New <b>Customer</b></h4>
+</div>
+
+<div class="container-xl">
+
+  <form class="container" [formGroup]="productForm">
+    <div class="row">
+      <div class="form-group">
+
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label for="txtName" class="form-label">Name<span class="text-danger">*</span></label>
+            <input class="form-control" formControlName="name" type="text" placeholder="Enter client name..." />
           </div>
-          <input type="file" id="file_photo" data-cy="photo" (change)="setFileData($event, 'photo', true)"
-            accept="image/*" />
+
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label for="txtPrice" class="form-label">Price<span class="text-danger">*</span></label>
+            <input class="input form-control" formControlName="price" type="number"
+              placeholder="Enter product price...">
+          </div>
         </div>
-        <input type="hidden" class="form-control" name="photo" id="field_photo" data-cy="photo" formControlName="photo" />
-        <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
-          formControlName="photoContentType" />
-      </div>
-  
-      <!-------------JN Adding main image start----------->
-  
-  
-  
-      <div class="mb-3">
-        <label for="txtDescription" class="form-label">Description</label>
-        <input class="form-control" formControlName="description" type="text"
-          placeholder="Enter product description..." />
-      </div>
-  
-  
-      <div class="mb-3">
-        <label for="txtTax" class="form-label">TAX</label>
-        <input class="form-control" formControlName="tax" type="text" />
-      </div>
-  
-      <div class="mb-3">
-        <label for="txtInStock" class="form-label">In Stock</label>
-        <input class="input form-control" formControlName="inStock" type="number" />
-      </div>
-  
-  
-    <div>
-      <button class="button" type="button" (click)="submit()" class="btn btn-primary mx-1">Save</button>
-      <button class="button" type="button"  routerLink="/productList" class="btn btn-danger mx-1" >Back</button>
-    </div>
+
+       
+
       
-    </form>
-  </div>
+
+
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label for="txtTax" class="form-label">TAX <span class="text-danger">*</span></label>
+            <input class="form-control" formControlName="tax" type="text" />
+          </div>
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label for="txtInStock" class="form-label">In Stock <span class="text-danger">*</span></label>
+            <input class="input form-control" formControlName="inStock" type="number" />
+          </div>
+        </div>
+
+       
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-12 flex-column d-flex">
+            <label for="txtDescription" class="form-label">Description</label>
+            <textarea class="form-control" formControlName="description" type="text"
+              placeholder="Enter product description..." ></textarea>
+          </div>
+        </div>
+       
+
+
+
+         <!-------------JN Adding main image start----------->
+
+         <div class="row mb-3">
+          <label class="form-label" for="field_photo"> Photo</label>
+          <div>
+            <img
+              [src]="'data:' +productForm.get('photoContentType')!.value + ';base64,' + productForm.get('photo')!.value"
+              style="max-height: 100px" *ngIf="productForm.get('photo')!.value" alt="product image" />
+            <div *ngIf="productForm.get('photo')!.value" class="form-text text-danger clearfix">
+              <span class="pull-start">{{productForm.get('photoContentType')!.value }}, {{
+                byteSize(productForm.get('photo')!.value!) }}</span>
+
+            </div>
+            <input type="file" id="file_photo" data-cy="photo" (change)="setFileData($event, 'photo', true)"
+              accept="image/*" />
+          </div>
+          <input type="hidden" class="form-control" name="photo" id="field_photo" data-cy="photo"
+            formControlName="photo" />
+          <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+            formControlName="photoContentType" />
+        </div>
+
+        <!-------------JN Adding main image start----------->
+       
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-sm-8"></div> <!-- Empty column to push the button to the right -->
+      <div class="form-group col-sm-2 flex-column d-flex">
+        <button type="button" (click)="submit()" class="btn btn-success">Create</button>
+      </div>
+      <div class="form-group col-sm-2 flex-column d-flex">
+        <button type="button"  routerLink="/productList" class="btn btn-danger">Cancel</button>
+      </div>
+    </div>
+
+
+    
+
+
+
+  </form>
+
+
+</div>

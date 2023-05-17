@@ -1,35 +1,68 @@
-<div class="container">
-    <legend>Create Client</legend>
-    <form [formGroup]="clientForm">
+<div > <h4 class="bandtit"> New <b>Customer</b></h4> </div>
+
+  <div class="container-xl" >
   
+    <form class="container" [formGroup]="clientForm">
+      <div class="row">
+        <div class="form-group">
   
-      <div class="mb-3">
-        <label for="txtName" class="form-label">Name</label>
-        <input class="form-control" formControlName="name" type="text" placeholder="Enter client name..." />
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-12 flex-column d-flex">
+              <label for="txtName" class="form-label">Name<span class="text-danger">*</span></label>
+              <input class="form-control" formControlName="name" type="text" placeholder="Enter client name..." />
+            </div>
+          </div>
+
+          <div class="row justify-content-between text-left">
+
+          <div class="form-group col-sm-12 flex-column d-flex">
+            <label for="txtPhone" class="form-label">Phone</label>
+            <input class="input form-control" formControlName="phone" type="number" placeholder="Enter client phone...">
+          </div>
+          </div>
+
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-12 flex-column d-flex">
+              <label for="txtAddress" class="form-label">Address</label>
+              <input class="form-control" formControlName="address" type="text"
+                placeholder="Enter client address..." />
+            </div>
+
+        
+          </div>
+         
+          <div class="row justify-content-between text-left">
+            <div class="form-group col-sm-12 flex-column d-flex">
+              <label for="txtEmail" class="form-label">Email</label>
+              <input class="form-control" formControlName="email" type="text" placeholder="Enter client email..." />
+            </div>
+          </div>
+         
+
+  
+        </div>
       </div>
   
-      <div class="mb-3">
-        <label for="txtPhone" class="form-label">Phone</label>
-        <input class="input form-control" formControlName="phone" type="number" placeholder="Enter client phone...">
-      </div>
   
-      <div class="mb-3">
-        <label for="txtAddress" class="form-label">Address</label>
-        <input class="form-control" formControlName="address" type="text"
-          placeholder="Enter client address..." />
-      </div>
   
-      <div class="mb-3">
-        <label for="txtEmail" class="form-label">Email</label>
-        <input class="form-control" formControlName="email" type="text" placeholder="Enter client email..." />
+      <div class="row">
+        <div class="col-sm-8"></div> <!-- Empty column to push the button to the right -->
+        <div class="form-group col-sm-2 flex-column d-flex">
+          <button type="button" (click)="submit()" class="btn btn-success">Create</button>
+        </div> 
+        <div class="form-group col-sm-2 flex-column d-flex">
+          <button  type="button"  routerLink="/listClient" class="btn btn-danger">Cancel</button>
+        </div>
       </div>
-  
-    <div>
-      <button class="button" type="button" (click)="submit()" class="btn btn-primary mx-1">Save</button>
-      <button class="button" type="button"  routerLink="/listClient" class="btn btn-danger mx-1" >Back</button>
-    </div>
       
+    
+    
+  
+  
     </form>
+  
+  
   </div>
+  
 
 
