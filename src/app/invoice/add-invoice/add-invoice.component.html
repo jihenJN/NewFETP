@@ -10,7 +10,7 @@
         <div class="row justify-content-between text-left">
           <div class="form-group col-sm-6 flex-column d-flex">
             <label>invoice code<span class="text-danger">*</span></label>
-            <input formControlName="code" class="form-control" />
+            <input formControlName="code" class="form-control" placeholder="Enter invoice code..." />
           </div>
 
           <div class="form-group col-sm-6 flex-column d-flex">
@@ -34,10 +34,6 @@
             <input type="text" formControlName="remarks" class="form-control" />
           </div>
         </div>
-
-
-        <label>Tax</label>
-        <input type="number" formControlName="tax" class="form-control" /> <br>
 
 
         <label>Status</label>
@@ -126,16 +122,24 @@
 
       <div class="row justify-content-between text-left">
        
+        <div class="form-group col-sm-4 flex-column d-flex">
+          <label> Total Tax</label>
+          <input type="number" formControlName="tax" class="form-control" readonly/>
+        </div>
 
-        <div class="form-group col-sm-6 flex-column d-flex">
-          <label> Global Discount</label>
+
+        <div class="form-group col-sm-4 flex-column d-flex">
+          <label> Total Discount</label>
           <input type="number" formControlName="discount" class="form-control"  readonly/>
         </div>
 
-        <div class="form-group col-sm-6 flex-column d-flex">
-          <label>Total</label>
+        <div class="form-group col-sm-4 flex-column d-flex">
+          <label>Total Summary</label>
           <input formControlName="total" class="form-control" readonly />
         </div>
+
+
+
       </div>
     
     </div> <br>
@@ -148,7 +152,7 @@
         <button type="submit" class="btn btn-success">Create</button>
       </div> 
       <div class="form-group col-sm-2 flex-column d-flex">
-        <button type="submit" class="btn btn-danger">Cancel</button>
+        <button  type="button"  routerLink="/listInvoice" class="btn btn-danger">Cancel</button>
       </div>
     </div>
     

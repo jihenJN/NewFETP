@@ -15,6 +15,7 @@ import { ClientModule } from './client/client.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { ZonedDateTimeInterceptorProviders } from './_helpers/ZonedDateTime.interceptor';
 import {NgxPrintModule} from 'ngx-print';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {NgxPrintModule} from 'ngx-print';
     AdminModule,
     AuthModule,
     ClientModule,
-    NgxPrintModule
+    NgxPrintModule,
+    ToastrModule.forRoot(),
     
 
   ],

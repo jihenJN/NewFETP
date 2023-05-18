@@ -31,7 +31,7 @@ export class AddProductComponent implements OnInit {
       photo: null,
       photoContentType: null,
       description: '',
-      tax: 17,
+      tax: 19,
       inStock: 0
     });
 
