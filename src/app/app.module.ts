@@ -16,6 +16,7 @@ import { AdminRoutingModule } from './admin/admin-routing.module';
 import { ZonedDateTimeInterceptorProviders } from './_helpers/ZonedDateTime.interceptor';
 import {NgxPrintModule} from 'ngx-print';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ToastrModule } from 'ngx-toastr';
     ClientModule,
     NgxPrintModule,
     ToastrModule.forRoot(),
+    NgxPaginationModule
     
 
   ],

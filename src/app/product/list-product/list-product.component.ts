@@ -26,6 +26,11 @@ export class ListProductComponent implements OnInit {
   deleteModal: any;
   idTodelete: string = '';
 
+  page: number =1;
+  count: number = 0;
+  tableSize: number = 7;
+  tableSizes: any = [5, 10, 15, 20] ;
+
 
   constructor(private productService: ProductService) { }
 
@@ -35,6 +40,7 @@ export class ListProductComponent implements OnInit {
       document.getElementById('deleteModal')
     );
 
+    this.productList();
 
     
     this.productService.get().subscribe((data: ProductDto[]) => {
@@ -46,8 +52,30 @@ export class ListProductComponent implements OnInit {
 
     this.get();
 
-
   }
+
+
+//pagination 
+  productList(): void {
+    this.productService.get().subscribe((response) => {
+      this.productsDto = response;
+      console.log (this.productsDto);
+    })
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.productList();
+  }
+
+  onTableSizeChange (evnet: any): void {
+    this.tableSize= evnet.target.value;
+    this.page = 1;
+    this.productList();
+  }
+
+  //end pagination
+
 
 
 
