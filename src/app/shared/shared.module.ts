@@ -6,24 +6,31 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SearchComponent } from './components/search/search.component';
+import { SearchPipe } from './components/search/search.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    SearchComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
     SharedRoutingModule,
+    FormsModule
     
   ],
   exports: [
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    SearchComponent
   ]
 })
 export class SharedModule { }

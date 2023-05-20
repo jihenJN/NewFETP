@@ -17,11 +17,13 @@ import { ZonedDateTimeInterceptorProviders } from './_helpers/ZonedDateTime.inte
 import {NgxPrintModule} from 'ngx-print';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchPipe } from './shared/components/search/search.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    
    
   ],
   imports: [
