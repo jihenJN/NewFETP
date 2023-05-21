@@ -284,6 +284,7 @@ table td img {
 	left: 40px;
 	cursor: pointer;
 	
+	
   }
 
   .inner-form .input-field .btn-search svg {
@@ -298,3 +299,12 @@ table td img {
 	box-shadow: none;
   }
 
+  .inner-form .input-field {
+	display: flex;
+	align-items: center;
+}
+
+.inner-form .input-field button {
+	margin-right: 5px;
+	
+}

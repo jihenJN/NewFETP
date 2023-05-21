@@ -3,33 +3,35 @@
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h2>ALL <b>Products</b></h2>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center justify-content-end mb-2">
-                               <!------JN:search design starts-->
-                                <div class="inner-form" style="margin-bottom: 5px;">
-                                    <div class="input-field">
-                                        <button class="btn-search" type="button">
-                                            <svg>
-                                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 9.5 14 9.5 14z"></path>
-                                            </svg>
-                                        </button>
-                                        <input id="search" type="text" [(ngModel)]="searchText" type="text" placeholder="Search product by name" />
-                                    </div>
-                                </div>
-                               <!------JN:search design ends-->
-                               <div style="margin-left: 10px;">
-                                <a routerLink="/createProduct" class="btn btn-success mr-2" data-toggle="modal">
-                                    <i class="material-icons">&#xE147;</i> <span>Add New Product</span>
-                                </a>
-                               </div>
-                               
-                            </div>
-                        </div>
-                    </div>
+                    
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>ALL <b>Products</b></h2>
+    </div>
+    <div class="col-sm-6">
+        <div class="d-flex align-items-center justify-content-end mb-2">
+            <!-- Search Design Starts -->
+            <div class="inner-form" style="margin-bottom: 5px;">
+                <div class="input-field">
+                    <button class="btn-search" type="button">
+                        <svg>
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 9.5 14 9.5 14z"></path>
+                        </svg>
+                    </button>
+                    <input id="search" type="text" [(ngModel)]="searchText" type="text" placeholder="Search product by name" />
+                </div>
+            </div>
+            <!-- Search Design Ends -->
+
+            <div style="margin-left: 10px;">
+                <a routerLink="/createProduct" class="btn btn-success mr-2" data-toggle="modal">
+                    <i class="material-icons">&#xE147;</i> <span>Add New Product</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
                 </div>
 
                 <!-- pagination -->
