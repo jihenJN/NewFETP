@@ -235,3 +235,66 @@ table td img {
     height: 36px;
     border-radius: 10%;
 }
+
+/**search design customize***/
+
+.inner-form .input-field input {
+	height: 100%;
+	width: 100%;
+	background: transparent;
+	border: 0;
+	border-bottom: 2px solid #ffffff;
+	display: block;
+	font-size: 15px;
+	padding: 10px 10px 10px 40px;
+	color: #fff;
+	transition: all .2s ease-out, color .2s ease-out;
+	position: relative;
+  }
+
+  .inner-form .input-field input.placeholder {
+	color: #fff;
+	font-size: 15px;
+
+  }
+
+  .inner-form .input-field input::-webkit-input-placeholder {
+	color: #fff;
+	font-size: 15px;
+  }
+  
+  .inner-form .input-field input:hover, .s129 form .inner-form .input-field input:focus {
+	box-shadow: none;
+	outline: 0;
+	border-bottom-color: #fff;
+  }
+
+  .inner-form .input-field .btn-search {
+	width: 70px;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	position: absolute;
+	left: 0;
+	height: 100%;
+	background: transparent;
+	border: 0;
+	padding: 0px;
+	left: 40px;
+	cursor: pointer;
+	
+  }
+
+  .inner-form .input-field .btn-search svg {
+	fill: #fff;
+	width: 30px;
+	height: 30px;
+	
+  }
+
+  .inner-form .input-field .btn-search:hover, .s129 form .inner-form .input-field .btn-search:focus {
+	outline: 0;
+	box-shadow: none;
+  }
+
