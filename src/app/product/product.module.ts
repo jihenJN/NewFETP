@@ -5,11 +5,12 @@ import { ProductRoutingModule } from './product-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { SharedModule } from '../shared/shared.module';
 import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchPipe } from './search/search.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -19,7 +20,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
    
     AddProductComponent,
     EditProductComponent,
-    ListProductComponent
+    ListProductComponent,
+    SearchPipe,
+
+
+    
   ],
   imports: [
     CommonModule,
@@ -27,14 +32,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SharedModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    SharedModule
   ],
   exports: [
    
     AddProductComponent,
     EditProductComponent,
-    ListProductComponent
+    ListProductComponent,
+    
+    
   ]
 })
-export class ProductModule { }
+export class ProductModule { 
+}

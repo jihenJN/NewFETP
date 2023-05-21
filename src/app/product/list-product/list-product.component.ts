@@ -12,13 +12,12 @@ declare var window: any;
 `,
 
   templateUrl: './list-product.component.html',
-  styleUrls: ['./list-product.component.css']
+  styleUrls: ['./list-product.component.css'],
+
 })
 
-
 export class ListProductComponent implements OnInit {
-
-  loading:boolean =false
+  loading: boolean = false
 
   products: Product[] = [];
   productsDto: ProductDto[] = [];
@@ -26,11 +25,11 @@ export class ListProductComponent implements OnInit {
   deleteModal: any;
   idTodelete: string = '';
 
-  page: number =1;
+  page: number = 1;
   count: number = 0;
   tableSize: number = 7;
-  tableSizes: any = [5, 10, 15, 20] ;
-
+  tableSizes: any = [5, 10, 15, 20];
+  searchText: any;
 
   constructor(private productService: ProductService) { }
 
@@ -42,7 +41,7 @@ export class ListProductComponent implements OnInit {
 
     this.productList();
 
-    
+
     this.productService.get().subscribe((data: ProductDto[]) => {
       this.products = data;
       this.productsDto = this.inintProductDto(this.products);
@@ -54,12 +53,11 @@ export class ListProductComponent implements OnInit {
 
   }
 
-
-//pagination 
+  //pagination 
   productList(): void {
     this.productService.get().subscribe((response) => {
       this.productsDto = response;
-      console.log (this.productsDto);
+      console.log(this.productsDto);
     })
   }
 
@@ -68,22 +66,19 @@ export class ListProductComponent implements OnInit {
     this.productList();
   }
 
-  onTableSizeChange (evnet: any): void {
-    this.tableSize= evnet.target.value;
+  onTableSizeChange(evnet: any): void {
+    this.tableSize = evnet.target.value;
     this.page = 1;
     this.productList();
   }
 
   //end pagination
 
-
-
-
   get() {
-    this.loading=true;
+    this.loading = true;
     this.productService.get().subscribe((data) => {
       this.products = data;
-      this.loading=false;
+      this.loading = false;
 
     });
   }
@@ -115,26 +110,20 @@ export class ListProductComponent implements OnInit {
     return 'data:image/jpg;base64,' + data;
   }
 
-
   openDeleteModal(id: string) {
     this.idTodelete = id;
     this.deleteModal.show();
   }
 
-
   delete() {
     this.productService.delete(this.idTodelete).subscribe({
       next: (data: any) => {
-        this.products = this.products.filter(_ =>_.id !=  this.idTodelete);
+        this.products = this.products.filter(_ => _.id != this.idTodelete);
         this.productsDto = this.inintProductDto(this.products);
         this.deleteModal.hide();
       }
     });
   }
-
-
-  
-
 
 }
 
