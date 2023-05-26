@@ -15,14 +15,14 @@ import { ClientModule } from './client/client.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { ZonedDateTimeInterceptorProviders } from './_helpers/ZonedDateTime.interceptor';
 import {NgxPrintModule} from 'ngx-print';
-import { ToastrModule } from 'ngx-toastr';
+import { MatTabsModule } from '@angular/material/tabs';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent
+
    
   ],
   imports: [
@@ -40,7 +40,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AuthModule,
     ClientModule,
     NgxPrintModule,
-    ToastrModule.forRoot(),
+    MatTabsModule,
     NgxPaginationModule
     
 

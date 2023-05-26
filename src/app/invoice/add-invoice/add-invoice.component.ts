@@ -7,7 +7,7 @@ import { status } from 'src/app/models/Status'
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { ZonedDateTime, ZoneId } from '@js-joda/core';
 import { ZonedDateTimeInterceptor } from 'src/app/_helpers/ZonedDateTime.interceptor';
-import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -45,7 +45,7 @@ export class AddInvoiceComponent implements OnInit {
     private clientService: ClientService,
     private productService: ProductService,
     private invoiceService: InvoiceService,
-    private alert : ToastrService,
+    
     private router: Router) {
 
     const zoneId = ZoneId.of(ZonedDateTimeInterceptor.UTC_ZONE_ID);
