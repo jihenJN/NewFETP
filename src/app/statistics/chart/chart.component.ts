@@ -10,7 +10,7 @@ export class ChartComponent {
   columnChartOptions = {
     animationEnabled: true,
     title: {
-      text: 'Angular Column Chart in Material UI Tabs',
+      text: 'Products Sales',
     },
     data: [
       {
@@ -22,6 +22,12 @@ export class ChartComponent {
           { label: 'banana', y: 25 },
           { label: 'mango', y: 30 },
           { label: 'grape', y: 28 },
+          { label: 'anans', y: 35 },
+          { label: 'melon', y: 25 },
+          { label: 'kiwi', y: 25 },
+          { label: 'dragon', y: 30 },
+          { label: 'peach', y: 28 },
+          
         ],
       },
     ],
@@ -30,9 +36,9 @@ export class ChartComponent {
   pieChartOptions = {
     animationEnabled: true,
     title: {
-      text: 'Angular Pie Chart in Material UI Tabs',
+      text: 'Products Sales',
     },
-    theme: 'light2', // "light1", "dark1", "dark2"
+    theme: 'light1', // "light1", "dark1", "dark2"
     data: [
       {
         type: 'pie',
@@ -42,6 +48,12 @@ export class ChartComponent {
           { label: 'banana', y: 25 },
           { label: 'mango', y: 30 },
           { label: 'grape', y: 28 },
+          { label: 'anans', y: 35 },
+          { label: 'melon', y: 25 },
+          { label: 'kiwi', y: 25 },
+          { label: 'dragon', y: 30 },
+          { label: 'peach', y: 28 },
+          
         ],
       },
     ],
@@ -50,9 +62,9 @@ export class ChartComponent {
   lineChartOptions = {
     animationEnabled: true,
     title: {
-      text: 'Angular Line Chart in Material UI Tabs',
+      text: 'Products Sales',
     },
-    theme: 'light2', // "light1", "dark1", "dark2"
+    theme: 'light1', // "light1", "dark1", "dark2"
     data: [
       {
         type: 'line',
@@ -62,6 +74,12 @@ export class ChartComponent {
           { label: 'banana', y: 25 },
           { label: 'mango', y: 30 },
           { label: 'grape', y: 28 },
+          { label: 'anans', y: 35 },
+          { label: 'melon', y: 25 },
+          { label: 'kiwi', y: 25 },
+          { label: 'dragon', y: 30 },
+          { label: 'peach', y: 28 },
+          
         ],
       },
     ],

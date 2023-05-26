@@ -1,29 +1,58 @@
-<div [@.disabled]="true">
-    <mat-tab-group dynamicHeight>
-      <mat-tab label="Column Chart">
-        <ng-template matTabContent>
-          <canvasjs-chart
-            [options]="columnChartOptions"
-            [styles]="{ width: '100%', height: '360px' }"
-          ></canvasjs-chart>
-        </ng-template>
-      </mat-tab>
-      <mat-tab label="Pie Chart">
-        <ng-template matTabContent>
-          <canvasjs-chart
-            [options]="pieChartOptions"
-            [styles]="{ width: '100%', height: '360px' }"
-          ></canvasjs-chart>
-        </ng-template>
-      </mat-tab>
-      <mat-tab label="Line Chart">
-        <ng-template matTabContent>
-          <canvasjs-chart
-            [options]="lineChartOptions"
-            [styles]="{ width: '100%', height: '360px' }"
-          ></canvasjs-chart>
-        </ng-template>
-      </mat-tab>
-    </mat-tab-group>
+
+<div > <h4 class="bandtit"> View All <b>Statistics</b></h4> </div>
+
+<div class="container-scroller">
+
+  <div class="container-fluid page-body-wrapper">
+
+    <div class="content-wrapper">
+
+      <div class="row">
+        <div class="col-xl-12 grid-margin stretch-card flex-column">
+          
+          <div class="row h-100">
+            <div class="col-md-12 stretch-card">
+              <div class="card">
+                <div class="card-body">
+
+   <!------------------CHART PRODUCTS STARTS------------------------>
+
+                  <div [@.disabled]="true">
+                    <mat-tab-group dynamicHeight backgroundColor="accent">
+                      <mat-tab label="Column Chart">
+                        <ng-template matTabContent>
+                          <canvasjs-chart [options]="columnChartOptions"
+                            [styles]="{ width: '100%', height: '360px',margin:'20px' }"></canvasjs-chart>
+                        </ng-template>
+                      </mat-tab>
+                      <mat-tab label="Pie Chart">
+                        <ng-template matTabContent>
+                          <canvasjs-chart [options]="pieChartOptions"
+                            [styles]="{ width: '100%', height: '360px',margin:'20px' }"></canvasjs-chart>
+                        </ng-template>
+                      </mat-tab>
+                      <mat-tab label="Line Chart">
+                        <ng-template matTabContent>
+                          <canvasjs-chart [options]="lineChartOptions"
+                            [styles]="{ width: '100%', height: '360px',margin:'20px' }"></canvasjs-chart>
+                        </ng-template>
+                      </mat-tab>
+                    </mat-tab-group>
+                  </div>
+
+ <!------------------CHART PRODUCTS ENDS------------------------>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+    </div>
   </div>
-  
+</div>

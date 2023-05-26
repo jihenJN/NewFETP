@@ -2,10 +2,10 @@
 
 
 
-<body >
-    <div class="container-xl" *ngIf="!loading"  >
-        <div class="table-responsive" >
-            <div class="table-wrapper" >
+<body>
+    <div class="container-xl" *ngIf="!loading">
+        <div class="table-responsive">
+            <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
@@ -41,7 +41,7 @@
                             <td>
                                 <a [routerLink]="['/editClient', client.id]" class="edit" data-toggle="modal"><i
                                         class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a  href="#" class="delete" data-toggle="modal" (click)="openDeleteModal(client.id)"><i
+                                <a href="#" class="delete" data-toggle="modal" (click)="openDeleteModal(client.id)"><i
                                         class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                             </td>
                         </tr>
@@ -62,22 +62,22 @@
                 </div>
             </div>
 
-            
+
 
         </div>
 
-     
+
 
 
     </div>
 
 
-    <div class =" container-xl text-center w-200"  *ngIf="loading" >
+    <div class=" container-xl text-center w-200" *ngIf="loading">
         <app-spinner></app-spinner>
     </div>
 
-   
-    
+
+
 
 </body>
 
