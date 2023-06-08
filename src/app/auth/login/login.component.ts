@@ -25,15 +25,17 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private tokenStorage: TokenStorageService) { }
-  
-    //Form Validables 
+    private tokenStorage: TokenStorageService) {
+    this.tokenStorage = tokenStorage;
+  }
+
+  //Form Validables 
   registerForm: any = FormGroup;
   submitted = false;
- 
+
   //Add user form actions
   get f() { return this.registerForm.controls; }
-  
+
   onSubmit() {
 
     this.submitted = true;
@@ -70,7 +72,11 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
+        this.roles = this.tokenStorage.getUser().authorities;
+        // Call getUserWithAuthoritiesByLogin
+        const login = data.username; // Adjust this based on the user property in the response
+        this.tokenStorage.getUserWithAuthoritiesByLogin(login);
+        console.log("login=====", login)
 
       },
       error: err => {

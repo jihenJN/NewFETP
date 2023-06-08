@@ -1,91 +1,85 @@
 <div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-        <div class="row w-100 mx-0">
-            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                <div class="row no-gutter">
-                    <!-- The image half -->
-                    <div class="col-md-6 d-none d-md-flex bg-image"></div>
-                    <!-- The content half -->
-                    <div class="col-md-6 bg-light">
-                        <div class="login d-flex align-items-center py-7">
-                            <!-- Demo content-->
-                            <div class="container">
-                                <div class="row">
-                                 
-                                    <div class="col-lg-10 col-xl-7 mx-auto">
-                                        
-                                      <div class="form-header">
-                                        <h1>Account Login</h1>
-                                      </div>
+  <div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="row w-100 mx-0">
+      <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+        <div class="row no-gutter">
+          <!-- The image half -->
+          <div class="col-md-6 d-none d-md-flex bg-image"></div>
+          <!-- The content half -->
+          <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-7">
+              <!-- Demo content-->
+              <div class="container">
+                <div class="row">
 
-                                        <form *ngIf="!isLoggedIn" name="form"
-                                            (ngSubmit)="f.form.valid && onSubmitLogin()" #f="ngForm" novalidate>
+                  <div class="col-lg-10 col-xl-7 mx-auto">
 
-                                            <div class="form-group mb-3">
-                                              <label for="inputUsername">Username</label>
-                                                <input id="inputUsername" type="email"
-                                                    class="form-control shadow-sm px-4" name="username"
-                                                    [(ngModel)]="formLogin.username" required #username="ngModel"
-                                                    >
-                                                <div role="alert" *ngIf="username.errors && f.submitted"
-                                                    style="color:red"> Username is required! </div>
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                              <label for="inputpassword">Password</label>
-                                                <input id="inputpassword" type="password"
-                                                    class="form-control  shadow-sm px-4"
-                                                    name="password" [(ngModel)]="formLogin.password" required
-                                                    #password="ngModel"  >
-                                                <div role="alert" *ngIf="password.errors && f.submitted"
-                                                    style="color:red">
-                                                    Password is required!
-                                                </div>
-                                            </div>
-
-                                           
-
-                                            <div class="form-group mb-3" >
-                                              <label class="form-remember">
-                                                <input type="checkbox"/>Remember Me
-                                              </label><a class="form-recovery" href="#">Forgot Password?</a>
-                                            </div>
-
-                                           
-                                            
-                                            <div class="form-group mb-3">
-                                              <button type="submit">Log In</button>
-                                            </div>
-
-                                            <div class="text-center mt-2">
-                                                <p class="form-remember">
-                                                    Don't have an account?
-                                                    <a routerLink="/register">Click here to register</a>
-                                                </p>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div
-                                                  class="alert alert-danger"
-                                                  role="alert"
-                                                  *ngIf="f.submitted && isLoginFailed"
-                                                >
-                                                  Login failed: {{ errorMessage }}
-                                                </div>
-                                              </div>
-                                        </form>
-                                        <div class="alert alert-success" *ngIf="isLoggedIn">
-                                            Logged in as {{ roles }}.
-                                          </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="form-header">
+                      <h1>Account Login</h1>
                     </div>
+
+                    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmitLogin()" #f="ngForm"
+                      novalidate>
+
+                      <div class="form-group mb-3">
+                        <label for="inputUsername">Username</label>
+                        <input id="inputUsername" type="email" class="form-control shadow-sm px-4" name="username"
+                          [(ngModel)]="formLogin.username" required #username="ngModel">
+                        <div role="alert" *ngIf="username.errors && f.submitted" style="color:red"> Username is
+                          required! </div>
+                      </div>
+
+                      <div class="form-group mb-3">
+                        <label for="inputpassword">Password</label>
+                        <input id="inputpassword" type="password" class="form-control  shadow-sm px-4" name="password"
+                          [(ngModel)]="formLogin.password" required #password="ngModel">
+                        <div role="alert" *ngIf="password.errors && f.submitted" style="color:red">
+                          Password is required!
+                        </div>
+                      </div>
+
+
+
+                      <div class="form-group mb-3">
+                        <label class="form-remember">
+                          <input type="checkbox" />Remember Me
+                        </label><a class="form-recovery" href="#">Forgot Password?</a>
+                      </div>
+
+
+
+                      <div class="form-group mb-3">
+                        <button type="submit">Log In</button>
+                      </div>
+
+                      <div class="text-center mt-2">
+                        <p class="form-remember">
+                          Don't have an account?
+                          <a routerLink="/register">Click here to register</a>
+                        </p>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+                          Login failed: {{ errorMessage }}
+                        </div>
+                      </div>
+                    </form>
+                    <div class="alert alert-success" *ngIf="isLoggedIn">
+                      Logged in as {{ roles }}.
+                    </div>
+
+
+                   
+
+
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-
-
