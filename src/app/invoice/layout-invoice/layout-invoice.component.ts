@@ -23,6 +23,7 @@ export class LayoutInvoiceComponent   implements OnInit{
   
   invoiceForm!:FormGroup;
   clientForm!: FormGroup;
+  invInvoice: any;
 
   invClients: any;
   
@@ -51,14 +52,23 @@ export class LayoutInvoiceComponent   implements OnInit{
     client:new Client,
        
   };
+// -----------progress bar -------------
 
- 
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
+
+ // ----------- end progress bar -------------
 
   constructor(private route: ActivatedRoute,
     private router:Router,
     private builder: FormBuilder,
     private clientService: ClientService,
-    private invoiceService: InvoiceService,) {
+    private invoiceService: InvoiceService,
+    private _formBuilder: FormBuilder) {
 
       const zoneId = ZoneId.of(ZonedDateTimeInterceptor.UTC_ZONE_ID);
 
@@ -90,21 +100,15 @@ export class LayoutInvoiceComponent   implements OnInit{
      }
 
 
-
-
-
-  
-  
   ngOnInit(): void {
     
-   
-   
-  
+    this.getClients();
+
+    
     this.route.paramMap.subscribe((param) => {
       var id = String(param.get('id'));
       this.getById(id);
     });
-
    
   }
 
@@ -138,17 +142,8 @@ export class LayoutInvoiceComponent   implements OnInit{
           });
     
         });
-  
-
 
   }
-
-
- 
-
-
-
-
 
   update() {
 
@@ -164,5 +159,32 @@ export class LayoutInvoiceComponent   implements OnInit{
     })
   }
 
+  getClients() {
+    this.clientService.get().subscribe(res => {
+      this.invClients = res;
+      console.log(this.invClients);
+    })
+  }
 
+
+  clientChange() {
+
+
+    let id = this.invoiceForm.get('client.id')?.value
+
+    console.log(this.invoiceForm.get('client'));
+    console.log("id" + id);
+
+    this.clientService.getById(id).subscribe(res => {
+      console.log("id" + id);
+
+      let data: any;
+      data = res;
+      if (data != null) {
+        this.invoiceForm.get('remarks')?.setValue(data.address)
+      }
+    })
+
+
+  }
 }

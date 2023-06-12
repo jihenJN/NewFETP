@@ -24,6 +24,7 @@
     "@mdi/angular-material": "^7.2.96",
     "bootstrap": "^5.2.3",
     "css.gg": "^2.0.0",
+    "igniteui-angular": "^16.0.4",
     "jquery": "^3.6.4",
     "js-joda": "^1.11.0",
     "ngx-pagination": "^6.0.3",

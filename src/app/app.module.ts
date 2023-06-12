@@ -17,11 +17,15 @@ import { ZonedDateTimeInterceptorProviders } from './_helpers/ZonedDateTime.inte
 import {NgxPrintModule} from 'ngx-print';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
 
    
   ],
@@ -41,14 +45,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ClientModule,
     NgxPrintModule,
     MatTabsModule,
-    NgxPaginationModule
-    
+    NgxPaginationModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
 
   ],
   providers: [authInterceptorProviders,ZonedDateTimeInterceptorProviders],
   bootstrap: [AppComponent],
-  exports: [
-  
-  ]
+
 })
 export class AppModule { }

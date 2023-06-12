@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenStorage.getUser().authorities;
         // Call getUserWithAuthoritiesByLogin
         const login = data.username; // Adjust this based on the user property in the response
-        this.tokenStorage.getUserWithAuthoritiesByLogin(login);
+        // this.tokenStorage.getUserWithAuthoritiesByLogin(login);
         console.log("login=====", login)
 
       },

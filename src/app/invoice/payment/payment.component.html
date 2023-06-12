@@ -1,0 +1,54 @@
+<mat-stepper #stepper>
+
+
+    <mat-step>
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>cash payment</ng-template>
+        <mat-form-field>
+          <mat-label>Customer Name</mat-label>
+          <input matInput placeholder="Ex. LastName" formControlName="secondCtrl"
+                 required>
+        </mat-form-field>
+      </form>
+    </mat-step>
+  
+    
+    <mat-step >
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>With credit card</ng-template>
+        <mat-form-field>
+          <mat-label>Customer Name</mat-label>
+          <input matInput placeholder="Ex. LastName" formControlName="secondCtrl"
+                 required>
+        </mat-form-field>
+        <div class="input-line">
+          <label for="name">Card number</label>
+          <input type="text" name="name" id="name" placeholder="1111-2222-3333-4444">
+      </div>
+      <div class="input-container">
+          <div class="input-line">
+              <label for="name">Expiring Date</label>
+              <input type="text" name="name" id="name" placeholder="09-21">
+          </div>
+          <div class="input-line">
+              <label for="name">CVC</label>
+              <input type="text" name="name" id="name" placeholder="***">
+          </div>
+      </div>
+        <div>
+          
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  

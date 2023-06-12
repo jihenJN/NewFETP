@@ -54,17 +54,17 @@ export class TokenStorageService {
 
 
 
- public getUserWithAuthoritiesByLogin(login: string): void {
-    this.userService.getUserWithAuthoritiesByLogin(login).subscribe(
-      (user: User) => {
-        this.user = user;
-        this.saveUser(user); // Save the user details in sessionStorage
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
-  }
+//  public getUserWithAuthoritiesByLogin(login: string): void {
+//     this.userService.getUserWithAuthoritiesByLogin(login).subscribe(
+//       (user: User) => {
+//         this.user = user;
+//         this.saveUser(user); // Save the user details in sessionStorage
+//       },
+//       (error: any) => {
+//         console.error(error);
+//       }
+//     );
+//   }
   
 
 
