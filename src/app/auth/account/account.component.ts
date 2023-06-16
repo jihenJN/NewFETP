@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { User } from 'src/app/models/User';
+//import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { AccountService } from 'src/app/services/account.service';
+
 
 @Component({
   selector: 'app-account',
@@ -8,9 +11,23 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 export class AccountComponent implements OnInit{
 
-  currentUser: any;
+ currentUser:User={
+  id :'',
+  login : '',
+  firstName : '',
+  lastName :'',
+  email:'',
+  activated: false,
+  langKey: '',
+  authorities: [],
+  createdBy: '',
+  createdDate: new Date,
+  lastModifiedBy: '',
+  lastModifiedDate: new Date,
+    
+ };
   
-
+/*
   constructor(private token: TokenStorageService  ) { 
     
     console.log("**************this.token********",this.token)
@@ -20,7 +37,29 @@ export class AccountComponent implements OnInit{
     this.currentUser = this.token.getUser();
     console.log("**************this.token********",this.token)
     
+  }*/
+
+  constructor(private accountService :AccountService ) { }
+
+  ngOnInit(): void {
+    this.getUserAccount();
   }
+
+  getUserAccount() {
+    this.accountService.getAccount().subscribe(
+      (response) => {
+        this.currentUser = response;
+      
+        console.log(this.currentUser);
+      },
+      (error: any) => {
+        // Handle the error here
+        console.error(error);
+      }
+    );
+  }
+  
+
 
 }
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { User } from 'src/app/models/User';
+import { AccountService } from 'src/app/services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login',
@@ -10,6 +12,24 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 
 export class LoginComponent implements OnInit {
+
+
+  currentUser:User={
+    id :'',
+    login : '',
+    firstName : '',
+    lastName :'',
+    email:'',
+    activated: false,
+    langKey: '',
+    authorities: [],
+    createdBy: '',
+    createdDate: new Date,
+    lastModifiedBy: '',
+    lastModifiedDate: new Date,
+      
+   };
+
 
   formLogin: any = {
     username: null,
@@ -25,8 +45,10 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private tokenStorage: TokenStorageService) {
+    private tokenStorage: TokenStorageService,
+    private accountService:AccountService) {
     this.tokenStorage = tokenStorage;
+   
   }
 
   //Form Validables 
@@ -62,22 +84,16 @@ export class LoginComponent implements OnInit {
 
   onSubmitLogin(): void {
     const { username, password } = this.formLogin;
-    console.log("test");
-
     this.authService.login(username, password).subscribe({
       next: data => {
-        console.log("data : ", data);
+        
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().authorities;
-        // Call getUserWithAuthoritiesByLogin
-        const login = data.username; // Adjust this based on the user property in the response
-        // this.tokenStorage.getUserWithAuthoritiesByLogin(login);
-        console.log("login=====", login)
+        this.getUserAccount();
 
+             
       },
       error: err => {
         this.errorMessage = err.error.message;
@@ -85,6 +101,21 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
+
+  getUserAccount(): void {
+    this.accountService.getAccount().subscribe(
+      (response: User) => {
+        this.currentUser = response;
+        console.log(this.currentUser);
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+
+
 
   reloadPage(): void {
     window.location.reload();

@@ -14,9 +14,9 @@ export class UserService {
     return this.http.get<User[]>('http://localhost:8080/api/admin/users')
   }
 
-   getUserWithAuthoritiesByLogin(login: string): Observable<User> {
-    login="admin";
-    return this.http.get<User>(`http://localhost:8080/api/admin/users/${login}`);
+  
+  getUserWithAuthoritiesByLogin(login: string): Observable<User> {
+      return this.http.get<User>(`http://localhost:8080/api/admin/users/${login}`);
   }
 
   delete(id: string) {
