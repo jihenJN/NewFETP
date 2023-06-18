@@ -38,12 +38,30 @@
                             <td>{{client.phone}}</td>
 
 
-                            <td>
+                            <!--td>
                                 <a [routerLink]="['/editClient', client.id]" class="edit" data-toggle="modal"><i
                                         class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#" class="delete" data-toggle="modal" (click)="openDeleteModal(client.id)"><i
                                         class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </td-->
+                               
+                            <td *ngIf="isAdmin()">
+                                <a [routerLink]="['/editClient', client.id]" class="edit" data-toggle="modal"><i
+                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#" class="delete" data-toggle="modal"(click)="openDeleteModal(client.id)"><i class="material-icons"
+                                        data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                             </td>
+
+                            <td *ngIf="!isAdmin()">
+                                <a [routerLink]="['/editClient', client.id]" class="edit" data-toggle="modal"><i
+                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                <a href="#" class="delete" data-toggle="modal" (click)="openDeleteModal(client.id)" [class.disabled]="true"><i
+                                        class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            </td>
+
+                           
+
+
                         </tr>
 
                     </tbody>

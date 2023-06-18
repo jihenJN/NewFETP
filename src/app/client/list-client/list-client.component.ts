@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Client, ClientDto } from 'src/app/models/Client';
+import { User } from 'src/app/models/User';
+import { AccountService } from 'src/app/services/account.service';
 import { ClientService } from 'src/app/services/client.service';
 
 declare var window: any;
@@ -21,11 +23,30 @@ export class ListClientComponent  implements OnInit{
   
     deleteModal: any;
     idTodelete: string = '';
+
+    currentUser:User={
+      id :'',
+      login : '',
+      firstName : '',
+      lastName :'',
+      email:'',
+      activated: false,
+      langKey: '',
+      authorities: [],
+      createdBy: '',
+      createdDate: new Date,
+      lastModifiedBy: '',
+      lastModifiedDate: new Date,
+        
+     };
   
   
-    constructor(private clientService: ClientService) { }
+    constructor(private clientService: ClientService, private accountService :AccountService) { }
   
     ngOnInit(): void {
+
+      this.getUserAccount();
+      this.isAdmin();
   
       this.deleteModal = new window.bootstrap.Modal(
         document.getElementById('deleteModal')
@@ -97,7 +118,30 @@ export class ListClientComponent  implements OnInit{
       });
     }
   
+  /*****************JN: adding gestion des roles************************************** */
   
-  
+
+  getUserAccount() {
+    this.accountService.getAccount().subscribe(
+      (response) => {
+        this.currentUser = response;
+      
+        console.log(this.currentUser);
+      },
+      (error: any) => {
+        // Handle the error here
+        console.error(error);
+      }
+    );
+  }
+
+  isAdmin(): boolean|undefined {
+    console.log(this.currentUser.authorities?.includes('ROLE_ADMIN'))
+    return  this.currentUser.authorities?.includes('ROLE_ADMIN');
+  }
+
+
+
+
   }
   
