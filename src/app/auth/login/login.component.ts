@@ -91,9 +91,8 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.getUserAccount();
-
-             
+        this.getUserAccount();     
+        this.router.navigate(['/chart']);
       },
       error: err => {
         this.errorMessage = err.error.message;

@@ -27,17 +27,7 @@ export class AccountComponent implements OnInit{
     
  };
   
-/*
-  constructor(private token: TokenStorageService  ) { 
-    
-    console.log("**************this.token********",this.token)
-  }
 
-  ngOnInit(): void {
-    this.currentUser = this.token.getUser();
-    console.log("**************this.token********",this.token)
-    
-  }*/
 
   constructor(private accountService :AccountService ) { }
 
