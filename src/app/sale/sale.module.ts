@@ -7,12 +7,14 @@ import { ListSaleComponent } from './list-sale/list-sale.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ViewSaleComponent } from './view-sale/view-sale.component';
 
 
 @NgModule({
   declarations: [
     EditSaleComponent,
-    ListSaleComponent
+    ListSaleComponent,
+    ViewSaleComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   exports: [
     EditSaleComponent,
-    ListSaleComponent
+    ListSaleComponent,
+    ViewSaleComponent
   ]
 })
 export class SaleModule { }

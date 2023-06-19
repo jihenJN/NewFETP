@@ -15,6 +15,7 @@ import { EditInvoiceComponent } from '../invoice/edit-invoice/edit-invoice.compo
 import { ListUserComponent } from '../user/list-user/list-user.component';
 import { AddUserComponent } from '../user/add-user/add-user.component';
 import { ListSaleComponent } from '../sale/list-sale/list-sale.component';
+import { ViewSaleComponent } from '../sale/view-sale/view-sale.component';
 import { EditSaleComponent } from '../sale/edit-sale/edit-sale.component';
 import { LayoutInvoiceComponent } from '../invoice/layout-invoice/layout-invoice.component';
 import { ChartComponent } from '../statistics/chart/chart.component';
@@ -46,6 +47,7 @@ const routes: Routes = [
 
        
       { path:'listSale',component:ListSaleComponent},
+      { path:'viewSale/:id',component:ViewSaleComponent},
       { path:'editSale/:id',component:EditSaleComponent},
 
      

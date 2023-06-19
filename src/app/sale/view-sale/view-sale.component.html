@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  
+      <div *ngIf="sale">
+        <h2 data-cy="saleDetailsHeading"><span>Sale</span></h2>
+  
+        <hr />
+  
+     
+  
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ sale.id }}</span>
+          </dd>
+          <dt><span>Quantity</span></dt>
+          <dd>
+            <span>{{ sale.quantity }}</span>
+          </dd>
+          <dt><span>Price</span></dt>
+          <dd>
+            <span>{{ sale.price }}</span>
+          </dd>
+          <dt><span>Tax</span></dt>
+          <dd>
+            <span>{{ sale.tax }}</span>
+          </dd>
+          <dt><span>Discount</span></dt>
+          <dd>
+            <span>{{ sale.discount }}</span>
+          </dd>
+          <dt><span>Available</span></dt>
+          <dd>
+            <span>{{ sale.available }}</span>
+          </dd>
+          <dt><span>Product</span></dt>
+          <dd>
+            <div *ngIf="sale.product">
+              <a >{{ sale.product.name }}</a>
+            </div>
+          </dd>
+          <dt><span>Invoice</span></dt>
+          <dd>
+            <div *ngIf="sale.invoice">
+              <a>{{ sale.invoice.code }}</a>
+            </div>
+          </dd>
+        </dl>
+  
+      
+  
+       
+      
+    </div>
+  </div>
