@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Sale, SaleDto } from 'src/app/models/Sale';
 import { SaleService } from 'src/app/services/sale.service';
 
-
 declare var window: any;
 
 @Component({
