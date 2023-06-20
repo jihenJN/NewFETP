@@ -119,7 +119,6 @@ export class ListClientComponent  implements OnInit{
     }
   
   /*****************JN: adding gestion des roles************************************** */
-  
 
   getUserAccount() {
     this.accountService.getAccount().subscribe(

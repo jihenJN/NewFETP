@@ -308,3 +308,9 @@ table td img {
 	margin-right: 5px;
 	
 }
+
+a.disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+	pointer-events: none;
+}

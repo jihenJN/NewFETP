@@ -40,7 +40,8 @@
                             <td>{{invoice.tax}}</td>
                             <td>{{invoice.total}} DT</td>
                             <td><label [ngClass]="getStatusClass(invoice.status)"> {{invoice.status}} </label></td>
-                            <td>
+                            
+                            <td *ngIf="isAdmin()">
                                 <a  [routerLink]="['/editInvoice', invoice.id]"  class="edit" data-toggle="modal"><i class="material-icons"
                                         data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a type="button" class="delete" data-toggle="modal"
@@ -49,6 +50,17 @@
                                 <a [routerLink]="['/layoutInvoice', invoice.id]" type="button" class="print" data-toggle="modal"><i class="material-icons"
                                         data-toggle="tooltip" title="print">local_printshop</i></a>
                             </td>
+
+                            <td  *ngIf="!isAdmin()">
+                                <a  [routerLink]="['/editInvoice', invoice.id]"  class="edit" data-toggle="modal"><i class="material-icons"
+                                        data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <a href="#" class="delete" data-toggle="modal" (click)="openDeleteModal(invoice.id)" [class.disabled]="true"><i
+                                            class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                <a [routerLink]="['/layoutInvoice', invoice.id]" type="button" class="print" data-toggle="modal"><i class="material-icons"
+                                        data-toggle="tooltip" title="print">local_printshop</i></a>
+                            </td>
+
+                          
                         </tr>
 
                     </tbody>

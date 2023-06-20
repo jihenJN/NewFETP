@@ -35,20 +35,18 @@ export class AccountComponent implements OnInit{
     this.getUserAccount();
   }
 
-  getUserAccount() {
-    this.accountService.getAccount().subscribe(
-      (response) => {
+ 
+  getUserAccount(): void {
+    this.accountService.getAccount().subscribe({
+      next: (response: User) => {
         this.currentUser = response;
-      
         console.log(this.currentUser);
       },
-      (error: any) => {
-        // Handle the error here
+      error:(error: any) => {
         console.error(error);
       }
-    );
+   });
   }
-  
 
 
 }

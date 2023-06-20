@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product, ProductDto } from 'src/app/models/Product';
+import { User } from 'src/app/models/User';
+import { AccountService } from 'src/app/services/account.service';
 import { ProductService } from 'src/app/services/product.service';
 
 declare var window: any;
@@ -22,6 +24,26 @@ export class ListProductComponent implements OnInit {
   products: Product[] = [];
   productsDto: ProductDto[] = [];
 
+  currentUser:User={
+    id :'',
+    login : '',
+    firstName : '',
+    lastName :'',
+    email:'',
+    activated: false,
+    langKey: '',
+    authorities: [],
+    createdBy: '',
+    createdDate: new Date,
+    lastModifiedBy: '',
+    lastModifiedDate: new Date,
+      
+   };
+
+
+
+
+
   deleteModal: any;
   idTodelete: string = '';
 
@@ -31,7 +53,7 @@ export class ListProductComponent implements OnInit {
   tableSizes: any = [5, 10, 15, 20];
   searchText: any;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,private accountService :AccountService) { }
 
   ngOnInit(): void {
 
@@ -41,6 +63,7 @@ export class ListProductComponent implements OnInit {
 
     this.productList();
 
+    this.isAdmin();
 
     this.productService.get().subscribe((data: ProductDto[]) => {
       this.products = data;
@@ -125,6 +148,29 @@ export class ListProductComponent implements OnInit {
       }
     });
   }
+
+  /*****************JN: adding gestion des roles************************************** */
+  
+
+  getUserAccount() {
+    this.accountService.getAccount().subscribe(
+      (response) => {
+        this.currentUser = response;
+      
+        console.log(this.currentUser);
+      },
+      (error: any) => {
+        // Handle the error here
+        console.error(error);
+      }
+    );
+  }
+
+  isAdmin(): boolean|undefined {
+    console.log(this.currentUser.authorities?.includes('ROLE_ADMIN'))
+    return  this.currentUser.authorities?.includes('ROLE_ADMIN');
+  }
+
 
   
 

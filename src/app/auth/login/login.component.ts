@@ -102,16 +102,19 @@ export class LoginComponent implements OnInit {
   }
 
 
+
+
+   
   getUserAccount(): void {
-    this.accountService.getAccount().subscribe(
-      (response: User) => {
+    this.accountService.getAccount().subscribe({
+      next: (response: User) => {
         this.currentUser = response;
         console.log(this.currentUser);
       },
-      (error: any) => {
+      error:(error: any) => {
         console.error(error);
       }
-    );
+   });
   }
 
 

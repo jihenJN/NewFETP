@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Invoice, InvoiceDto } from 'src/app/models/Invoice';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { DatePipe } from '@angular/common';
+import { User } from 'src/app/models/User';
+import { AccountService } from 'src/app/services/account.service';
 
 
 
@@ -28,16 +30,37 @@ export class ListInvoiceComponent implements OnInit {
   deleteModal: any;
   idTodelete: string = '';
 
+  currentUser:User={
+    id :'',
+    login : '',
+    firstName : '',
+    lastName :'',
+    email:'',
+    activated: false,
+    langKey: '',
+    authorities: [],
+    createdBy: '',
+    createdDate: new Date,
+    lastModifiedBy: '',
+    lastModifiedDate: new Date,
+      
+   };
 
-  constructor(private invoiceService: InvoiceService) { }
+
+
+  constructor(private invoiceService: InvoiceService,private accountService :AccountService) { }
 
   ngOnInit(): void {
+
+    this.getUserAccount();
+    this.isAdmin();
+
 
     this.deleteModal = new window.bootstrap.Modal(
       document.getElementById('deleteModal')
     );
 
-
+  
     
     this.invoiceService.get().subscribe((data: InvoiceDto[]) => {
       this.invoices = data;
@@ -47,7 +70,7 @@ export class ListInvoiceComponent implements OnInit {
 
 
     this.get();
-
+   
 
   }
 
@@ -118,7 +141,7 @@ export class ListInvoiceComponent implements OnInit {
     });
   }
 
-//*****************JN:METHOD TO SYLE STATUS****************************** */
+//*****************JN:METHOD TO STYLE STATUS****************************** */
 
   getStatusClass(status:string): string {
     switch (status) {
@@ -133,5 +156,27 @@ export class ListInvoiceComponent implements OnInit {
         return 'badge badge-warning';
     }
   }
+
+/*****************JN: adding gestion des roles************************************** */
+
+ 
+getUserAccount(): void {
+  this.accountService.getAccount().subscribe({
+    next: (response: User) => {
+      this.currentUser = response;
+      console.log(this.currentUser);
+    },
+    error:(error: any) => {
+      console.error(error);
+    }
+ });
+}
+
+
+isAdmin(): boolean|undefined {
+  console.log(this.currentUser.authorities?.includes('ROLE_ADMIN'))
+  return  this.currentUser.authorities?.includes('ROLE_ADMIN');
+}
+
 
 }
