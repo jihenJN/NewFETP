@@ -9,12 +9,14 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
     SpinnerComponent,
+  
 
   ],
   imports: [
@@ -28,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     FooterComponent,
     SpinnerComponent,
+    
   ]
 })
 export class SharedModule { }

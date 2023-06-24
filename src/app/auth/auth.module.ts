@@ -7,6 +7,10 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './account/account.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SettingsComponent } from './settings/settings.component';
+import { ActivateComponent } from './activate/activate.component';
+import { SharedModule } from '../shared/shared.module';
+
 
 
 
@@ -15,6 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     AccountComponent,
+    SettingsComponent,
+    ActivateComponent,
+    
   
  
   ],
@@ -23,14 +30,17 @@ import { HttpClientModule } from '@angular/common/http';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
 
 
   ],
   exports: [
     LoginComponent,
     RegisterComponent,
-    AccountComponent
+    AccountComponent,
+    SettingsComponent,
+    ActivateComponent
   ]
 })
 export class AuthModule { }

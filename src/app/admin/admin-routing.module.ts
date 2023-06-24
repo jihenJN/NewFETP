@@ -19,6 +19,7 @@ import { ViewSaleComponent } from '../sale/view-sale/view-sale.component';
 import { EditSaleComponent } from '../sale/edit-sale/edit-sale.component';
 import { LayoutInvoiceComponent } from '../invoice/layout-invoice/layout-invoice.component';
 import { ChartComponent } from '../statistics/chart/chart.component';
+import { SettingsComponent } from '../auth/settings/settings.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'admin', pathMatch: 'full' },
      
       { path: 'account', component:AccountComponent},
+      {path:'settings', component:SettingsComponent},
 
       { path: 'productList', component:ListProductComponent },
       { path: 'createProduct', component: AddProductComponent },

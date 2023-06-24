@@ -25,7 +25,8 @@ export class AuthService {
     return this.http.post('http://localhost:8080/api/register', {
       'login' : username,
       'email' : email,
-      'password' : password
+      'password' : password,
+      'langKey': 'en'
     }, httpOptions);
   }
 }
