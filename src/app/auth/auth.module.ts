@@ -8,8 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './account/account.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SettingsComponent } from './settings/settings.component';
-import { ActivateComponent } from './activate/activate.component';
 import { SharedModule } from '../shared/shared.module';
+import { PasswordStrengthBarComponent } from './password-strength-bar/password-strength-bar.component';
+import { PasswordResetInitComponent } from './password-reset/password-reset-init/password-reset-init.component';
+import { PasswordResetFinishComponent } from './password-reset/password-reset-finish/password-reset-finish.component';
 
 
 
@@ -20,7 +22,10 @@ import { SharedModule } from '../shared/shared.module';
     RegisterComponent,
     AccountComponent,
     SettingsComponent,
-    ActivateComponent,
+    PasswordStrengthBarComponent,
+    PasswordResetInitComponent,
+    PasswordResetFinishComponent
+    
     
   
  
@@ -40,7 +45,10 @@ import { SharedModule } from '../shared/shared.module';
     RegisterComponent,
     AccountComponent,
     SettingsComponent,
-    ActivateComponent
+    PasswordStrengthBarComponent,
+    PasswordResetInitComponent,
+    PasswordResetFinishComponent,
+   
   ]
 })
 export class AuthModule { }
