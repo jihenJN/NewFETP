@@ -32,9 +32,7 @@ export class RegisterComponent implements OnInit {
   roles: string[] = [];
 
   strongPassword = false;
-  working = false;
-  submitted = false;
-  complete = false;
+
 
   password: string = '';
 
@@ -90,7 +88,6 @@ export class RegisterComponent implements OnInit {
     this.error = false;
     this.errorEmailExists = false;
     this.errorUserExists = false;
-    this.submitted = true;
 
 
     const { username, email, password } = this.formRegister;
@@ -101,14 +98,7 @@ export class RegisterComponent implements OnInit {
 
     if (this.formRegister.invalid) {
       return;
-    }
-
-    this.working = true;
-    setTimeout(() => {
-      this.formRegister.reset();
-      this.working = false;
-      this.complete = true;
-    }, 1000);
+    }   
   }
 
 
