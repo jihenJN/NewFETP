@@ -9,9 +9,9 @@ import { AccountComponent } from './account/account.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SettingsComponent } from './settings/settings.component';
 import { SharedModule } from '../shared/shared.module';
-import { PasswordStrengthBarComponent } from './password-strength-bar/password-strength-bar.component';
 import { PasswordResetInitComponent } from './password-reset/password-reset-init/password-reset-init.component';
 import { PasswordResetFinishComponent } from './password-reset/password-reset-finish/password-reset-finish.component';
+import { PasswordStrengthComponent } from './password-strength/password-strength.component';
 
 
 
@@ -22,9 +22,9 @@ import { PasswordResetFinishComponent } from './password-reset/password-reset-fi
     RegisterComponent,
     AccountComponent,
     SettingsComponent,
-    PasswordStrengthBarComponent,
     PasswordResetInitComponent,
-    PasswordResetFinishComponent
+    PasswordResetFinishComponent,
+    PasswordStrengthComponent
     
     
   
@@ -45,9 +45,9 @@ import { PasswordResetFinishComponent } from './password-reset/password-reset-fi
     RegisterComponent,
     AccountComponent,
     SettingsComponent,
-    PasswordStrengthBarComponent,
     PasswordResetInitComponent,
     PasswordResetFinishComponent,
+    PasswordStrengthComponent,
    
   ]
 })

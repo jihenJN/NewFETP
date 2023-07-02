@@ -31,7 +31,12 @@ export class RegisterComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
+  strongPassword = false;
+  working = false;
+  submitted = false;
+  complete = false;
 
+  password: string = '';
 
   constructor(private router: Router,
     private authService: AuthService,
@@ -39,14 +44,6 @@ export class RegisterComponent implements OnInit {
     private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-  /*  this.formRegister = this.formBuilder.group({
-      username: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-
-    });*/
-
-
 
     this.formRegister = new FormGroup({
       login: new FormControl('', {
@@ -70,6 +67,7 @@ export class RegisterComponent implements OnInit {
         nonNullable: true,
         validators: [Validators.required, Validators.minLength(4), Validators.maxLength(50)],
       }),
+
     });
 
 
@@ -92,14 +90,25 @@ export class RegisterComponent implements OnInit {
     this.error = false;
     this.errorEmailExists = false;
     this.errorUserExists = false;
+    this.submitted = true;
 
 
     const { username, email, password } = this.formRegister;
 
-    this.authService.register(username, email, password).
-    subscribe({
-      next: () => (this.success = true) , error: response => this.processError(response)});
-    
+    this.authService.register(username, email, password).subscribe({
+      next: () => (this.success = true), error: response => this.processError(response)
+    });
+
+    if (this.formRegister.invalid) {
+      return;
+    }
+
+    this.working = true;
+    setTimeout(() => {
+      this.formRegister.reset();
+      this.working = false;
+      this.complete = true;
+    }, 1000);
   }
 
 
@@ -111,6 +120,10 @@ export class RegisterComponent implements OnInit {
     } else {
       this.error = true;
     }
+  }
+
+  onPasswordStrengthChanged(event: boolean) {
+    this.strongPassword = event;
   }
 
   reloadPage(): void {
