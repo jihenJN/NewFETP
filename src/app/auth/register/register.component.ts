@@ -33,8 +33,8 @@ export class RegisterComponent implements OnInit {
 
   strongPassword = false;
 
+  hide = true;
 
-  password: string = '';
 
   constructor(private router: Router,
     private authService: AuthService,

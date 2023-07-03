@@ -273,3 +273,23 @@ body {
   padding-top: 0;
   background-color: #6f8295;
 }
+
+/* -----show and hide style----- */
+
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  padding-right: 40px; /* Ajustez cette valeur en fonction de la largeur de l'icône */
+}
+
+.password-input i {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* -----show and hide style----- */

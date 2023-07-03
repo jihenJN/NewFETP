@@ -42,6 +42,8 @@ export class LoginComponent implements OnInit {
   errorMessage2 = '';
   roles: string[] = [];
 
+  hide = true;
+
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
