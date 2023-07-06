@@ -14,12 +14,12 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 
 
-  currentUser:User={
-    id :'',
-    login : '',
-    firstName : '',
-    lastName :'',
-    email:'',
+  currentUser: User = {
+    id: '',
+    login: '',
+    firstName: '',
+    lastName: '',
+    email: '',
     activated: false,
     langKey: '',
     authorities: [],
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
     createdDate: new Date,
     lastModifiedBy: '',
     lastModifiedDate: new Date,
-      
-   };
+
+  };
 
 
   formLogin: any = {
@@ -41,16 +41,17 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   errorMessage2 = '';
   roles: string[] = [];
-
   hide = true;
+  isPasswordResetInitClicked = false;
+
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
-    private accountService:AccountService) {
+    private accountService: AccountService) {
     this.tokenStorage = tokenStorage;
-   
+
   }
 
   //Form Validables 
@@ -88,12 +89,12 @@ export class LoginComponent implements OnInit {
     const { username, password } = this.formLogin;
     this.authService.login(username, password).subscribe({
       next: data => {
-        
+
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.getUserAccount();     
+        this.getUserAccount();
         this.router.navigate(['/chart']);
       },
       error: err => {
@@ -106,17 +107,21 @@ export class LoginComponent implements OnInit {
 
 
 
-   
+
   getUserAccount(): void {
     this.accountService.getAccount().subscribe({
       next: (response: User) => {
         this.currentUser = response;
         console.log(this.currentUser);
       },
-      error:(error: any) => {
+      error: (error: any) => {
         console.error(error);
       }
-   });
+    });
+  }
+
+  handleForgotPassword() {
+    this.isPasswordResetInitClicked = true;
   }
 
 
