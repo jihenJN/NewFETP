@@ -56,6 +56,9 @@ export class ListProductComponent implements OnInit {
   constructor(private productService: ProductService,private accountService :AccountService) { }
 
   ngOnInit(): void {
+    
+    this.getUserAccount();
+    this.isAdmin();
 
     this.deleteModal = new window.bootstrap.Modal(
       document.getElementById('deleteModal')
@@ -63,7 +66,6 @@ export class ListProductComponent implements OnInit {
 
     this.productList();
 
-    this.isAdmin();
 
     this.productService.get().subscribe((data: ProductDto[]) => {
       this.products = data;
@@ -157,7 +159,7 @@ export class ListProductComponent implements OnInit {
       (response) => {
         this.currentUser = response;
       
-        console.log(this.currentUser);
+        console.log("this.currentUser++++"+this.currentUser);
       },
       (error: any) => {
         // Handle the error here
