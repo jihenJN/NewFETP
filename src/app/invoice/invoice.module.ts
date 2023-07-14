@@ -15,7 +15,18 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { TableFilterComponent } from './table-filter/table-filter.component';
 
+
+
+// Import PrimeNG modules
+import { AvatarModule } from 'primeng/avatar';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { AnimateModule } from 'primeng/animate';
 
 @NgModule({
   declarations: [
@@ -24,7 +35,8 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     EditInvoiceComponent,
     ListInvoiceComponent,
     LayoutInvoiceComponent,
-    PaymentComponent
+    PaymentComponent,
+    TableFilterComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +50,16 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-
+   
+    AvatarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TagModule,
+    TableModule,
+    MultiSelectModule,
+    InputTextModule,
+    DropdownModule,
+    AnimateModule,
     
   ],
   exports: [
@@ -47,7 +68,8 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     EditInvoiceComponent,
     ListInvoiceComponent,
     LayoutInvoiceComponent,
-    PaymentComponent
+    PaymentComponent,
+    TableFilterComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

@@ -20,6 +20,7 @@ import { EditSaleComponent } from '../sale/edit-sale/edit-sale.component';
 import { LayoutInvoiceComponent } from '../invoice/layout-invoice/layout-invoice.component';
 import { ChartComponent } from '../statistics/chart/chart.component';
 import { SettingsComponent } from '../auth/settings/settings.component';
+import { TableFilterComponent } from '../invoice/table-filter/table-filter.component';
 
 
 const routes: Routes = [
@@ -45,7 +46,7 @@ const routes: Routes = [
       { path:'createInvoice',component:AddInvoiceComponent},
       { path:'editInvoice/:id',component:EditInvoiceComponent},
       { path:'layoutInvoice/:id',component:LayoutInvoiceComponent},
-
+      { path: 'table', component: TableFilterComponent },
 
        
       { path:'listSale',component:ListSaleComponent},

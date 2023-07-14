@@ -6,6 +6,7 @@ import { AddInvoiceComponent } from './add-invoice/add-invoice.component';
 import { EditInvoiceComponent } from './edit-invoice/edit-invoice.component';
 import { LayoutInvoiceComponent } from './layout-invoice/layout-invoice.component';
 import { PaymentComponent } from './payment/payment.component';
+import { TableFilterComponent } from './table-filter/table-filter.component';
 
 const routes: Routes = [
   { path:'listInvoice',component:ListInvoiceComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path:'editInvoice/:id',component:EditInvoiceComponent},
   { path:'layoutInvoice/:id',component:LayoutInvoiceComponent},
   { path:'payment',component:PaymentComponent},
+  { path: 'table', component: TableFilterComponent }
 
   
 ];
