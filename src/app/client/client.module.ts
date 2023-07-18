@@ -8,14 +8,26 @@ import { SharedModule } from '../shared/shared.module';
 import { AddClientComponent } from './add-client/add-client.component';
 import { ListClientComponent } from './list-client/list-client.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
+import { TableClientComponent } from './table-client/table-client.component';
 
+
+
+// Import PrimeNG modules
+import { AvatarModule } from 'primeng/avatar';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { AnimateModule } from 'primeng/animate';
 
 @NgModule({
   declarations: [
-   
+
     AddClientComponent,
     ListClientComponent,
-    EditClientComponent
+    EditClientComponent,
+    TableClientComponent
   ],
   imports: [
     CommonModule,
@@ -23,10 +35,19 @@ import { EditClientComponent } from './edit-client/edit-client.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    AvatarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TagModule,
+    TableModule,
+    MultiSelectModule,
+    InputTextModule,
+    DropdownModule,
+    AnimateModule,
   ],
   exports: [
-   
+    TableClientComponent,
     ListClientComponent,
     EditClientComponent,
     AddClientComponent

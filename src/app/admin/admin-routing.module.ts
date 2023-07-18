@@ -21,6 +21,7 @@ import { LayoutInvoiceComponent } from '../invoice/layout-invoice/layout-invoice
 import { ChartComponent } from '../statistics/chart/chart.component';
 import { SettingsComponent } from '../auth/settings/settings.component';
 import { TableFilterComponent } from '../invoice/table-filter/table-filter.component';
+import { TableClientComponent } from '../client/table-client/table-client.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path:'listClient',component:ListClientComponent},
       { path:'createClient',component:AddClientComponent},
       { path:'editClient/:id',component:EditClientComponent},
+      {path:'table-client',component:TableClientComponent},
 
 
       { path:'listInvoice',component:ListInvoiceComponent},

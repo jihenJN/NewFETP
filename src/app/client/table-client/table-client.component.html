@@ -1,0 +1,118 @@
+
+
+
+
+    <div  > <h2  class="bandtit"> Manage <b>Customers</b></h2> </div>
+   
+
+
+<body  >
+    
+    <p-table
+        #dt2
+        [value]="clients"
+        dataKey="id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['name', 'address', 'phone', 'email']"
+        [tableStyle]="{ 'min-width': '60rem','font-family': 'Varela Round','font-size': '15px'}"
+        >
+        <ng-template pTemplate="caption" >
+            <div class="flex">
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt2.filterGlobal(getEventValue($event),'contains')" placeholder="Search keyword" />
+                   
+                </span>
+
+               
+            
+            </div>
+
+        </ng-template>
+        <ng-template pTemplate="header" >
+            <tr >
+                <th style="width:20%">Name</th>
+                <th style="width:25%">Address</th>
+                <th style="width:20%">Télephone</th>
+                <th style="width:20%">Email</th>
+                <th style="width:25%">Actions</th>
+            </tr>
+            <tr>
+                <th>
+                    <p-columnFilter type="text" field="name"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="address"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="phone"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="email"></p-columnFilter>
+                </th>
+                <th>
+                    <div class="ml-auto">
+                        <a routerLink="/createClient" class="btn btn-success" data-toggle="modal"><i
+                                class="material-icons">&#xE147;</i> <span style="font-family: 'Varela Round', sans-serif;">  New</span></a>
+                
+                    </div>
+                   
+                </th>
+               
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-client >
+            <tr>
+                <td>
+                    {{ client.name }}
+                </td>
+                <td>
+                    {{ client.address }}
+                </td>
+                <td>
+                    {{ client.phone }}
+                </td>
+                <td>
+                    {{ client.email }}
+                </td>
+                  
+                <td>
+                    <a [routerLink]="['/editClient', client.id]" class="edit" data-toggle="modal"><i
+                        class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                    <a href="#" class="delete" data-toggle="modal"(click)="openDeleteModal(client.id)"><i class="material-icons"
+                            data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                </td>
+               
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">No customers found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</body>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Warning!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete the item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" (click)="delete()">Confirm Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
