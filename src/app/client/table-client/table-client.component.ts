@@ -9,7 +9,8 @@ declare var window: any;
 @Component({
   selector: 'app-table-client',
   templateUrl: './table-client.component.html',
-  styleUrls: ['./table-client.component.css']
+  styleUrls: ['./table-client.component.css'],
+  
 })
 export class TableClientComponent implements OnInit{
   

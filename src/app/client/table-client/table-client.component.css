@@ -242,3 +242,21 @@ a.disabled {
 	pointer-events: none;
 }
 
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  }
+  
+/* PrimeNG - How to change the style of pTemplate="caption" 
+in p-table for a single component*/
+:host ::ng-deep {
+	#myTable {
+	  .p-datatable-header {
+		background: #435d7d;
+	    color: #fff;
+		font-family: 'Varela Round';
+	  }
+	}
+  }
