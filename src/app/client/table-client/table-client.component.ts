@@ -42,6 +42,10 @@ export class TableClientComponent implements OnInit{
 
   ngOnInit(): void {
     
+    
+    this.getUserAccount();
+    this.isAdmin();
+
     this.deleteModal = new window.bootstrap.Modal(
       document.getElementById('deleteModal')
     );
