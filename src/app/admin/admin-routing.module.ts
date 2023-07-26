@@ -22,6 +22,7 @@ import { ChartComponent } from '../statistics/chart/chart.component';
 import { SettingsComponent } from '../auth/settings/settings.component';
 import { TableFilterComponent } from '../invoice/table-filter/table-filter.component';
 import { TableClientComponent } from '../client/table-client/table-client.component';
+import { TableProductComponent } from '../product/table-product/table-product.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
       { path: 'productList', component:ListProductComponent },
       { path: 'createProduct', component: AddProductComponent },
       { path: 'editProduct/:id', component: EditProductComponent },
+      { path:'table-produit',component:TableProductComponent},
       
       { path:'listClient',component:ListClientComponent},
       { path:'createClient',component:AddClientComponent},

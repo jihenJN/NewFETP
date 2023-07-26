@@ -11,6 +11,7 @@ import { ListProductComponent } from './list-product/list-product.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchPipe } from './search/search.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { TableProductComponent } from './table-product/table-product.component';
 
 
 
@@ -22,6 +23,7 @@ import { SharedModule } from '../shared/shared.module';
     EditProductComponent,
     ListProductComponent,
     SearchPipe,
+    TableProductComponent,
 
 
     
@@ -41,6 +43,7 @@ import { SharedModule } from '../shared/shared.module';
     AddProductComponent,
     EditProductComponent,
     ListProductComponent,
+    TableProductComponent,
     
     
   ]

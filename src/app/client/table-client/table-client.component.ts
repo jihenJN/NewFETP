@@ -13,21 +13,21 @@ declare var window: any;
   
 })
 export class TableClientComponent implements OnInit{
-  
-  loading:boolean =false
-   
+
+  loading: boolean = false
+
   clients: Client[] = [];
   clientsDto: ClientDto[] = [];
 
   deleteModal: any;
   idTodelete: string = '';
 
-  currentUser:User={
-    id :'',
-    login : '',
-    firstName : '',
-    lastName :'',
-    email:'',
+  currentUser: User = {
+    id: '',
+    login: '',
+    firstName: '',
+    lastName: '',
+    email: '',
     activated: false,
     langKey: '',
     authorities: [],
@@ -35,8 +35,8 @@ export class TableClientComponent implements OnInit{
     createdDate: new Date,
     lastModifiedBy: '',
     lastModifiedDate: new Date,
-      
-   };
+
+  };
 
   constructor(private clientService: ClientService , private accountService :AccountService){}
 

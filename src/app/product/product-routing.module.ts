@@ -3,16 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListProductComponent } from './list-product/list-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { SearchPipe } from './search/search.pipe';
+import { TableProductComponent } from './table-product/table-product.component';
 
 
 const routes: Routes = [
   { path: 'productList', component:ListProductComponent },
   { path: 'createProduct', component: AddProductComponent },
   { path: 'editProduct/:id', component: EditProductComponent },
-  // { path: 'searchPipe', component:SearchPipe },
-
-
+  { path: 'table-product', component: TableProductComponent },
+  
 ];
 
 @NgModule({
