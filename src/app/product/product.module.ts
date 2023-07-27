@@ -13,6 +13,15 @@ import { SearchPipe } from './search/search.pipe';
 import { SharedModule } from '../shared/shared.module';
 import { TableProductComponent } from './table-product/table-product.component';
 
+// Import PrimeNG modules
+
+import { AvatarModule } from 'primeng/avatar';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { AnimateModule } from 'primeng/animate';
 
 
 
@@ -36,7 +45,15 @@ import { TableProductComponent } from './table-product/table-product.component';
     ReactiveFormsModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    AvatarModule,
+    TagModule,
+    TableModule,
+    MultiSelectModule,
+    InputTextModule,
+    DropdownModule,
+    AnimateModule,
+    
   ],
   exports: [
    
