@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product, ProductDto } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
 import { Table } from 'primeng/table';
+declare var window: any;
 
 
 @Component({
@@ -15,11 +16,17 @@ export class TableProductComponent  implements OnInit {
 
   products: Product[] = [];
   productsDto: ProductDto[] = [];
+  
+  deleteModal: any;
+  idTodelete: string = '';
+
 
   constructor(private productService: ProductService) { }
 
     ngOnInit(): void {
-     
+
+    
+      
       this.productService.get().subscribe((data: ProductDto[]) => {
         this.products = data;
         this.productsDto = this.inintProductDto(this.products);
@@ -29,6 +36,10 @@ export class TableProductComponent  implements OnInit {
     
   
       this.get();
+
+      this.deleteModal = new window.bootstrap.Modal(
+        document.getElementById('deleteModal')
+      );
       
   }
 
@@ -68,6 +79,24 @@ export class TableProductComponent  implements OnInit {
   private getPhoto(data: string): any {
     return 'data:image/jpg;base64,' + data;
   }
+
+  openDeleteModal(id: string) {
+    this.idTodelete = id;
+    this.deleteModal.show();
+  }
+
+  delete() {
+    this.productService.delete(this.idTodelete).subscribe({
+      next: (data: any) => {
+        this.products = this.products.filter(_ => _.id != this.idTodelete);
+        this.productsDto = this.inintProductDto(this.products);
+        this.deleteModal.hide();
+      }
+    });
+  }
+
+
+
 
   getSeverity(status: number) {
    if(status==0)
