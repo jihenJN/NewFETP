@@ -97,13 +97,26 @@
               
               
 
-                <td>
+                <!--td>
+                    <a [routerLink]="['/editProduct', product.id]" class="edit" data-toggle="modal"><i
+                        class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                    <a href="#" class="delete" data-toggle="modal"(click)="openDeleteModal(product.id)"><i class="material-icons"
+                            data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                </td-->
+               
+                <td *ngIf="isAdmin()">
                     <a [routerLink]="['/editProduct', product.id]" class="edit" data-toggle="modal"><i
                         class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                     <a href="#" class="delete" data-toggle="modal"(click)="openDeleteModal(product.id)"><i class="material-icons"
                             data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 </td>
-               
+
+                <td *ngIf="!isAdmin()">
+                    <a [routerLink]="['/editProduct', product.id]" class="edit" data-toggle="modal"><i
+                        class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                    <a href="#" class="delete" data-toggle="modal" (click)="openDeleteModal(product.id)" [class.disabled]="true"><i
+                            class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                </td>
                
               
 

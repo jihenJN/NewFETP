@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product, ProductDto } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
 import { Table } from 'primeng/table';
+import { User } from 'src/app/models/User';
+import { AccountService } from 'src/app/services/account.service';
 declare var window: any;
 
 
@@ -21,11 +23,29 @@ export class TableProductComponent  implements OnInit {
   idTodelete: string = '';
 
 
-  constructor(private productService: ProductService) { }
+  currentUser: User = {
+    id: '',
+    login: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    activated: false,
+    langKey: '',
+    authorities: [],
+    createdBy: '',
+    createdDate: new Date,
+    lastModifiedBy: '',
+    lastModifiedDate: new Date,
+
+  };
+
+  constructor(private productService: ProductService,private accountService :AccountService) { }
 
     ngOnInit(): void {
 
-    
+     
+      this.getUserAccount();
+      this.isAdmin();
       
       this.productService.get().subscribe((data: ProductDto[]) => {
         this.products = data;
@@ -106,6 +126,32 @@ export class TableProductComponent  implements OnInit {
    else
    return 'sucess'
 }
+
+/*****************JN: adding gestion des roles************************************** */
+
+getUserAccount() {
+  this.accountService.getAccount().subscribe(
+    (response) => {
+      this.currentUser = response;
+    
+      console.log(this.currentUser);
+    },
+    (error: any) => {
+      // Handle the error here
+      console.error(error);
+    }
+  );
+}
+
+
+isAdmin(): boolean|undefined {
+  console.log(this.currentUser.authorities?.includes('ROLE_ADMIN'))
+  return  this.currentUser.authorities?.includes('ROLE_ADMIN');
+}
+
+
+
+
 
 clear(table: Table) {
   table.clear();
