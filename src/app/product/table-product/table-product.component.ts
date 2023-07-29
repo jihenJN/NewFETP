@@ -65,9 +65,11 @@ export class TableProductComponent  implements OnInit {
 
 
   get() {
+    this.loading=true;
    
     this.productService.get().subscribe((data) => {
       this.products = data;
+      this.loading=false;
      
    
     });

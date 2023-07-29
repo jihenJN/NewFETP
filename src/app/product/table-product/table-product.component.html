@@ -1,5 +1,5 @@
 <body style="margin: 0 1rem 0 1rem;">
-    <div class="container-xl" >
+    <div class="container-xl"  *ngIf="!loading" >
     <p-table #dt2 [value]="productsDto" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -92,17 +92,8 @@
                 </td>
 
                 <td><p-tag [value]="product.inStock" [severity]="getSeverity(product.inStock)"></p-tag></td>
-                <td>{{product.tax}}</td>
-
+                <td>{{product.tax}}</td>            
               
-              
-
-                <!--td>
-                    <a [routerLink]="['/editProduct', product.id]" class="edit" data-toggle="modal"><i
-                        class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                    <a href="#" class="delete" data-toggle="modal"(click)="openDeleteModal(product.id)"><i class="material-icons"
-                            data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                </td-->
                
                 <td *ngIf="isAdmin()">
                     <a [routerLink]="['/editProduct', product.id]" class="edit" data-toggle="modal"><i
