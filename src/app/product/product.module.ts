@@ -7,9 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { ListProductComponent } from './list-product/list-product.component';
+
 import { NgxPaginationModule } from 'ngx-pagination';
-import { SearchPipe } from './search/search.pipe';
+
 import { SharedModule } from '../shared/shared.module';
 import { TableProductComponent } from './table-product/table-product.component';
 
@@ -30,8 +30,7 @@ import { AnimateModule } from 'primeng/animate';
    
     AddProductComponent,
     EditProductComponent,
-    ListProductComponent,
-    SearchPipe,
+   
     TableProductComponent,
 
 
@@ -59,7 +58,7 @@ import { AnimateModule } from 'primeng/animate';
    
     AddProductComponent,
     EditProductComponent,
-    ListProductComponent,
+  
     TableProductComponent,
     
     

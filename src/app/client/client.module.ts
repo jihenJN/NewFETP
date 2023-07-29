@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { AddClientComponent } from './add-client/add-client.component';
-import { ListClientComponent } from './list-client/list-client.component';
+
 import { EditClientComponent } from './edit-client/edit-client.component';
 // Import PrimeNG modules
 import { TableClientComponent } from './table-client/table-client.component';
@@ -22,7 +22,6 @@ import { AnimateModule } from 'primeng/animate';
   declarations: [
 
     AddClientComponent,
-    ListClientComponent,
     EditClientComponent,
     TableClientComponent
   ],
@@ -45,7 +44,6 @@ import { AnimateModule } from 'primeng/animate';
   ],
   exports: [
     TableClientComponent,
-    ListClientComponent,
     EditClientComponent,
     AddClientComponent
   ]

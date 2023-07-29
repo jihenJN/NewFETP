@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
-
-import { ListClientComponent } from '../client/list-client/list-client.component';
 import { AddClientComponent } from '../client/add-client/add-client.component';
 import { EditClientComponent } from '../client/edit-client/edit-client.component';
-import { ListProductComponent } from '../product/list-product/list-product.component';
 import { AddProductComponent } from '../product/add-product/add-product.component';
 import { EditProductComponent } from '../product/edit-product/edit-product.component';
 import { AccountComponent } from '../auth/account/account.component';
@@ -35,16 +32,14 @@ const routes: Routes = [
       { path: 'account', component:AccountComponent},
       {path:'settings', component:SettingsComponent},
 
-      { path: 'productList', component:ListProductComponent },
+      { path: 'productList', component:TableProductComponent },
       { path: 'createProduct', component: AddProductComponent },
       { path: 'editProduct/:id', component: EditProductComponent },
-      { path:'table-produit',component:TableProductComponent},
       
-      { path:'listClient',component:ListClientComponent},
+      { path:'listClient',component:TableClientComponent},
       { path:'createClient',component:AddClientComponent},
       { path:'editClient/:id',component:EditClientComponent},
-      {path:'table-client',component:TableClientComponent},
-
+     
 
       { path:'listInvoice',component:ListInvoiceComponent},
       { path:'createInvoice',component:AddInvoiceComponent},
