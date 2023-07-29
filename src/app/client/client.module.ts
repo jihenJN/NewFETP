@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AddClientComponent } from './add-client/add-client.component';
 
 import { EditClientComponent } from './edit-client/edit-client.component';
+
 // Import PrimeNG modules
 import { TableClientComponent } from './table-client/table-client.component';
 import { AvatarModule } from 'primeng/avatar';

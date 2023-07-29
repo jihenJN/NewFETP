@@ -20,6 +20,7 @@ import { SettingsComponent } from '../auth/settings/settings.component';
 import { TableFilterComponent } from '../invoice/table-filter/table-filter.component';
 import { TableClientComponent } from '../client/table-client/table-client.component';
 import { TableProductComponent } from '../product/table-product/table-product.component';
+import { TableSaleComponent } from '../sale/table-sale/table-sale.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,7 @@ const routes: Routes = [
       { path:'listSale',component:ListSaleComponent},
       { path:'viewSale/:id',component:ViewSaleComponent},
       { path:'editSale/:id',component:EditSaleComponent},
+      { path:'table-sale',component:TableSaleComponent},
 
      
       { path:'listUser',component:ListUserComponent},

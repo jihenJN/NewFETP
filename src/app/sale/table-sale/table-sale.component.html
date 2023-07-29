@@ -1,0 +1,137 @@
+<body style="margin: 0 1rem 0 1rem;">
+    <div class="container-xl" *ngIf="!loading">
+        <p-table #dt2 [value]="salesDto" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['invoice.code', 'product.name', 'quantity', 'amount']"
+            [tableStyle]="{ 'min-width': '60rem','font-family': 'Varela Round','font-size': '15px'}" id="myTable">
+
+
+            <ng-template pTemplate="caption">
+
+                <div class="flex">
+
+                    <span>
+                        <h2> Manage <b>Sales </b></h2>
+                    </span>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt2.filterGlobal(getEventValue($event),'contains')"
+                            placeholder="Search keyword" />
+                    </span>
+                </div>
+
+
+            </ng-template>
+
+
+
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:25%; color:#435d7d;">Invoice</th>
+                    <th style="width:25%; color:#435d7d;">Product</th>
+                    <th style="width:15%; color:#435d7d;">Quantity</th>
+                    <th style="width:10%; color:#435d7d;">Tax</th>
+                    <th style="width:10%; color:#435d7d;">Discount</th>
+                    <th style="width:15%; color:#435d7d;">Amount</th>
+                    <th style="width:10%; color:#435d7d;">Avail</th>
+                    <th style="width:15%; color:#435d7d;">View</th>
+                </tr>
+                <tr>
+                    <th>
+                        <p-columnFilter type="text" field="invoice.code"></p-columnFilter>
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="product.name"></p-columnFilter>
+                    </th>
+
+                    <th>
+                        <p-columnFilter type="text" field="quantity"></p-columnFilter>
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="tax"></p-columnFilter>
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="discount"></p-columnFilter>
+                    </th>
+                    
+                    <th>
+                        <p-columnFilter type="text" field="price"></p-columnFilter>
+                    </th>
+                   
+                  
+                        <th>
+                            <p-columnFilter type="boolean" field="available"></p-columnFilter>
+                        </th>
+                    
+                    <th>
+                      
+                    </th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-sale>
+                <tr>
+                    <td>{{sale.invoice?.code }}</td>
+                    <td>{{sale.product?.name}}</td>
+                    <td>{{sale.quantity}}</td>
+                    <td>{{sale.tax}}</td>
+                    <td> -{{sale.discount}} %</td>
+                    <td>{{sale.price}}</td>
+                   
+                 
+                    <td>
+                        <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': sale.available, 'text-red-500 pi-times-circle': !sale.available }"></i>
+                    </td>
+
+
+                    <td>
+
+                        <a [routerLink]="['/viewSale', sale.id]" type="button" class="view" data-toggle="modal"><i
+                               style="color: #435d7d;" class="material-icons" data-toggle="tooltip" title="View">&#xE8F4;</i></a>
+                    </td>
+
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5">No sales found.</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="flex align-items-center justify-content-between">
+                    In total there are {{sales ? sales.length : 0 }} sales.
+                </div>
+            </ng-template>
+
+        </p-table>
+    </div>
+
+    <div class=" container-xl text-center w-200" *ngIf="loading">
+        <app-spinner></app-spinner>
+    </div>
+
+
+
+</body>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Warning!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete the item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" (click)="delete()">Confirm Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
