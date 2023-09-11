@@ -1,70 +1,181 @@
-<div class="container">
-    <legend>Edit INVOICE</legend>
-    <form [formGroup]="invoiceForm">
-  
-     
-        <div class="mb-3">
-          <label for="txtcode" class="form-label">Code</label>
-          <input class="input form-control" formControlName="code" type="text">
+
+
+
+<div>
+  <h2 class="bandtit"> Edit <b>Invoice</b></h2>
+</div>
+<div class="container-xl" style="font-family: 'Varela Round';">
+
+  <form class="container" [formGroup]="invoiceForm">
+    <div class="row">
+      <div class="form-group">
+
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label>invoice code </label>
+            <input formControlName="code" class="form-control" readonly  />
+          </div>
+
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label>Date</label>
+            <input type="datetime" formControlName="date" class="form-control" readonly />
+          </div>
         </div>
 
 
-      <div formGroupName="client">
-        <label>Client: {{invoice.client?.name}}</label>
-        <select formControlName="id" (change)="clientChange()" class="form-control">
-          <option [selected]="invoice.client?.name">{{invoice.client?.name}}</option>
-          <option *ngFor="let item of invClients" [ngValue]="item.id">{{item.name}}
-          </option>
-        </select> <br>
-      </div>
-  
-
-    <div class="mb-3">
-        <label for="txtremarks" class="form-label">remarks</label>
-        <textarea class="input form-control" formControlName="remarks" type="text"></textarea>
-      </div>
-  
-
-      <div class="mb-3">
-        <label for="txtdate" class="form-label">date</label>
-        <input type="datetime" formControlName="date" class="form-control" readonly />
-      </div>
-  
-     
-   
-  
-      <div class="mb-3">
-        <label for="txtTax" class="form-label">TAX</label>
-        <input class="form-control" formControlName="tax" type="number" />
-      </div>
-  
-      <div class="mb-3">
-        <label for="txtDiscount" class="form-label">Discount</label>
-        <input class="form-control" formControlName="discount" type="number" />
-      </div>
-  
-  
-      <div class="mb-3">
-        <label for="txttotal" class="form-label">Total </label>
-        <input class="form-control" formControlName="total" type="number" />
-      </div>
-  
+        <div class="row justify-content-between text-left">
 
 
-  
-      <div class="mb-3">
-        <label for="txtstatus" class="form-label">status </label>
+
+          <div class="form-group col-sm-6 flex-column d-flex" formGroupName="client">
+            <div formGroupName="client">
+              <label>Client: {{invoice.client?.name}}</label>
+              <select formControlName="id" (change)="clientChange()" class="form-control">
+                <option [selected]="invoice.client?.name">{{invoice.client?.name}}</option>
+                <option *ngFor="let item of invClients" [ngValue]="item.id">{{item.name}}
+                </option>
+              </select> <br>
+            </div>
+          </div>
+
+
+
+
+
+          <div class="form-group col-sm-6 flex-column d-flex">
+            <label>Delivery Address</label>
+            <input type="text" formControlName="remarks" class="form-control" />
+          </div>
+        </div>
+
+
+        <label>Status</label>
         <select formControlName="status" class="form-control">
           <option *ngFor="let item of invStatus" [value]="item">{{item}} </option>
-        </select>
+        </select> <br>
+
+
+
+
       </div>
+    </div>
+
+
+
+    <div class="row">
+      <table class="table table-striped table-hover" formArrayName="sales">
+        <thead thead class="table-title">
+          <tr>
+            <td>Sale N</td>
+            <td>Product</td>
+            <td>Unit Price (DT)</td>
+            <td>Quantity</td>
+            <td>Available</td>
+            <td>Tax</td>
+            <td>Discount %</td>
+            <td>Sale Amount (DT)</td>
+            <td>Action </td>
+          </tr>
+        </thead>
+        <!--tbody *ngFor="let item of invsales.controls;let i=index" [formGroupName]="i">
+            <td> {{i+1}}</td>
+  
+            <td formGroupName="product">
+              <select style="width:10rem" formControlName="id" (change)="productChange(i)" class="form-control">
+                <option value="" disabled selected>Select a product...</option>
+                <option *ngFor="let item of invProducts" [value]="item.id">{{item.name}} </option>
+              </select>
+            </td>
+  
+            <td>
+              <input class="form-control" (change)="ItemCalculation(i)" formControlName="unitPrice" />
+            </td>
+            <td>
+              <input class="form-control" (change)="ItemCalculation(i)" formControlName="quantity" />
+            </td>
+            <td>
+              <input class="form-control" formControlName="available" />
+            </td>
+  
+            <td>
+              <input class="form-control" formControlName="tax" />
+            </td>
+  
+            <td>
+              <input class="form-control" (change)="ItemCalculation(i)" formControlName="discount" />
+            </td>
+  
+            <td>
+              <input class="form-control" formControlName="price" readonly />
+            </td>
   
   
   
-      <div>
+            <td>
+              <button type="button"  (click)="RemoveSale(i)" class="btn  btn-icon btn-danger">  <i class="typcn typcn-delete"></i></button>
+            </td>
+  
+          </tbody-->
+        <!--tfoot>
+            <td colspan="8">
+             
+              <button (click)="addSale()" type="button" class="btn btn-rounded btn-icon  btn-success" >
+                <i class="typcn typcn-plus"></i>
+              </button>
+  
+            </td>
+  
+          </tfoot-->
+      </table>
+
+    </div>
+
+
+    <div class="row">
+
+      <div class="row justify-content-between text-left">
+
+        <div class="form-group col-sm-4 flex-column d-flex">
+          <label> Total Tax</label>
+          <input type="number" formControlName="tax" class="form-control" readonly />
+        </div>
+
+
+        <div class="form-group col-sm-4 flex-column d-flex">
+          <label> Total Discount</label>
+          <input type="number" formControlName="discount" class="form-control" readonly />
+        </div>
+
+        <div class="form-group col-sm-4 flex-column d-flex">
+          <label>Total Summary</label>
+          <input formControlName="total" class="form-control" readonly />
+        </div>
+
+
+
+      </div>
+
+    </div> <br>
+
+
+
+    <div class="row">
+      <div class="col-sm-8"></div> <!-- Empty column to push the button to the right -->
+      <div class="form-group col-sm-2 flex-column d-flex">
         <button class="button" type="button" (click)="update()" class="btn btn-primary mx-1">Update</button>
-        <button class="button" type="button" routerLink="/listInvoice" class="btn btn-danger mx-1">Back</button>
       </div>
-  
-    </form>
-  </div>
+      <div class="form-group col-sm-2 flex-column d-flex">
+        <button type="button" routerLink="/listInvoice" class="btn btn-danger">Cancel</button>
+      </div>
+    </div>
+
+
+
+
+
+
+
+  </form>
+
+
+</div>
