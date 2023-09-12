@@ -53,7 +53,6 @@ export class InvoiceService {
   
 
 
-
   delete(id: string) {
     return this.http.delete<Invoice>(`http://localhost:8080/api/invoices/${id}`);
   }

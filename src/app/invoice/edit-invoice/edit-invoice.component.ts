@@ -44,7 +44,7 @@ export class EditInvoiceComponent  implements OnInit{
     remarks:'',
     tax:0,
     discount:0,
-    date :new Date('2023-05-11T10:00:00.000Z'),
+    date :new Date,
     total:0,
     status:'',
     client:new Client,
@@ -63,7 +63,7 @@ export class EditInvoiceComponent  implements OnInit{
 
    
       this.invoiceForm = this.builder.group({
-
+        id: this.builder.control('', Validators.required),
         code: this.builder.control('', Validators.required),
         client: this.builder.group({
           id: this.builder.control('', Validators.required)
@@ -127,7 +127,7 @@ export class EditInvoiceComponent  implements OnInit{
             remarks: this.invoice.remarks,
             tax: this.invoice.tax,
             discount: this.invoice.discount,
-            date: this.invoice.date,
+            date: date,
             total:this.invoice.total,
             status: this.invoice.status,
             client: this.invoice.client?.name,

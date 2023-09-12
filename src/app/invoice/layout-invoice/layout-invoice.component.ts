@@ -46,7 +46,7 @@ export class LayoutInvoiceComponent   implements OnInit{
     remarks:'',
     tax:0,
     discount:0,
-    date :new Date('2023-05-11T10:00:00.000Z'),
+    date :new Date,
     total:0,
     status:'',
     client:new Client,
