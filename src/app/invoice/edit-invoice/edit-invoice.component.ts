@@ -23,8 +23,9 @@ export class EditInvoiceComponent  implements OnInit{
   invoiceForm!:FormGroup;
   clientForm!: FormGroup;
 
-  invClients: any;
-  
+ 
+  invClient: any;
+
   invStatus: status[] = [
     status.DRAFT,
     status.SENT,
@@ -145,11 +146,10 @@ export class EditInvoiceComponent  implements OnInit{
 
   getClients() {
     this.clientService.get().subscribe(res => {
-      this.invClients = res;
-      console.log(this.invClients);
+      this.invClient = res;
+      console.log(this.invClient);
     })
   }
-
 
 
   clientChange() {
@@ -166,8 +166,7 @@ export class EditInvoiceComponent  implements OnInit{
       let data: any;
       data = res;
       if (data != null) {
-        this.invoiceForm.get('remarks')?.setValue(
-          'delivery address: ' + data.address)
+        this.invoiceForm.get('remarks')?.setValue(data.address)
       }
     })
 
