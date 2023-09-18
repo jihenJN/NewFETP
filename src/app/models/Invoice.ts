@@ -1,4 +1,5 @@
 import { Client } from "./Client";
+import { Sale } from "./Sale";
 
 export class Invoice {
   id:string;
@@ -10,7 +11,7 @@ export class Invoice {
   total: number;
   status:string;
   client?: Pick<Client,'name'> | null;
-  
+  sales?:Sale[]
 
 
 
@@ -40,7 +41,7 @@ export interface InvoiceDto {
   total: number;
   status:string;
   client?: Pick<Client,'name'> | null;
-
+  sales?:Sale[]
 }
 
 

@@ -291,3 +291,16 @@ table.table .avatar {
 	margin: -15px auto 10px;
 }
 
+
+select.form-control[_ngcontent-ohu-c7], .select2-container--default[_ngcontent-ohu-c7] select.select2-selection--single[_ngcontent-ohu-c7], .select2-container--default[_ngcontent-ohu-c7] .select2-selection--single[_ngcontent-ohu-c7] select.select2-search__field[_ngcontent-ohu-c7], select.typeahead[_ngcontent-ohu-c7], select.tt-query[_ngcontent-ohu-c7], select.tt-hint[_ngcontent-ohu-c7] {
+    padding: 0.4375rem 0.75rem;
+    border: 0;
+    outline: 1px solid #ced4da;
+}
+
+select.form-control, .select2-container--default select.select2-selection--single, .select2-container--default .select2-selection--single select.select2-search__field, select.typeahead, select.tt-query, select.tt-hint {
+    padding: 0.4375rem 0.75rem;
+    border: 0;
+    outline: 1px solid #ced4da;
+    color: #495057;;
+}

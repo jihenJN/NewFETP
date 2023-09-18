@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/models/Client';
 import { Invoice } from 'src/app/models/Invoice';
@@ -9,6 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { status } from 'src/app/models/Status';
 import { ZonedDateTime, ZoneId } from '@js-joda/core';
 import { ZonedDateTimeInterceptor } from 'src/app/_helpers/ZonedDateTime.interceptor';
+import { Sale } from 'src/app/models/Sale';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class EditInvoiceComponent  implements OnInit{
 
  
   invClient: any;
+  sales?:Sale[];
 
   invStatus: status[] = [
     status.DRAFT,
@@ -49,7 +51,7 @@ export class EditInvoiceComponent  implements OnInit{
     total:0,
     status:'',
     client:new Client,
-       
+    sales:[]
   };
 
  
@@ -83,7 +85,7 @@ export class EditInvoiceComponent  implements OnInit{
         tax: this.builder.control(19),
         total: this.builder.control(0),
         status: this.builder.control('DRAFT'),
-        sales: this.builder.array([])
+        //sales: this.builder.array([])
   
       })
       
@@ -121,6 +123,9 @@ export class EditInvoiceComponent  implements OnInit{
       this.invoice = data;
       console.log( "this.sale" , this.invoice);
       
+      this.sales = this.invoice.sales;
+
+      
       //----JN It is very important to convert product(object) to form group --------//
             this.invoiceForm.patchValue({
             id: this.invoice.id,
@@ -132,8 +137,7 @@ export class EditInvoiceComponent  implements OnInit{
             total:this.invoice.total,
             status: this.invoice.status,
             client: this.invoice.client?.name,
-          
-
+           
 
           });
     
