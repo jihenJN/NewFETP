@@ -1,18 +1,15 @@
-
-import { Invoice } from "./Invoice";
-import { Product } from "./Product";
+import { Invoice } from './Invoice';
+import { Product } from './Product';
 
 export class Sale {
-
   id: string;
   quantity: number;
   price: number;
   tax: number;
   discount: number;
   available: boolean;
-  product?: Pick<Product, 'name'| 'price'> | null;
+  product?: Pick<Product, 'name' | 'price'> | null;
   invoice?: Pick<Invoice, 'code'> | null;
-
 
   constructor() {
     this.id = '';
@@ -23,7 +20,6 @@ export class Sale {
     this.available = true;
     this.product = null;
     this.invoice = null;
-
   }
 }
 
@@ -34,6 +30,6 @@ export interface SaleDto {
   tax: number;
   discount: number;
   available: boolean;
-  product?: Pick<Product, 'name'|'price'> | null;
+  product?: Pick<Product, 'name' | 'price'> | null;
   invoice?: Pick<Invoice, 'code'> | null;
 }
