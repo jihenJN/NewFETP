@@ -84,12 +84,12 @@
 
         <tbody *ngFor="let sale of sales;let i=index" [formGroupName]="i">
           <td> {{i+1}}</td>
-          <!--td formGroupName="product">
+          <td formGroupName="product">
             <select style="width:10rem" formControlName="id" class="form-control">
               <option value="" disabled selected>Select a product...</option>
-              <option *ngFor="let item of sale.product?.name">{{sale.product?.name}} </option>
+              <option [selected]="sale.product?.name">{{sale.product?.name}}</option>
             </select>
-          </!td-->
+          </td>
 
           <td>
             <input class="form-control" formControlName="unitPrice" />

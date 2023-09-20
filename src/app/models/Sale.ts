@@ -8,7 +8,7 @@ export class Sale {
   tax: number;
   discount: number;
   available: boolean;
-  product?: Pick<Product, 'name' | 'price'> | null;
+  product?: Pick<Product, 'name' | 'id' | 'price'> | null;
   invoice?: Pick<Invoice, 'code'> | null;
 
   constructor() {
@@ -30,6 +30,6 @@ export interface SaleDto {
   tax: number;
   discount: number;
   available: boolean;
-  product?: Pick<Product, 'name' | 'price'> | null;
+  product?: Pick<Product, 'name' | 'id' | 'price'> | null;
   invoice?: Pick<Invoice, 'code'> | null;
 }

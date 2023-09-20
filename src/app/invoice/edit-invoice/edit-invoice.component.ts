@@ -118,7 +118,7 @@ export class EditInvoiceComponent implements OnInit {
             discount: this.builder.control(sale.discount),
             available: this.builder.control(sale.available),
             product: this.builder.group({
-              id: this.builder.control('', Validators.required),
+              id: this.builder.control(sale.product?.id, Validators.required),
             }),
             invoice: this.builder.group({
               id: this.builder.control('', Validators.required),
