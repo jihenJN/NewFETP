@@ -93,9 +93,9 @@ export class EditInvoiceComponent implements OnInit {
   getById(id: string) {
     // Access the sales FormArray
     const salesFormArray = this.invoiceForm.get('sales') as FormArray;
-
+    console.log('salesFormArray' + salesFormArray);
     const date = this.invoiceForm.get('date')?.value;
-    console.log(date);
+    console.log('date' + date);
 
     const formattedDate = ZonedDateTime.parse(date).format(
       ZonedDateTimeInterceptor.DATE_TIME_FORMAT
@@ -121,7 +121,7 @@ export class EditInvoiceComponent implements OnInit {
               id: this.builder.control(sale.product?.id, Validators.required),
             }),
             invoice: this.builder.group({
-              id: this.builder.control('', Validators.required),
+              id: this.builder.control(sale.invoice?.id, Validators.required),
             }),
           })
         );
@@ -137,7 +137,7 @@ export class EditInvoiceComponent implements OnInit {
         date: date,
         total: this.invoice.total,
         status: this.invoice.status,
-        client: this.invoice.client?.name,
+        client: this.invoice.client,
         sales: this.sales,
       });
     });
