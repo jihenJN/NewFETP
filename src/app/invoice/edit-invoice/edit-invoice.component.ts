@@ -21,6 +21,10 @@ export class EditInvoiceComponent implements OnInit {
   clientForm!: FormGroup;
 
   invClient: any;
+  invProducts: any;
+  invoiceProduct!: FormGroup<any>;
+  invSales!: FormArray<any>;
+
   sales?: Sale[];
 
   invStatus: status[] = [
@@ -52,7 +56,8 @@ export class EditInvoiceComponent implements OnInit {
     private router: Router,
     private builder: FormBuilder,
     private clientService: ClientService,
-    private invoiceService: InvoiceService
+    private invoiceService: InvoiceService,
+    private productService: ProductService
   ) {
     const zoneId = ZoneId.of(ZonedDateTimeInterceptor.UTC_ZONE_ID);
 
@@ -83,6 +88,7 @@ export class EditInvoiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.getClients();
+    this.getProducts();
 
     this.route.paramMap.subscribe((param) => {
       var id = String(param.get('id'));
@@ -143,6 +149,13 @@ export class EditInvoiceComponent implements OnInit {
     });
   }
 
+  getProducts() {
+    this.productService.get().subscribe((res) => {
+      this.invProducts = res;
+      console.log(this.invProducts);
+    });
+  }
+
   getClients() {
     this.clientService.get().subscribe((res) => {
       this.invClient = res;
@@ -165,6 +178,71 @@ export class EditInvoiceComponent implements OnInit {
         this.invoiceForm.get('remarks')?.setValue(data.address);
       }
     });
+  }
+
+  productChange(index: any) {
+    this.invSales = this.invoiceForm.get('sales') as FormArray;
+    this.invoiceProduct = this.invSales.at(index) as FormGroup;
+
+    const selectedProductId =
+      this.invSales.controls[index].get('product.id')?.value;
+    console.log('selectedProductId-------' + selectedProductId);
+    // let id = this.invoiceForm.get('product.id')?.value
+
+    let id = selectedProductId;
+
+    console.log('-------------------', this.invoiceForm.get('product.id'));
+    console.log('id' + id);
+
+    this.productService.getById(id).subscribe((res) => {
+      console.log('id' + id);
+      let data: any;
+      data = res;
+      if (data != null) {
+        this.invoiceProduct.get('unitPrice')?.setValue(data.price);
+        this.invoiceProduct.get('tax')?.setValue(data.tax);
+
+        this.ItemCalculation(index);
+      }
+    });
+  }
+
+  ItemCalculation(index: any) {
+    this.invSales = this.invoiceForm.get('sales') as FormArray;
+    this.invoiceProduct = this.invSales.at(index) as FormGroup;
+    let quantity = this.invoiceProduct.get('quantity')?.value;
+    let unitPrice = this.invoiceProduct.get('unitPrice')?.value;
+    let discount = this.invoiceProduct.get('discount')?.value;
+    let discountRate = discount / 100;
+    let price = quantity * unitPrice - quantity * unitPrice * discountRate;
+    this.invoiceProduct.get('price')?.setValue(price);
+    this.summuryCalculation();
+  }
+
+  RemoveSale(index: any) {
+    this.invSales.removeAt(index);
+    this.summuryCalculation();
+  }
+
+  summuryCalculation() {
+    let array = this.invoiceForm.getRawValue().sales;
+    let sumTotal = 0;
+    let origineSumTotal = 0;
+    let globalDiscount = 0;
+    array.forEach((x: any) => {
+      sumTotal = sumTotal + x.price;
+    });
+
+    array.forEach((x: any) => {
+      origineSumTotal = origineSumTotal + x.unitPrice * x.quantity;
+    });
+
+    globalDiscount = ((origineSumTotal - sumTotal) / origineSumTotal) * 100;
+
+    this.invoiceForm.get('total')?.setValue(sumTotal);
+    this.invoiceForm
+      .get('discount')
+      ?.setValue(Number(globalDiscount.toFixed(2)));
   }
 
   update() {
