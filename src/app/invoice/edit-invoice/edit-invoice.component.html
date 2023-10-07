@@ -69,30 +69,19 @@
           </tr>
         </thead>
 
-        <!--tbody *ngFor="let sale of sales;let i=index" [formGroupName]="i"  >
-          <td> {{i+1}}</td>
-          <td> {{sale.product?.name}}</td>
-          <td> {{sale.product?.price}}</td>
-          <td> {{sale.quantity}}</td>
-          <td> {{sale.available}}</td>
-          <td> {{sale.tax}}</td>
-          <td> {{sale.discount}}</td>
-          <td> {{sale.price}}</td>
-
-        </!--tbody-->
 
 
-        <tbody *ngFor="let sale of sales;let i=index" [formGroupName]="i">
+        <tbody *ngFor="let sale of invsales.controls;let i=index" [formGroupName]="i">
           <td> {{i+1}}</td>
           <td formGroupName="product">
             <select style="width:10rem" formControlName="id" (change)="productChange(i)" class="form-control">
-              <option [selected]="sale.product?.name">{{sale.product?.name}}</option>
+              <!--option [selected]="sale.product?.name">{{sale.product?.name}}</option-->
               <option *ngFor="let item of invProducts" [value]="item.id">{{item.name}} </option>
             </select>
           </td>
 
           <td>
-            <input class="form-control" (change)="ItemCalculation(i)" formControlName="unitPrice" />
+            <input class="form-control" (change)="ItemCalculation(i)" formControlName="unitPrice" readonly />
           </td>
           <td>
             <input class="form-control" (change)="ItemCalculation(i)" formControlName="quantity" />
@@ -122,16 +111,16 @@
 
         </tbody>
 
-        <!--tfoot>
-            <td colspan="8">
-             
-              <button (click)="addSale()" type="button" class="btn btn-rounded btn-icon  btn-success" >
-                <i class="typcn typcn-plus"></i>
-              </button>
-  
-            </td>
-  
-          </tfoot-->
+        <tfoot>
+          <td colspan="8">
+
+            <button (click)="addSale()" type="button" class="btn btn-rounded btn-icon  btn-success">
+              <i class="typcn typcn-plus"></i>
+            </button>
+
+          </td>
+
+        </tfoot>
       </table>
 
     </div>

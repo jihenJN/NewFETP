@@ -76,8 +76,6 @@ export class EditInvoiceComponent implements OnInit {
         ),
         Validators.required,
       ],
-
-      //date: this.builder.control(Date, Validators.required),
       discount: this.builder.control(0),
       tax: this.builder.control(19),
       total: this.builder.control(0),
@@ -89,7 +87,6 @@ export class EditInvoiceComponent implements OnInit {
   ngOnInit(): void {
     this.getClients();
     this.getProducts();
-
     this.route.paramMap.subscribe((param) => {
       var id = String(param.get('id'));
       this.getById(id);
@@ -97,16 +94,14 @@ export class EditInvoiceComponent implements OnInit {
   }
 
   getById(id: string) {
-    // Access the sales FormArray
-    const salesFormArray = this.invoiceForm.get('sales') as FormArray;
-    console.log('salesFormArray' + salesFormArray);
     const date = this.invoiceForm.get('date')?.value;
-    console.log('date' + date);
-
     const formattedDate = ZonedDateTime.parse(date).format(
       ZonedDateTimeInterceptor.DATE_TIME_FORMAT
     );
     const invoiceData = { ...this.invoiceForm.value, date: formattedDate };
+
+    // Access the sales FormArray
+    const salesFormArray = this.invoiceForm.get('sales') as FormArray;
 
     this.invoiceService.getById(id).subscribe((data) => {
       this.invoice = data;
@@ -146,6 +141,7 @@ export class EditInvoiceComponent implements OnInit {
         client: this.invoice.client,
         sales: this.sales,
       });
+      console.log('aaa', this.sales);
     });
   }
 
@@ -165,13 +161,7 @@ export class EditInvoiceComponent implements OnInit {
 
   clientChange() {
     let id = this.invoiceForm.get('client.id')?.value;
-
-    console.log(this.invoiceForm.get('client'));
-    console.log('id' + id);
-
     this.clientService.getById(id).subscribe((res) => {
-      console.log('id' + id);
-
       let data: any;
       data = res;
       if (data != null) {
@@ -183,25 +173,15 @@ export class EditInvoiceComponent implements OnInit {
   productChange(index: any) {
     this.invSales = this.invoiceForm.get('sales') as FormArray;
     this.invoiceProduct = this.invSales.at(index) as FormGroup;
-
     const selectedProductId =
       this.invSales.controls[index].get('product.id')?.value;
-    console.log('selectedProductId-------' + selectedProductId);
-    // let id = this.invoiceForm.get('product.id')?.value
-
     let id = selectedProductId;
-
-    console.log('-------------------', this.invoiceForm.get('product.id'));
-    console.log('id' + id);
-
     this.productService.getById(id).subscribe((res) => {
-      console.log('id' + id);
       let data: any;
       data = res;
       if (data != null) {
         this.invoiceProduct.get('unitPrice')?.setValue(data.price);
         this.invoiceProduct.get('tax')?.setValue(data.tax);
-
         this.ItemCalculation(index);
       }
     });
@@ -220,8 +200,34 @@ export class EditInvoiceComponent implements OnInit {
   }
 
   RemoveSale(index: any) {
-    this.invSales.removeAt(index);
+    this.invsales.removeAt(index);
     this.summuryCalculation();
+  }
+
+  get invsales() {
+    return this.invoiceForm.get('sales') as FormArray;
+  }
+
+  addSale() {
+    this.invSales = this.invoiceForm.get('sales') as FormArray;
+    this.invSales.push(this.generateRow());
+  }
+
+  generateRow() {
+    return this.builder.group({
+      quantity: this.builder.control(1),
+      unitPrice: this.builder.control(0),
+      price: this.builder.control(0),
+      tax: this.builder.control(19),
+      discount: this.builder.control(0),
+      available: this.builder.control(true),
+      product: this.builder.group({
+        id: this.builder.control('', Validators.required),
+      }),
+      invoice: this.builder.group({
+        id: this.builder.control('', Validators.required),
+      }),
+    });
   }
 
   summuryCalculation() {
