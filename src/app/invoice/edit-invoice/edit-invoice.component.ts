@@ -211,6 +211,7 @@ export class EditInvoiceComponent implements OnInit {
   addSale() {
     this.invSales = this.invoiceForm.get('sales') as FormArray;
     this.invSales.push(this.generateRow());
+    console.log('aaaaaaaaaaaaaaaadddsale', this.invSales);
   }
 
   generateRow() {
@@ -254,6 +255,7 @@ export class EditInvoiceComponent implements OnInit {
   update() {
     this.invoiceService.update(this.invoiceForm.value).subscribe({
       next: (data) => {
+        console.log('uuuuuuuuuuuupdateInvoice', this.invoiceForm.value);
         this.router.navigate(['/listInvoice']);
       },
       error: (err) => {
