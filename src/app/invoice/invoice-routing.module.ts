@@ -7,20 +7,20 @@ import { EditInvoiceComponent } from './edit-invoice/edit-invoice.component';
 import { LayoutInvoiceComponent } from './layout-invoice/layout-invoice.component';
 import { PaymentComponent } from './payment/payment.component';
 import { TableFilterComponent } from './table-filter/table-filter.component';
+import { TableInvoiceComponent } from './table-invoice/table-invoice.component';
 
 const routes: Routes = [
-  { path:'listInvoice',component:ListInvoiceComponent},
-  { path:'createInvoice',component:AddInvoiceComponent},
-  { path:'editInvoice/:id',component:EditInvoiceComponent},
-  { path:'layoutInvoice/:id',component:LayoutInvoiceComponent},
-  { path:'payment',component:PaymentComponent},
-  { path: 'table', component: TableFilterComponent }
-
-  
+  { path: 'listInvoice', component: ListInvoiceComponent },
+  { path: 'createInvoice', component: AddInvoiceComponent },
+  { path: 'editInvoice/:id', component: EditInvoiceComponent },
+  { path: 'layoutInvoice/:id', component: LayoutInvoiceComponent },
+  { path: 'payment', component: PaymentComponent },
+  { path: 'table', component: TableFilterComponent },
+  { path: 'tableinv', component: TableInvoiceComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class InvoiceRoutingModule { }
+export class InvoiceRoutingModule {}

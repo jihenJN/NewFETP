@@ -21,7 +21,7 @@ import { TableFilterComponent } from '../invoice/table-filter/table-filter.compo
 import { TableClientComponent } from '../client/table-client/table-client.component';
 import { TableProductComponent } from '../product/table-product/table-product.component';
 import { TableSaleComponent } from '../sale/table-sale/table-sale.component';
-
+import { TableInvoiceComponent } from '../invoice/table-invoice/table-invoice.component';
 
 const routes: Routes = [
   {
@@ -29,42 +29,40 @@ const routes: Routes = [
     component: DashboardAdminComponent,
     children: [
       { path: '', redirectTo: 'admin', pathMatch: 'full' },
-     
-      { path: 'account', component:AccountComponent},
-      {path:'settings', component:SettingsComponent},
 
-      { path: 'productList', component:TableProductComponent },
+      { path: 'account', component: AccountComponent },
+      { path: 'settings', component: SettingsComponent },
+
+      { path: 'productList', component: TableProductComponent },
       { path: 'createProduct', component: AddProductComponent },
       { path: 'editProduct/:id', component: EditProductComponent },
-      
-      { path:'listClient',component:TableClientComponent},
-      { path:'createClient',component:AddClientComponent},
-      { path:'editClient/:id',component:EditClientComponent},
-     
 
-      { path:'listInvoice',component:ListInvoiceComponent},
-      { path:'createInvoice',component:AddInvoiceComponent},
-      { path:'editInvoice/:id',component:EditInvoiceComponent},
-      { path:'layoutInvoice/:id',component:LayoutInvoiceComponent},
+      { path: 'listClient', component: TableClientComponent },
+      { path: 'createClient', component: AddClientComponent },
+      { path: 'editClient/:id', component: EditClientComponent },
+
+      { path: 'listInvoice', component: ListInvoiceComponent },
+      { path: 'createInvoice', component: AddInvoiceComponent },
+      { path: 'editInvoice/:id', component: EditInvoiceComponent },
+      { path: 'layoutInvoice/:id', component: LayoutInvoiceComponent },
       { path: 'table', component: TableFilterComponent },
+      { path: 'tableinv', component: TableInvoiceComponent },
 
-       
-      { path:'listSale',component:ListSaleComponent},
-      { path:'viewSale/:id',component:ViewSaleComponent},
-      { path:'editSale/:id',component:EditSaleComponent},
-      { path:'table-sale',component:TableSaleComponent},
+      { path: 'listSale', component: ListSaleComponent },
+      { path: 'viewSale/:id', component: ViewSaleComponent },
+      { path: 'editSale/:id', component: EditSaleComponent },
+      { path: 'table-sale', component: TableSaleComponent },
 
-     
-      { path:'listUser',component:ListUserComponent},
-      { path:'createUser',component:AddUserComponent},
+      { path: 'listUser', component: ListUserComponent },
+      { path: 'createUser', component: AddUserComponent },
 
-      { path:'chart',component:ChartComponent},
-    ]
-  }
+      { path: 'chart', component: ChartComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

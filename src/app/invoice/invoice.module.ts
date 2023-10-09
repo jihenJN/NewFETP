@@ -27,6 +27,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { AnimateModule } from 'primeng/animate';
+import { TableInvoiceComponent } from './table-invoice/table-invoice.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AnimateModule } from 'primeng/animate';
     ListInvoiceComponent,
     LayoutInvoiceComponent,
     PaymentComponent,
-    TableFilterComponent
+    TableFilterComponent,
+    TableInvoiceComponent
   ],
   imports: [
     CommonModule,
@@ -69,7 +71,8 @@ import { AnimateModule } from 'primeng/animate';
     ListInvoiceComponent,
     LayoutInvoiceComponent,
     PaymentComponent,
-    TableFilterComponent
+    TableFilterComponent,
+    TableInvoiceComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
