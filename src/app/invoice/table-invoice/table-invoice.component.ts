@@ -17,6 +17,7 @@ export class TableInvoiceComponent implements OnInit {
   loading: boolean = false;
 
   status = 'DRAFT';
+  statuses!: any[];
 
   invoices: Invoice[] = [];
   invoicesDto: InvoiceDto[] = [];
@@ -45,6 +46,14 @@ export class TableInvoiceComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.statuses = [
+      { label: 'SENT', value: 'SENT' },
+      { label: 'RECEIVED', value: 'RECEIVED' },
+      { label: 'PAID', value: 'PAID' },
+      { label: 'OVERDUE', value: 'OVERDUE' },
+      { label: 'DRAFT', value: 'DRAFT' },
+    ];
+
     this.getUserAccount();
     this.isAdmin();
 

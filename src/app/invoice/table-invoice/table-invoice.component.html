@@ -31,13 +31,12 @@
                 <tr>
 
                     <th style="width:15%; color:#435d7d;">Code</th>
-                    <th style="width:25%; color:#435d7d;">Date</th>
-                    <th style="width:25%; color:#435d7d;">Customer</th>
+                    <th style="width:15%; color:#435d7d;">Date</th>
+                    <th style="width:15%; color:#435d7d;">Customer</th>
                     <th style="width:15%; color:#435d7d;">Discount</th>
-                    <th style="width:10%; color:#435d7d;">Tax</th>
                     <th style="width:15%; color:#435d7d;">Total</th>
                     <th style="width:15%; color:#435d7d;">Status</th>
-                    <th style="width:25%; color:#435d7d;">Actions</th>
+                    <th style="width:15%; color:#435d7d;">Actions</th>
                 </tr>
                 <tr>
                     <th>
@@ -52,14 +51,25 @@
                     <th>
                         <p-columnFilter type="text" field="discount"></p-columnFilter>
                     </th>
-                    <th>
-                        <p-columnFilter type="text" field="tax"></p-columnFilter>
-                    </th>
+
                     <th>
                         <p-columnFilter type="text" field="total"></p-columnFilter>
                     </th>
+
+
+
                     <th>
-                        <p-columnFilter type="text" field="status"></p-columnFilter>
+                        <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
+                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)"
+                                    placeholder="Any" [showClear]="true">
+                                    <ng-template let-option pTemplate="item">
+                                        <p-tag [value]="option.value"
+                                            [getStatusClass]="getStatusClass(option.label)"></p-tag>
+                                    </ng-template>
+                                </p-dropdown>
+                            </ng-template>
+                        </p-columnFilter>
                     </th>
 
                     <th>
@@ -79,9 +89,7 @@
                     <td>{{invoice.code}}</td>
                     <td>{{invoice.date | date:'d MMM yyyy' }}<br><br>{{invoice.date | date:'HH:mm:ss'}}</td>
                     <td>{{invoice.client}}</td>
-                    <!--td>{{invoice.remarks}}</td-->
                     <td> - {{invoice.discount}} %</td>
-                    <td>{{invoice.tax}}</td>
                     <td>{{invoice.total}} DT</td>
                     <td><label [ngClass]="getStatusClass(invoice.status)"> {{invoice.status}} </label></td>
 
