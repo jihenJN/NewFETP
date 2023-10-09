@@ -30,10 +30,13 @@
             <ng-template pTemplate="header">
                 <tr>
 
-                    <th style="width:20%; color:#435d7d;">Code</th>
+                    <th style="width:15%; color:#435d7d;">Code</th>
                     <th style="width:25%; color:#435d7d;">Date</th>
-                    <th style="width:20%; color:#435d7d;">Customer</th>
-                    <th style="width:20%; color:#435d7d;">Discount</th>
+                    <th style="width:25%; color:#435d7d;">Customer</th>
+                    <th style="width:15%; color:#435d7d;">Discount</th>
+                    <th style="width:10%; color:#435d7d;">Tax</th>
+                    <th style="width:15%; color:#435d7d;">Total</th>
+                    <th style="width:15%; color:#435d7d;">Status</th>
                     <th style="width:25%; color:#435d7d;">Actions</th>
                 </tr>
                 <tr>
@@ -50,8 +53,18 @@
                         <p-columnFilter type="text" field="discount"></p-columnFilter>
                     </th>
                     <th>
+                        <p-columnFilter type="text" field="tax"></p-columnFilter>
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="total"></p-columnFilter>
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="status"></p-columnFilter>
+                    </th>
+
+                    <th>
                         <div class="ml-auto">
-                            <a routerLink="/createClient" class="btn btn-success" data-toggle="modal"><i
+                            <a routerLink="/createInvoice" class="btn btn-success" data-toggle="modal"><i
                                     class="material-icons">&#xE147;</i> <span
                                     style="font-family: 'Varela Round', sans-serif;"> New</span></a>
 
@@ -68,12 +81,19 @@
                     <td>{{invoice.client}}</td>
                     <!--td>{{invoice.remarks}}</td-->
                     <td> - {{invoice.discount}} %</td>
+                    <td>{{invoice.tax}}</td>
+                    <td>{{invoice.total}} DT</td>
+                    <td><label [ngClass]="getStatusClass(invoice.status)"> {{invoice.status}} </label></td>
 
                     <td *ngIf="isAdmin()">
                         <a [routerLink]="['/editInvoice',invoice.id]" class="edit" data-toggle="modal"><i
                                 class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                         <a href="#" class="delete" data-toggle="modal" (click)="openDeleteModal(invoice.id)"><i
                                 class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a [routerLink]="['/layoutInvoice', invoice.id]" type="button" class="print"
+                            data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
+                                title="print">local_printshop</i></a>
+
                     </td>
 
                     <td *ngIf="!isAdmin()">
@@ -82,6 +102,9 @@
                         <a href="#" class="delete" data-toggle="modal" (click)="openDeleteModal(invoice.id)"
                             [class.disabled]="true"><i class="material-icons" data-toggle="tooltip"
                                 title="Delete">&#xE872;</i></a>
+                        <a [routerLink]="['/layoutInvoice', invoice.id]" type="button" class="print"
+                            data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
+                                title="print">local_printshop</i></a>
                     </td>
 
 
@@ -89,12 +112,12 @@
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="5">No customers found.</td>
+                    <td colspan="5">No invoices found.</td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">
                 <div class="flex align-items-center justify-content-between">
-                    In total there are {{invoices ? invoices.length : 0 }} customers.
+                    In total there are {{invoices ? invoices.length : 0 }} invoices.
                 </div>
             </ng-template>
 
