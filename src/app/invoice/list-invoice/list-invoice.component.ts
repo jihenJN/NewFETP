@@ -102,7 +102,7 @@ export class ListInvoiceComponent implements OnInit {
         status:invoice.status,
         client: this.getClient(invoice.client?.name),
         
-        //photo: this.getPhoto(invoice.photo),
+        
       };
 
       tempProductDto.push(restDto);

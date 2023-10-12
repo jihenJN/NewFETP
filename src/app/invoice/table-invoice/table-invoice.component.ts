@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Invoice, InvoiceDto } from 'src/app/models/Invoice';
 import { InvoiceService } from 'src/app/services/invoice.service';
-import { DatePipe } from '@angular/common';
 import { User } from 'src/app/models/User';
 import { AccountService } from 'src/app/services/account.service';
 import { Table } from 'primeng/table';
+import { ClientService } from 'src/app/services/client.service';
 
 declare var window: any;
 
@@ -18,6 +18,7 @@ export class TableInvoiceComponent implements OnInit {
 
   status = 'DRAFT';
   statuses!: any[];
+  representatives!: any[];
 
   invoices: Invoice[] = [];
   invoicesDto: InvoiceDto[] = [];
@@ -42,7 +43,8 @@ export class TableInvoiceComponent implements OnInit {
 
   constructor(
     private invoiceService: InvoiceService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private clientService: ClientService
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +56,20 @@ export class TableInvoiceComponent implements OnInit {
       { label: 'DRAFT', value: 'DRAFT' },
     ];
 
+    this.representatives = [
+      { name: 'kiko', image: 'amyelsner.png' },
+      { name: 'carrefour', image: 'annafali.png' },
+      { name: 'ELECTO', image: 'asiyajavayant.png' },
+      { name: 'Bernardo Dominic', image: 'bernardodominic.png' },
+      { name: 'Elwin Sharvill', image: 'elwinsharvill.png' },
+      { name: 'Ioni Bowcher', image: 'ionibowcher.png' },
+      { name: 'Ivan Magalhaes', image: 'ivanmagalhaes.png' },
+      { name: 'Onyama Limba', image: 'onyamalimba.png' },
+      { name: 'Stephen Shaw', image: 'stephenshaw.png' },
+      { name: 'Xuxue Feng', image: 'xuxuefeng.png' },
+    ];
+
+    this.getClients();
     this.getUserAccount();
     this.isAdmin();
 
@@ -78,6 +94,12 @@ export class TableInvoiceComponent implements OnInit {
     });
   }
 
+  getClients() {
+    this.clientService.get().subscribe((res) => {
+      this.representatives = res;
+    });
+  }
+
   inintProductDto(invoices: Invoice[]): InvoiceDto[] {
     let tempProductDto: InvoiceDto[] = [];
 
@@ -92,18 +114,12 @@ export class TableInvoiceComponent implements OnInit {
         total: invoice.total,
         status: invoice.status,
         client: this.getClient(invoice.client?.name),
-
-        //photo: this.getPhoto(invoice.photo),
       };
 
       tempProductDto.push(restDto);
     });
 
     return tempProductDto;
-  }
-
-  private getPhoto(data: string): any {
-    return 'data:image/jpg;base64,' + data;
   }
 
   private getClient(data: any): any {
