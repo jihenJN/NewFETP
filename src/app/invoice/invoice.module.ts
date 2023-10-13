@@ -5,19 +5,16 @@ import { InvoiceRoutingModule } from './invoice-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddInvoiceComponent } from './add-invoice/add-invoice.component';
 import { EditInvoiceComponent } from './edit-invoice/edit-invoice.component';
-import { ListInvoiceComponent } from './list-invoice/list-invoice.component';
 import { SharedModule } from '../shared/shared.module';
 import { LayoutInvoiceComponent } from './layout-invoice/layout-invoice.component';
-import {NgxPrintModule} from 'ngx-print';
+import { NgxPrintModule } from 'ngx-print';
 import { PaymentComponent } from './payment/payment.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { TableFilterComponent } from './table-filter/table-filter.component';
-
-
 
 // Import PrimeNG modules
 import { AvatarModule } from 'primeng/avatar';
@@ -31,14 +28,12 @@ import { TableInvoiceComponent } from './table-invoice/table-invoice.component';
 
 @NgModule({
   declarations: [
-    
     AddInvoiceComponent,
     EditInvoiceComponent,
-    ListInvoiceComponent,
     LayoutInvoiceComponent,
     PaymentComponent,
     TableFilterComponent,
-    TableInvoiceComponent
+    TableInvoiceComponent,
   ],
   imports: [
     CommonModule,
@@ -52,7 +47,7 @@ import { TableInvoiceComponent } from './table-invoice/table-invoice.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-   
+
     AvatarModule,
     FormsModule,
     ReactiveFormsModule,
@@ -62,25 +57,21 @@ import { TableInvoiceComponent } from './table-invoice/table-invoice.component';
     InputTextModule,
     DropdownModule,
     AnimateModule,
-    
   ],
   exports: [
-   
     AddInvoiceComponent,
     EditInvoiceComponent,
-    ListInvoiceComponent,
     LayoutInvoiceComponent,
     PaymentComponent,
     TableFilterComponent,
-    TableInvoiceComponent
+    TableInvoiceComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: {showError: true},
+      useValue: { showError: true },
     },
   ],
-
 })
-export class InvoiceModule { }
+export class InvoiceModule {}

@@ -6,7 +6,6 @@ import { EditClientComponent } from '../client/edit-client/edit-client.component
 import { AddProductComponent } from '../product/add-product/add-product.component';
 import { EditProductComponent } from '../product/edit-product/edit-product.component';
 import { AccountComponent } from '../auth/account/account.component';
-import { ListInvoiceComponent } from '../invoice/list-invoice/list-invoice.component';
 import { AddInvoiceComponent } from '../invoice/add-invoice/add-invoice.component';
 import { EditInvoiceComponent } from '../invoice/edit-invoice/edit-invoice.component';
 import { ListUserComponent } from '../user/list-user/list-user.component';
@@ -41,12 +40,12 @@ const routes: Routes = [
       { path: 'createClient', component: AddClientComponent },
       { path: 'editClient/:id', component: EditClientComponent },
 
-      { path: 'listInvoice', component: ListInvoiceComponent },
+      { path: 'listInvoice', component:TableInvoiceComponent },
       { path: 'createInvoice', component: AddInvoiceComponent },
       { path: 'editInvoice/:id', component: EditInvoiceComponent },
       { path: 'layoutInvoice/:id', component: LayoutInvoiceComponent },
       { path: 'table', component: TableFilterComponent },
-      { path: 'tableinv', component: TableInvoiceComponent },
+   
 
       { path: 'listSale', component: ListSaleComponent },
       { path: 'viewSale/:id', component: ViewSaleComponent },
