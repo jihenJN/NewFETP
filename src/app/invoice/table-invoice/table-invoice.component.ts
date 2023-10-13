@@ -19,6 +19,10 @@ export class TableInvoiceComponent implements OnInit {
   status = 'DRAFT';
   statuses!: any[];
   representatives!: any[];
+  value: string[] = []; // Initialize as an empty array of strings
+
+  dataTypeValue: string | undefined;
+  dataTypeRepresentatives: string | undefined;
 
   invoices: Invoice[] = [];
   invoicesDto: InvoiceDto[] = [];
@@ -40,6 +44,7 @@ export class TableInvoiceComponent implements OnInit {
     lastModifiedBy: '',
     lastModifiedDate: new Date(),
   };
+  typeof: any;
 
   constructor(
     private invoiceService: InvoiceService,
@@ -54,19 +59,6 @@ export class TableInvoiceComponent implements OnInit {
       { label: 'PAID', value: 'PAID' },
       { label: 'OVERDUE', value: 'OVERDUE' },
       { label: 'DRAFT', value: 'DRAFT' },
-    ];
-
-    this.representatives = [
-      { name: 'kiko', image: 'amyelsner.png' },
-      { name: 'carrefour', image: 'annafali.png' },
-      { name: 'ELECTO', image: 'asiyajavayant.png' },
-      { name: 'Bernardo Dominic', image: 'bernardodominic.png' },
-      { name: 'Elwin Sharvill', image: 'elwinsharvill.png' },
-      { name: 'Ioni Bowcher', image: 'ionibowcher.png' },
-      { name: 'Ivan Magalhaes', image: 'ivanmagalhaes.png' },
-      { name: 'Onyama Limba', image: 'onyamalimba.png' },
-      { name: 'Stephen Shaw', image: 'stephenshaw.png' },
-      { name: 'Xuxue Feng', image: 'xuxuefeng.png' },
     ];
 
     this.getClients();

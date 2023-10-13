@@ -3,7 +3,7 @@
         <p-table #dt2 [value]="invoicesDto" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
             [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-            [globalFilterFields]="['code', 'date', 'client', 'discount']"
+            [globalFilterFields]="['code', 'date', 'client', 'discount','representative']"
             [tableStyle]="{ 'min-width': '60rem','font-family': 'Varela Round','font-size': '15px'}" id="myTable">
 
 
@@ -59,8 +59,14 @@
                                         </div>
                                     </ng-template>
                                 </p-multiSelect>
+                                <div>
+                                    <!-- Add this for debugging -->
+                                    <p>Value: {{ value |json}}</p>
+                                    <!--p>Representatives: {{ representatives |json }}</p-->
+                                </div>
                             </ng-template>
                         </p-columnFilter>
+
                     </th>
 
 
