@@ -2,48 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { Sale, SaleDto } from 'src/app/models/Sale';
 import { SaleService } from 'src/app/services/sale.service';
 import { Table } from 'primeng/table';
-declare var window: any;
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-table-sale',
   templateUrl: './table-sale.component.html',
-  styleUrls: ['./table-sale.component.css']
+  styleUrls: ['./table-sale.component.css'],
 })
 export class TableSaleComponent implements OnInit {
-
-  loading: boolean = false
-
+  loading: boolean = false;
 
   sales: Sale[] = [];
   salesDto: SaleDto[] = [];
+  representatives!: any[];
 
-  deleteModal: any;
-  idTodelete: string = '';
-
-
-  constructor(private saleService: SaleService) { }
+  constructor(
+    private saleService: SaleService,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
-
-    this.deleteModal = new window.bootstrap.Modal(
-      document.getElementById('deleteModal')
-    );
-
-
+    this.get();
+    this.getProducts();
 
     this.saleService.get().subscribe((data: SaleDto[]) => {
       this.sales = data;
       this.salesDto = this.inintSaleDto(this.sales);
       console.log(this.sales);
     });
-
-
-    this.get();
-
-
   }
-
-
 
   get() {
     this.loading = true;
@@ -51,17 +38,13 @@ export class TableSaleComponent implements OnInit {
     this.saleService.get().subscribe((data) => {
       this.sales = data;
       this.loading = false;
-
     });
   }
 
-
   inintSaleDto(sales: Sale[]): SaleDto[] {
-
     let tempSaleDto: SaleDto[] = [];
 
     sales.forEach((sale) => {
-
       const restDto: SaleDto = {
         id: sale.id,
         quantity: sale.quantity,
@@ -69,45 +52,34 @@ export class TableSaleComponent implements OnInit {
         tax: sale.tax,
         discount: sale.discount,
         available: sale.available,
-        product: sale.product,
+        product: this.getProduct(sale.product),
         invoice: sale.invoice,
-
       };
 
       tempSaleDto.push(restDto);
-
     });
 
     return tempSaleDto;
   }
 
-  openDeleteModal(id: string) {
-    this.idTodelete = id;
-    this.deleteModal.show();
+  getProducts() {
+    this.productService.get().subscribe((res) => {
+      this.representatives = res;
+    });
   }
 
-
-  /************JN:FIXING DELETE PROBLEM*********************/
-  delete() {
-    this.saleService.delete(this.idTodelete).subscribe({
-      next: (data: any) => {
-        this.sales = this.sales.filter(_ => _.id != this.idTodelete);
-        this.salesDto = this.inintSaleDto(this.sales);
-        this.deleteModal.hide();
-      }
-    });
+  private getProduct(data: any): any {
+    console.log('data in  getProduct----------' + data);
+    return data;
   }
 
   /************JN:PrimeNG table part*********************/
   clear(table: Table) {
     table.clear();
   }
-  
-  
+
   dt: Table | undefined;
-  getEventValue($event:any) :string {
+  getEventValue($event: any): string {
     return $event.target.value;
-  } 
-
-
+  }
 }
