@@ -61,7 +61,7 @@
                                 </p-multiSelect>
                                 <div>
                                     <!-- Add this for debugging -->
-                                    <p>Value: {{ value |json}}</p>
+                                    <!--p>Value: {{ value |json}}</p-->
                                     <!--p>Representatives: {{ representatives |json }}</p-->
                                 </div>
                             </ng-template>
@@ -110,7 +110,11 @@
                 <tr>
                     <td>{{invoice.code}}</td>
                     <td>{{invoice.date | date:'d MMM yyyy' }}<br><br>{{invoice.date | date:'HH:mm:ss'}}</td>
-                    <td>{{invoice.client}}</td>
+                    <td>{{invoice.client.name}}</td>
+
+                    <!-- Add this for debugging -->
+                    <!--p>Value: {{invoice.client|json}}</p-->
+
                     <td> - {{invoice.discount}} %</td>
                     <td>{{invoice.total |number}} DT</td>
                     <td><label [ngClass]="getStatusClass(invoice.status)"> {{invoice.status}} </label></td>

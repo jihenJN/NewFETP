@@ -105,7 +105,7 @@ export class TableInvoiceComponent implements OnInit {
         date: invoice.date,
         total: invoice.total,
         status: invoice.status,
-        client: this.getClient(invoice.client?.name),
+        client: this.getClient(invoice.client),
       };
 
       tempProductDto.push(restDto);
