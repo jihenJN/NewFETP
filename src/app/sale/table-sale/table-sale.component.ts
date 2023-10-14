@@ -3,6 +3,7 @@ import { Sale, SaleDto } from 'src/app/models/Sale';
 import { SaleService } from 'src/app/services/sale.service';
 import { Table } from 'primeng/table';
 import { ProductService } from 'src/app/services/product.service';
+import { Product, ProductDto } from 'src/app/models/Product';
 
 @Component({
   selector: 'app-table-sale',
@@ -14,7 +15,7 @@ export class TableSaleComponent implements OnInit {
 
   sales: Sale[] = [];
   salesDto: SaleDto[] = [];
-  representatives!: any[];
+  representatives!: any;
 
   constructor(
     private saleService: SaleService,
@@ -62,9 +63,18 @@ export class TableSaleComponent implements OnInit {
     return tempSaleDto;
   }
 
-  getProducts() {
+  getProducts(): void {
     this.productService.get().subscribe((res) => {
-      this.representatives = res;
+      this.representatives = res.map((product) => ({
+        id: product.id,
+        name: product.name,
+        price: null,
+        photo: null,
+        photoContentType: null,
+        description: null,
+        tax: null,
+        inStock: null,
+      }));
     });
   }
 
