@@ -4,17 +4,16 @@ import { User } from '../models/User';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AccountService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-
-  getAccount(): Observable<User>{
-    return this.http.get<User>('http://localhost:8080/api/account')
+  getAccount(): Observable<User> {
+    return this.http.get<User>('http://localhost:8080/api/account');
   }
 
-
-
+  updateAccount(payload: User) {
+    return this.http.post('http://localhost:8080/api/account', payload);
+  }
 }
