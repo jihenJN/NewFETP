@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SaleRoutingModule } from './sale-routing.module';
 import { EditSaleComponent } from './edit-sale/edit-sale.component';
-import { ListSaleComponent } from './list-sale/list-sale.component';
+
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,12 +21,7 @@ import { TagModule } from 'primeng/tag';
 import { AnimateModule } from 'primeng/animate';
 
 @NgModule({
-  declarations: [
-    EditSaleComponent,
-    ListSaleComponent,
-    ViewSaleComponent,
-    TableSaleComponent
-  ],
+  declarations: [EditSaleComponent, ViewSaleComponent, TableSaleComponent],
   imports: [
     CommonModule,
     SaleRoutingModule,
@@ -37,7 +32,7 @@ import { AnimateModule } from 'primeng/animate';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-   
+
     AvatarModule,
     TagModule,
     TableModule,
@@ -46,11 +41,6 @@ import { AnimateModule } from 'primeng/animate';
     DropdownModule,
     AnimateModule,
   ],
-  exports: [
-    EditSaleComponent,
-    ListSaleComponent,
-    ViewSaleComponent,
-    TableSaleComponent
-  ]
+  exports: [EditSaleComponent, ViewSaleComponent, TableSaleComponent],
 })
-export class SaleModule { }
+export class SaleModule {}

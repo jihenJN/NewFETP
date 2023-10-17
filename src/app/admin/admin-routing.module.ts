@@ -10,7 +10,7 @@ import { AddInvoiceComponent } from '../invoice/add-invoice/add-invoice.componen
 import { EditInvoiceComponent } from '../invoice/edit-invoice/edit-invoice.component';
 import { ListUserComponent } from '../user/list-user/list-user.component';
 import { AddUserComponent } from '../user/add-user/add-user.component';
-import { ListSaleComponent } from '../sale/list-sale/list-sale.component';
+
 import { ViewSaleComponent } from '../sale/view-sale/view-sale.component';
 import { EditSaleComponent } from '../sale/edit-sale/edit-sale.component';
 import { LayoutInvoiceComponent } from '../invoice/layout-invoice/layout-invoice.component';
@@ -40,14 +40,13 @@ const routes: Routes = [
       { path: 'createClient', component: AddClientComponent },
       { path: 'editClient/:id', component: EditClientComponent },
 
-      { path: 'listInvoice', component:TableInvoiceComponent },
+      { path: 'listInvoice', component: TableInvoiceComponent },
       { path: 'createInvoice', component: AddInvoiceComponent },
       { path: 'editInvoice/:id', component: EditInvoiceComponent },
       { path: 'layoutInvoice/:id', component: LayoutInvoiceComponent },
       { path: 'table', component: TableFilterComponent },
-   
 
-      { path: 'listSale', component: ListSaleComponent },
+      { path: 'listSale', component: TableSaleComponent },
       { path: 'viewSale/:id', component: ViewSaleComponent },
       { path: 'editSale/:id', component: EditSaleComponent },
       { path: 'table-sale', component: TableSaleComponent },
