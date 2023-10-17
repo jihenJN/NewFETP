@@ -59,14 +59,22 @@
                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin"
                   style="background-color: #fff;">
               </div>
-              <h4 class="user-name">Yuki Hayashi</h4>
-              <h5 class="user-email">yuki@Maxwell.com</h5>
+              <h4 class="user-name">{{ currentUser.login }}</h4>
+              <h5 class="user-email"> {{ currentUser.email }}</h5>
             </div>
             <div class="about">
               <h4>About</h4>
-              <p> I am Yuki Hayashi</p>
-              <p>My profile was created since 12/04/2023 </p>
-              <p>Roles i fullfill in CrmApp are : Role-user </p>
+              <p> I am {{ currentUser.firstName }} {{ currentUser.lastName }}</p>
+              <p>My profile was created since <br>{{ currentUser.createdDate| date:
+                'dd/MM/yy HH:mm' }} </p>
+              <p>Roles i fullfill in CrmApp are : </p>
+
+              <p *ngFor="let authority of currentUser.authorities">
+                + {{ authority }}
+              </p>
+
+
+
 
 
             </div>
