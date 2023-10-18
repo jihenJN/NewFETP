@@ -122,14 +122,16 @@
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="form-group">
-                <label for="Street">Current password</label>
-                <input type="name" class="form-control" id="Street" placeholder="Current password">
+                <label for="currentPassword">Current password</label>
+                <input type="name" class="form-control" id="currentPassword" name="currentPassword"
+                  [(ngModel)]="pwdChange.currentPassword" placeholder="Current password">
               </div>
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="form-group">
-                <label for="ciTy">New password</label>
-                <input type="name" class="form-control" id="ciTy" placeholder="New password">
+                <label for="newPassword">New password</label>
+                <input type="name" class="form-control" id="newPassword" name="newPassword"
+                  [(ngModel)]="pwdChange.newPassword" placeholder="New password">
                 <app-password-strength></app-password-strength>
               </div>
 

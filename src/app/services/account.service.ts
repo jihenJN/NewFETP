@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
 import { Observable } from 'rxjs';
+import { PasswordChangeDTO } from '../models/PasswordChange';
 
 @Injectable({
   providedIn: 'root',
@@ -15,5 +16,12 @@ export class AccountService {
 
   updateAccount(payload: User) {
     return this.http.post('http://localhost:8080/api/account', payload);
+  }
+
+  updatePwd(payload: PasswordChangeDTO) {
+    return this.http.post(
+      'http://localhost:8080/api/account/change-password',
+      payload
+    );
   }
 }

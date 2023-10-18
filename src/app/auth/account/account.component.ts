@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PasswordChangeDTO } from 'src/app/models/PasswordChange';
 import { User } from 'src/app/models/User';
 //import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { AccountService } from 'src/app/services/account.service';
@@ -23,6 +24,11 @@ export class AccountComponent implements OnInit {
     createdDate: new Date(),
     lastModifiedBy: '',
     lastModifiedDate: new Date(),
+  };
+
+  pwdChange: PasswordChangeDTO = {
+    currentPassword: '',
+    newPassword: '',
   };
 
   constructor(
@@ -51,6 +57,14 @@ export class AccountComponent implements OnInit {
     this.accountService.updateAccount(this.currentUser).subscribe({
       next: (data) => {
         this.router.navigate(['/account']);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+    this.accountService.updatePwd(this.pwdChange).subscribe({
+      next: (data) => {
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         console.log(err);
